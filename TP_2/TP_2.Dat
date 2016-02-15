@@ -1,0 +1,19 @@
+Field=Comment~String~Comment~100|Field=Description~String~Description~100|Field=Footprint~String~Footprint~100|Field=LibRef~String~LibRef~100|Field=Quantity~Integer~Quantity~100|Field=Value~String~Value~100|Field=Fabricant~String~Fabricant~100|Field=Fournisseur~String~Fournisseur~100|Field=RefFabricant~String~RefFabricant~100|Field=RefFournisseur~String~RefFournisseur~100|Field=LogicalDesignator~String~LogicalDesignator~100|ReportField=Currency~<none>|ReportField=ProductionQuantity~1|ReportField=ProjectFileName~TP_2.PrjPcb|ReportField=ProjectFullPath~C:\Users\bocal\Desktop\coucou\TP_2\TP_2.PrjPcb|ReportField=Title~Bill of Materials For Project [TP_2.PrjPcb] (No PCB Document Selected)|ReportField=TotalQuantity~36|ReportField=ReportTime~9:14:53 PM|ReportField=ReportDate~2/15/2016|ReportField=ReportDateTime~2/15/2016 9:14:53 PM|ReportField=OutputName~Bill of Materials|ReportField=OutputType~BOM_PartType|ReportField=GeneratorName~BOM|ReportField=GeneratorDescription~Bill of Materials|ReportField=VariantName~None|ReportField=Address1~|ReportField=Address2~|ReportField=Address3~|ReportField=Address4~|ReportField=Application_BuildNumber~|ReportField=ApprovedBy~|ReportField=Author~|ReportField=CheckedBy~|ReportField=CompanyName~|ReportField=CurrentDate~2/15/2016|ReportField=CurrentTime~9:14:05 PM|ReportField=Date~|ReportField=DocumentFullPathAndName~C:\Users\bocal\Desktop\coucou\TP_2\TP2.SchDoc|ReportField=DocumentName~TP2.SchDoc|ReportField=DocumentNumber~|ReportField=DrawnBy~|ReportField=Engineer~|ReportField=ImagePath~|ReportField=ModifiedDate~2/15/2016|ReportField=Organization~|ReportField=ProjectName~TP_2.PrjPcb|ReportField=Revision~|ReportField=Rule~|ReportField=SheetNumber~|ReportField=SheetTotal~|ReportField=Time~|ReportField=Title~|ReportField=DataSourceFileName~TP_2.PrjPcb|ReportField=DataSourceFullPath~C:\Users\bocal\Desktop\coucou\TP_2\TP_2.PrjPcb
+10uF|Capacitor|RAD-0.3|Cap|4|10uF|TDK, [NoValue], TDK, [NoValue]|Farnell, [NoValue], Farnell, [NoValue]|C2012X5R0J106M/1.25, [NoValue], C2012X5R0J106M/1.25, [NoValue]|2309029, [NoValue], 2309029, [NoValue]|C1, C10, C12, C13
+100nF|Capacitor|RAD-0.3|Cap|7|100nF|||||C2, C3, C4, C5, C6, C7, C15
+20pF|Capacitor|RAD-0.3|Cap|2|20pF|||||C8, C9
+1uF|Capacitor|RAD-0.3|Cap|2|1uF|||||C11, C14
+GF1A|Default Diode|SMC|Diode|2||VISHAY|Farnell|GF1A-E3/67A|9549560|D1, D2
+Green LED|Typical INFRARED GaAs LED|LED-0|LED0|4||KINGBRIGHT|Farnell|KPT-2012SGC|2099239|D1
+Green LED|Typical RED, GREEN, YELLOW, AMBER GaAs LED|3.2X1.6X1.1|LED2|1||KINGBRIGHT|Farnell|KPT-2012SGC|2099239|D3
+600r|Inductor|0402-A|Inductor|1|600|Wurth|Farnell|742792651|1635706|FB1
+Program / Debug|||Component_1|1||Molex|Farnell|53398-0671|1125368|J1
+12V Main|Header, 2-Pin|HDR1X2|Header 2|1||PHOENIX CONTACT|Farnell|PTSA 1.5/2-3,5-Z|1792769|P1
+12V Battery|Header, 2-Pin|HDR1X2|Header 2|1||PHOENIX CONTACT|Farnell|PTSA 1.5/2-3,5-Z|1792769|P2
+4.7K|Resistor|AXIAL-0.3|Res1|1|4.7K|||||R1
+470r|Resistor|AXIAL-0.3|Res1|1|470r|||||R1
+330r|Resistor|AXIAL-0.3|Res1|4|330r|||||R1
+1K|Potentiometer|VR5|RPot|1|1K|BOURNS|Farnell|PDB181-K415K-102A2|1823540|R2
+PIC32MX764F128H|||PIC32MX764F128H|1||Microchip|Farnell|PIC32MX764F128H|1971889|U1
+AP1117|1A LDO, 18V input, DPAK|AP1117|AP1117|1||DIODES INC|Farnell|AP1117D33G-13|1825285|U2
+8MHz|Crystal Oscillator|R38|XTAL|1||FOX ELECTRONICS|Farnell|FOXSDLF/080-20|2063972|Y1
