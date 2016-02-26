@@ -1,0 +1,21 @@
+Removed Pin From Net: NetName=NetD3_1 Pin=R1-1
+Removed Pin From Net: NetName=V5 Pin=R1-2
+Added Component: Designator=R1(AXIAL-0.3)
+Added Pin To Net: NetName=MCLR Pin=R1-1
+Added Pin To Net: NetName=NetD3_1 Pin=R1-1
+Added Pin To Net: NetName=V3P3 Pin=R1-2
+Added Pin To Net: NetName=V5 Pin=R1-2
+Added Pin To Net: NetName=NetD1_LED0_1 Pin=D1_LED0-1
+Added Pin To Net: NetName=NetD1_LED0_1 Pin=R1_LED0-1
+Added Net: Name=NetD1_LED0_1
+Added Pin To Net: NetName=NetD1_LED1_1 Pin=D1_LED1-1
+Added Pin To Net: NetName=NetD1_LED1_1 Pin=R1_LED1-1
+Added Net: Name=NetD1_LED1_1
+Added Pin To Net: NetName=NetD1_LED2_1 Pin=D1_LED2-1
+Added Pin To Net: NetName=NetD1_LED2_1 Pin=R1_LED2-1
+Added Net: Name=NetD1_LED2_1
+Added Pin To Net: NetName=NetD1_LED3_1 Pin=D1_LED3-1
+Added Pin To Net: NetName=NetD1_LED3_1 Pin=R1_LED3-1
+Added Net: Name=NetD1_LED3_1
+Added Member To Class: ClassName=PIC Member=Component R1 4.7K
+Added Member To Class: ClassName=POWER Member=Component R1 470r

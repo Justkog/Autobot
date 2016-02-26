@@ -1,0 +1,14 @@
+Change Component Footprint: Designator=D3 Old Footprint=3.2X1.6X1.1 New Footprint=LED 0805
+Change Component Footprint: Designator=FB1 Old Footprint=0402-A New Footprint=INDC1608AN
+Change Component Footprint: Designator=U2 Old Footprint=AP1117 New Footprint=TD03B_N
+Change Component Footprint: Designator=P1 Old Footprint=HDR1X2 New Footprint=PHOENIX_1985195
+Change Component Footprint: Designator=P2 Old Footprint=HDR1X2 New Footprint=PHOENIX_1985195
+Change Component Footprint: Designator=C14 Old Footprint=RAD-0.3 New Footprint=CAPC1608N
+Change Component Footprint: Designator=C15 Old Footprint=RAD-0.3 New Footprint=CAPC1608N
+Change Component Footprint: Designator=C12 Old Footprint=RAD-0.3 New Footprint=CAPC2012N
+Change Component Footprint: Designator=C13 Old Footprint=RAD-0.3 New Footprint=CAPC2012N
+Change Component Footprint: Designator=D1 Old Footprint=SMC New Footprint=SMA/DO-214AC_21
+Change Component Footprint: Designator=D2 Old Footprint=SMC New Footprint=SMA/DO-214AC_21
+Change Component Designator: OldDesignator=R3 NewDesignator=R1
+Change Pin Designator/Name:  Old Designator=R1-1 Old Name=1 New Designator =1 New Name=1
+Change Pin Designator/Name:  Old Designator=R1-2 Old Name=2 New Designator =2 New Name=2

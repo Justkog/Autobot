@@ -1,0 +1,11 @@
+Removed Pin From Net: NetName=NetD3_1 Pin=R1-1
+Removed Pin From Net: NetName=V5 Pin=R1-2
+Added Component: Designator=U2(TD03B_N)
+Added Pin To Net: NetName=MCLR Pin=R1-1
+Added Pin To Net: NetName=NetD3_1 Pin=R1-1
+Added Pin To Net: NetName=V3P3 Pin=R1-2
+Added Pin To Net: NetName=V5 Pin=R1-2
+Added Pin To Net: NetName=GND Pin=U2-1
+Added Pin To Net: NetName=V5 Pin=U2-3
+Added Pin To Net: NetName=V3P3 Pin=U2-4
+Added Member To Class: ClassName=POWER Member=Component U2 AP1117

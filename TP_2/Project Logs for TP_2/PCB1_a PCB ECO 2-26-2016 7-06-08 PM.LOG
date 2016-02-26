@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=NetD3_1 Pin=R1-1
+Removed Pin From Net: NetName=V5 Pin=R1-2
+Added Component: Designator=FB1(INDC1608AN)
+Added Pin To Net: NetName=V3P3 Pin=FB1-1
+Added Pin To Net: NetName=V3P3A Pin=FB1-2
+Added Pin To Net: NetName=MCLR Pin=R1-1
+Added Pin To Net: NetName=NetD3_1 Pin=R1-1
+Added Pin To Net: NetName=V3P3 Pin=R1-2
+Added Pin To Net: NetName=V5 Pin=R1-2
+Added Member To Class: ClassName=POWER Member=Component FB1 600r
