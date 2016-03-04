@@ -1,0 +1,30 @@
+Net Status Report
+Filename     : C:\Users\bocal\Desktop\Autobot\TP_2\PCB1_a.PcbDoc
+Date         : 3/4/2016
+Time         : 4:05:06 PM
+Time Elapsed : 00:00:00
+
+Nets, Layer, Length
+    ALIM, Signal Layers Only, 22.066mm
+    BATTERY, Signal Layers Only, 5.3418mm
+    GND, Signal Layers Only, 232.2898mm
+    LED0, Signal Layers Only, 31.5226mm
+    LED1, Signal Layers Only, 33.7189mm
+    LED2, Signal Layers Only, 36.8631mm
+    LED3, Signal Layers Only, 41.149mm
+    MCLR, Signal Layers Only, 13.7259mm
+    NetC10_2, Signal Layers Only, 87.1646mm
+    NetD1_LED0_1, Signal Layers Only, 1.9975mm
+    NetD1_LED1_1, Signal Layers Only, 1.9975mm
+    NetD1_LED2_1, Signal Layers Only, 1.9975mm
+    NetD1_LED3_1, Signal Layers Only, 1.9975mm
+    NetD3_1, Signal Layers Only, 2.8349mm
+    NetR2_2, Signal Layers Only, 46.7649mm
+    PGC, Signal Layers Only, 31.7797mm
+    PGD, Signal Layers Only, 24.035mm
+    V3P3, Signal Layers Only, 90.5993mm
+    V3P3A, Signal Layers Only, 67.5572mm
+    V5, Signal Layers Only, 112.5743mm
+    X1, Signal Layers Only, 20.602mm
+    X2, Signal Layers Only, 41.4529mm
+count : 22
