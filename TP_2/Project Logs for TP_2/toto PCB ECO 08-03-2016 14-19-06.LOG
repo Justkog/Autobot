@@ -1,0 +1,16 @@
+Added Component: Designator=R1_LED0(RESC1608N)
+Added Component: Designator=R1_LED1(RESC1608N)
+Added Component: Designator=R1_LED2(RESC1608N)
+Added Component: Designator=R1_LED3(RESC1608N)
+Added Pin To Net: NetName=NetD1_LED0_1 Pin=R1_LED0-1
+Added Pin To Net: NetName=LED0 Pin=R1_LED0-2
+Added Pin To Net: NetName=NetD1_LED1_1 Pin=R1_LED1-1
+Added Pin To Net: NetName=LED1 Pin=R1_LED1-2
+Added Pin To Net: NetName=NetD1_LED2_1 Pin=R1_LED2-1
+Added Pin To Net: NetName=LED2 Pin=R1_LED2-2
+Added Pin To Net: NetName=NetD1_LED3_1 Pin=R1_LED3-1
+Added Pin To Net: NetName=LED3 Pin=R1_LED3-2
+Added Member To Class: ClassName=LED0 Member=Component R1_LED0 (R1) 330r
+Added Member To Class: ClassName=LED1 Member=Component R1_LED1 (R1) 330r
+Added Member To Class: ClassName=LED2 Member=Component R1_LED2 (R1) 330r
+Added Member To Class: ClassName=LED3 Member=Component R1_LED3 (R1) 330r

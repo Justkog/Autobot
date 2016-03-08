@@ -1,0 +1,16 @@
+Added Component: Designator=D1_LED0(LED 0805)
+Added Component: Designator=D1_LED1(LED 0805)
+Added Component: Designator=D1_LED2(LED 0805)
+Added Component: Designator=D1_LED3(LED 0805)
+Added Pin To Net: NetName=NetD1_LED0_1 Pin=D1_LED0-1
+Added Pin To Net: NetName=GND Pin=D1_LED0-2
+Added Pin To Net: NetName=NetD1_LED1_1 Pin=D1_LED1-1
+Added Pin To Net: NetName=GND Pin=D1_LED1-2
+Added Pin To Net: NetName=NetD1_LED2_1 Pin=D1_LED2-1
+Added Pin To Net: NetName=GND Pin=D1_LED2-2
+Added Pin To Net: NetName=NetD1_LED3_1 Pin=D1_LED3-1
+Added Pin To Net: NetName=GND Pin=D1_LED3-2
+Added Member To Class: ClassName=LED0 Member=Component D1_LED0 (D1) Green LED
+Added Member To Class: ClassName=LED1 Member=Component D1_LED1 (D1) Green LED
+Added Member To Class: ClassName=LED2 Member=Component D1_LED2 (D1) Green LED
+Added Member To Class: ClassName=LED3 Member=Component D1_LED3 (D1) Green LED
