@@ -1,0 +1,9 @@
+Added Component: Designator=D1(SMA/DO-214AC_21)
+Added Component: Designator=D2(SMA/DO-214AC_21)
+Added Pin To Net: NetName=ALIM Pin=D1-1
+Added Pin To Net: NetName=V5 Pin=D1-2
+Added Pin To Net: NetName=BATTERY Pin=D2-1
+Added Pin To Net: NetName=V5 Pin=D2-2
+Added Member To Class: ClassName=POWER Member=Component D1 GF1A
+Added Member To Class: ClassName=POWER Member=Component D2 GF1A
+Added Member To Class: ClassName=POWER Member=Component P2 12V Battery
