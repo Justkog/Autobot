@@ -1,0 +1,19 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: toto.PcbDoc   3/16/2016  6:30:45 PM
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : toto.TXT
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        19.68mil (0.49987mm)     Round          4                0.90 Inch (22.75 mm)
+T2        27.99mil (0.71095mm)     Round          2                0.06 Inch (1.55 mm)
+T3        28.35mil (0.72009mm)     Round          18               6.26 Inch (159.11 mm)
+T4        35.43mil (0.89992mm)     Round          6                0.51 Inch (13.05 mm)
+T5        39.37mil (1mm)           Round          7                3.17 Inch (80.63 mm)
+T6        127.95mil (3.24993mm)    Round          2                0.40 Inch (10.15 mm)
+---------------------------------------------------------------------------
+Totals                                            39               11.31 Inch (287.24 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00

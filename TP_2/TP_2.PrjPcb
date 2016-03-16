@@ -207,39 +207,279 @@ GenerateClassCluster=0
 DocumentUniqueId=KOPOVFMF
 
 [GeneratedDocument1]
-DocumentPath=Project Outputs for TP_2\Net Status - PCB1_a.html
+DocumentPath=Project Outputs for TP_2\BOM\Bill of Materials-TP_2.xlsx
 DItemRevisionGUID=
 
 [GeneratedDocument2]
-DocumentPath=Project Outputs for TP_2\PCB1_a.BOM
+DocumentPath=Project Outputs for TP_2\Net Status - PCB1_a.html
 DItemRevisionGUID=
 
 [GeneratedDocument3]
-DocumentPath=Project Outputs for TP_2\PCB1_a.CSV
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.1
 DItemRevisionGUID=
 
 [GeneratedDocument4]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.EXTREP
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.2
 DItemRevisionGUID=
 
 [GeneratedDocument5]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.REP
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.ABL
 DItemRevisionGUID=
 
 [GeneratedDocument6]
-DocumentPath=Project Outputs for TP_2\PCB1_a.REP
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.ABO
 DItemRevisionGUID=
 
 [GeneratedDocument7]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.RUL
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.ABP
 DItemRevisionGUID=
 
 [GeneratedDocument8]
-DocumentPath=Project Outputs for TP_2\Pick Place\Pick Place for PCB1_a.csv
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.ABS
 DItemRevisionGUID=
 
 [GeneratedDocument9]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.AKO
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.AM1
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.AM2
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.APB
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.APT
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.ATL
+DItemRevisionGUID=
+
+[GeneratedDocument15]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.ATO
+DItemRevisionGUID=
+
+[GeneratedDocument16]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.ATP
+DItemRevisionGUID=
+
+[GeneratedDocument17]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.ATS
+DItemRevisionGUID=
+
+[GeneratedDocument18]
+DocumentPath=Project Outputs for TP_2\PCB1_a.BOM
+DItemRevisionGUID=
+
+[GeneratedDocument19]
+DocumentPath=Project Outputs for TP_2\PCB1_a.CSV
+DItemRevisionGUID=
+
+[GeneratedDocument20]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument21]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument22]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GBO
+DItemRevisionGUID=
+
+[GeneratedDocument23]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GBP
+DItemRevisionGUID=
+
+[GeneratedDocument24]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GBS
+DItemRevisionGUID=
+
+[GeneratedDocument25]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GD1
+DItemRevisionGUID=
+
+[GeneratedDocument26]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GG1
+DItemRevisionGUID=
+
+[GeneratedDocument27]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GKO
+DItemRevisionGUID=
+
+[GeneratedDocument28]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GM1
+DItemRevisionGUID=
+
+[GeneratedDocument29]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GM2
+DItemRevisionGUID=
+
+[GeneratedDocument30]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GML
+DItemRevisionGUID=
+
+[GeneratedDocument31]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GPB
+DItemRevisionGUID=
+
+[GeneratedDocument32]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GPT
+DItemRevisionGUID=
+
+[GeneratedDocument33]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument34]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument35]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument36]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument37]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.REP
+DItemRevisionGUID=
+
+[GeneratedDocument38]
+DocumentPath=Project Outputs for TP_2\PCB1_a.REP
+DItemRevisionGUID=
+
+[GeneratedDocument39]
+DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.RUL
+DItemRevisionGUID=
+
+[GeneratedDocument40]
+DocumentPath=Project Outputs for TP_2\Pick Place\Pick Place for PCB1_a.csv
+DItemRevisionGUID=
+
+[GeneratedDocument41]
 DocumentPath=Project Outputs for TP_2\Pick Place\Pick Place for PCB1_a.txt
+DItemRevisionGUID=
+
+[GeneratedDocument42]
+DocumentPath=Project Outputs for TP_2\NC Drill\toto-BoardEdgeRout.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument43]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.1
+DItemRevisionGUID=
+
+[GeneratedDocument44]
+DocumentPath=Project Outputs for TP_2\NC Drill\toto.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument45]
+DocumentPath=Project Outputs for TP_2\toto.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument46]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument47]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument48]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GBO
+DItemRevisionGUID=
+
+[GeneratedDocument49]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GBP
+DItemRevisionGUID=
+
+[GeneratedDocument50]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GBS
+DItemRevisionGUID=
+
+[GeneratedDocument51]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GD1
+DItemRevisionGUID=
+
+[GeneratedDocument52]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GG1
+DItemRevisionGUID=
+
+[GeneratedDocument53]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GKO
+DItemRevisionGUID=
+
+[GeneratedDocument54]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GM1
+DItemRevisionGUID=
+
+[GeneratedDocument55]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GM2
+DItemRevisionGUID=
+
+[GeneratedDocument56]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GM32
+DItemRevisionGUID=
+
+[GeneratedDocument57]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GML
+DItemRevisionGUID=
+
+[GeneratedDocument58]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GPB
+DItemRevisionGUID=
+
+[GeneratedDocument59]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GPT
+DItemRevisionGUID=
+
+[GeneratedDocument60]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument61]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument62]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument63]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument64]
+DocumentPath=Project Outputs for TP_2\NC Drill\toto.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument65]
+DocumentPath=Project Outputs for TP_2\toto.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument66]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.REP
+DItemRevisionGUID=
+
+[GeneratedDocument67]
+DocumentPath=Project Outputs for TP_2\Gerber\toto.RUL
+DItemRevisionGUID=
+
+[GeneratedDocument68]
+DocumentPath=Project Outputs for TP_2\NC Drill\toto.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument69]
+DocumentPath=Project Outputs for TP_2\toto.TXT
 DItemRevisionGUID=
 
 [Configuration1]
@@ -562,62 +802,66 @@ Name=Fabrication Outputs
 Description=
 TargetPrinter=Send To OneNote 2013
 PrinterOptions=Record=PrinterOptions|Copies=1|Duplex=1|TrueTypeOptions=3|Collate=1|PrintWhat=1
-OutputType1=Board Stack Report
-OutputName1=Report Board Stack
+OutputType1=NC Drill
+OutputName1=NC Drill Files
 OutputDocumentPath1=
 OutputVariantName1=
 OutputDefault1=0
-PageOptions1=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=Letter|PaperIndex=1
-OutputType2=CompositeDrill
-OutputName2=Composite Drill Drawing
+Configuration1_Name1=OutputConfigurationParameter1
+Configuration1_Item1=BoardEdgeRoutToolDia=2000000|GenerateBoardEdgeRout=False|GenerateDrilledSlotsG85=False|GenerateEIADrillFile=False|GenerateSeparatePlatedNonPlatedFiles=False|NumberOfDecimals=5|NumberOfUnits=2|OptimizeChangeLocationCommands=True|OriginPosition=Relative|Record=DrillView|Units=Imperial|ZeroesMode=SuppressTrailingZeroes
+OutputType2=Mask
+OutputName2=Solder/Paste Mask Prints
 OutputDocumentPath2=
 OutputVariantName2=
 OutputDefault2=0
 PageOptions2=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=Letter|PaperIndex=1
-OutputType3=Drill
-OutputName3=Drill Drawing/Guides
+OutputType3=Plane
+OutputName3=Power-Plane Prints
 OutputDocumentPath3=
 OutputVariantName3=
 OutputDefault3=0
 PageOptions3=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=Letter|PaperIndex=1
-OutputType4=Final
-OutputName4=Final Artwork Prints
+OutputType4=ODB
+OutputName4=ODB++ Files
 OutputDocumentPath4=
 OutputVariantName4=[No Variations]
 OutputDefault4=0
-PageOptions4=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=Letter|PaperIndex=1
-OutputType5=Gerber
-OutputName5=Gerber Files
+OutputType5=Test Points
+OutputName5=Test Point Report
 OutputDocumentPath5=
-OutputVariantName5=[No Variations]
+OutputVariantName5=
 OutputDefault5=0
-OutputType6=Mask
-OutputName6=Solder/Paste Mask Prints
+OutputType6=CompositeDrill
+OutputName6=Composite Drill Drawing
 OutputDocumentPath6=
 OutputVariantName6=
 OutputDefault6=0
 PageOptions6=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=Letter|PaperIndex=1
-OutputType7=NC Drill
-OutputName7=NC Drill Files
+OutputType7=Board Stack Report
+OutputName7=Report Board Stack
 OutputDocumentPath7=
 OutputVariantName7=
 OutputDefault7=0
-OutputType8=ODB
-OutputName8=ODB++ Files
+PageOptions7=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=Letter|PaperIndex=1
+OutputType8=Final
+OutputName8=Final Artwork Prints
 OutputDocumentPath8=
 OutputVariantName8=[No Variations]
 OutputDefault8=0
-OutputType9=Plane
-OutputName9=Power-Plane Prints
+PageOptions8=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=Letter|PaperIndex=1
+OutputType9=Drill
+OutputName9=Drill Drawing/Guides
 OutputDocumentPath9=
 OutputVariantName9=
 OutputDefault9=0
 PageOptions9=Record=PageOptions|CenterHorizontal=True|CenterVertical=True|PrintScale=1.00|XCorrection=1.00|YCorrection=1.00|PrintKind=1|BorderSize=5000000|LeftOffset=0|BottomOffset=0|Orientation=2|PaperLength=1000|PaperWidth=1000|Scale=100|PaperSource=7|PrintQuality=-3|MediaType=1|DitherType=10|PrintScaleMode=1|PaperKind=Letter|PaperIndex=1
-OutputType10=Test Points
-OutputName10=Test Point Report
+OutputType10=Gerber
+OutputName10=Gerber Files
 OutputDocumentPath10=
-OutputVariantName10=
+OutputVariantName10=[No Variations]
 OutputDefault10=0
+Configuration10_Name1=OutputConfigurationParameter1
+Configuration10_Item1=AddToAllLayerClasses.Set= |AddToAllPlots.Set=SerializeLayerHash.Version~2,ClassName~TLayerToBoolean|CentrePlots=False|DrillDrawingSymbol=GraphicsSymbol|DrillDrawingSymbolSize=500000|EmbeddedApertures=True|FilmBorderSize=10000000|FilmXSize=200000000|FilmYSize=160000000|FlashAllFills=False|FlashPadShapes=True|G54OnApertureChange=False|GenerateDRCRulesFile=True|GenerateReliefShapes=True|GerberUnit=Imperial|IncludeUnconnectedMidLayerPads=False|LayerClassesMirror.Set= |LayerClassesPlot.Set= |LeadingAndTrailingZeroesMode=SuppressLeadingZeroes|MaxApertureSize=2500000|MinusApertureTolerance=50|Mirror.Set=SerializeLayerHash.Version~2,ClassName~TLayerToBoolean|MirrorDrillDrawingPlots=False|MirrorDrillGuidePlots=False|NoRegularPolygons=True|NumberOfDecimals=5|OptimizeChangeLocationCommands=True|OriginPosition=Relative|Panelize=False|Plot.Set=SerializeLayerHash.Version~2,ClassName~TLayerToBoolean|PlotPositivePlaneLayers=False|PlotUsedDrillDrawingLayerPairs=False|PlotUsedDrillGuideLayerPairs=False|PlusApertureTolerance=50|Record=GerberView|SoftwareArcs=False|Sorted=False
 
 [OutputGroup6]
 Name=Report Outputs
