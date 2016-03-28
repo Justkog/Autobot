@@ -14,8 +14,7 @@ int main(void)
     TRISF |= 0x2;
     while (1)
     {
-        if ()
-            LATF |= 0x2 ;
+        LATF |= 0x2 ;
     }
     return (0);
 }
