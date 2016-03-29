@@ -25,7 +25,7 @@
 #pragma config FWDTEN = ON              // Watchdog Timer Enable (WDT Enabled)
 
 // DEVCFG0
-#pragma config DEBUG = ON               // Background Debugger Enable (Debugger is disabled)
+#pragma config DEBUG = OFF              // Background Debugger Enable (Debugger is disabled)
 #pragma config ICESEL = ICS_PGx2        // ICE/ICD Comm Channel Select (ICE EMUC2/EMUD2 pins shared with PGC2/PGD2)
 #pragma config PWP = OFF                // Program Flash Write Protect (Disable)
 #pragma config BWP = OFF                // Boot Flash Write Protect bit (Protection Disabled)
