@@ -28,7 +28,7 @@ PowerPortNamesTakePriority=0
 PushECOToAnnotationFile=1
 DItemRevisionGUID=
 ReportSuppressedErrorsInMessages=0
-OutputPath=Project Outputs for TP_2
+OutputPath=
 LogFolderPath=
 ManagedProjectGUID=
 
@@ -215,270 +215,130 @@ DocumentPath=Project Outputs for TP_2\Net Status - PCB1_a.html
 DItemRevisionGUID=
 
 [GeneratedDocument3]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.1
-DItemRevisionGUID=
-
-[GeneratedDocument4]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.2
-DItemRevisionGUID=
-
-[GeneratedDocument5]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.ABL
-DItemRevisionGUID=
-
-[GeneratedDocument6]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.ABO
-DItemRevisionGUID=
-
-[GeneratedDocument7]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.ABP
-DItemRevisionGUID=
-
-[GeneratedDocument8]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.ABS
-DItemRevisionGUID=
-
-[GeneratedDocument9]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.AKO
-DItemRevisionGUID=
-
-[GeneratedDocument10]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.AM1
-DItemRevisionGUID=
-
-[GeneratedDocument11]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.AM2
-DItemRevisionGUID=
-
-[GeneratedDocument12]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.APB
-DItemRevisionGUID=
-
-[GeneratedDocument13]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.APT
-DItemRevisionGUID=
-
-[GeneratedDocument14]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.ATL
-DItemRevisionGUID=
-
-[GeneratedDocument15]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.ATO
-DItemRevisionGUID=
-
-[GeneratedDocument16]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.ATP
-DItemRevisionGUID=
-
-[GeneratedDocument17]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.ATS
-DItemRevisionGUID=
-
-[GeneratedDocument18]
 DocumentPath=Project Outputs for TP_2\PCB1_a.BOM
 DItemRevisionGUID=
 
-[GeneratedDocument19]
+[GeneratedDocument4]
 DocumentPath=Project Outputs for TP_2\PCB1_a.CSV
 DItemRevisionGUID=
 
-[GeneratedDocument20]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.EXTREP
-DItemRevisionGUID=
-
-[GeneratedDocument21]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GBL
-DItemRevisionGUID=
-
-[GeneratedDocument22]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GBO
-DItemRevisionGUID=
-
-[GeneratedDocument23]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GBP
-DItemRevisionGUID=
-
-[GeneratedDocument24]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GBS
-DItemRevisionGUID=
-
-[GeneratedDocument25]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GD1
-DItemRevisionGUID=
-
-[GeneratedDocument26]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GG1
-DItemRevisionGUID=
-
-[GeneratedDocument27]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GKO
-DItemRevisionGUID=
-
-[GeneratedDocument28]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GM1
-DItemRevisionGUID=
-
-[GeneratedDocument29]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GM2
-DItemRevisionGUID=
-
-[GeneratedDocument30]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GML
-DItemRevisionGUID=
-
-[GeneratedDocument31]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GPB
-DItemRevisionGUID=
-
-[GeneratedDocument32]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GPT
-DItemRevisionGUID=
-
-[GeneratedDocument33]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GTL
-DItemRevisionGUID=
-
-[GeneratedDocument34]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GTO
-DItemRevisionGUID=
-
-[GeneratedDocument35]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GTP
-DItemRevisionGUID=
-
-[GeneratedDocument36]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.GTS
-DItemRevisionGUID=
-
-[GeneratedDocument37]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.REP
-DItemRevisionGUID=
-
-[GeneratedDocument38]
+[GeneratedDocument5]
 DocumentPath=Project Outputs for TP_2\PCB1_a.REP
 DItemRevisionGUID=
 
-[GeneratedDocument39]
-DocumentPath=Project Outputs for TP_2\Gerber\PCB1_a.RUL
-DItemRevisionGUID=
-
-[GeneratedDocument40]
+[GeneratedDocument6]
 DocumentPath=Project Outputs for TP_2\Pick Place\Pick Place for PCB1_a.csv
 DItemRevisionGUID=
 
-[GeneratedDocument41]
-DocumentPath=Project Outputs for TP_2\Pick Place\Pick Place for PCB1_a.txt
-DItemRevisionGUID=
-
-[GeneratedDocument42]
+[GeneratedDocument7]
 DocumentPath=Project Outputs for TP_2\NC Drill\toto-BoardEdgeRout.TXT
 DItemRevisionGUID=
 
-[GeneratedDocument43]
+[GeneratedDocument8]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.1
 DItemRevisionGUID=
 
-[GeneratedDocument44]
+[GeneratedDocument9]
 DocumentPath=Project Outputs for TP_2\NC Drill\toto.DRR
 DItemRevisionGUID=
 
-[GeneratedDocument45]
+[GeneratedDocument10]
 DocumentPath=Project Outputs for TP_2\toto.DRR
 DItemRevisionGUID=
 
-[GeneratedDocument46]
+[GeneratedDocument11]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.EXTREP
 DItemRevisionGUID=
 
-[GeneratedDocument47]
+[GeneratedDocument12]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GBL
 DItemRevisionGUID=
 
-[GeneratedDocument48]
+[GeneratedDocument13]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GBO
 DItemRevisionGUID=
 
-[GeneratedDocument49]
+[GeneratedDocument14]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GBP
 DItemRevisionGUID=
 
-[GeneratedDocument50]
+[GeneratedDocument15]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GBS
 DItemRevisionGUID=
 
-[GeneratedDocument51]
+[GeneratedDocument16]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GD1
 DItemRevisionGUID=
 
-[GeneratedDocument52]
+[GeneratedDocument17]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GG1
 DItemRevisionGUID=
 
-[GeneratedDocument53]
+[GeneratedDocument18]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GKO
 DItemRevisionGUID=
 
-[GeneratedDocument54]
+[GeneratedDocument19]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GM1
 DItemRevisionGUID=
 
-[GeneratedDocument55]
+[GeneratedDocument20]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GM2
 DItemRevisionGUID=
 
-[GeneratedDocument56]
+[GeneratedDocument21]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GM32
 DItemRevisionGUID=
 
-[GeneratedDocument57]
+[GeneratedDocument22]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GML
 DItemRevisionGUID=
 
-[GeneratedDocument58]
+[GeneratedDocument23]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GPB
 DItemRevisionGUID=
 
-[GeneratedDocument59]
+[GeneratedDocument24]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GPT
 DItemRevisionGUID=
 
-[GeneratedDocument60]
+[GeneratedDocument25]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GTL
 DItemRevisionGUID=
 
-[GeneratedDocument61]
+[GeneratedDocument26]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GTO
 DItemRevisionGUID=
 
-[GeneratedDocument62]
+[GeneratedDocument27]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GTP
 DItemRevisionGUID=
 
-[GeneratedDocument63]
+[GeneratedDocument28]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.GTS
 DItemRevisionGUID=
 
-[GeneratedDocument64]
+[GeneratedDocument29]
 DocumentPath=Project Outputs for TP_2\NC Drill\toto.LDP
 DItemRevisionGUID=
 
-[GeneratedDocument65]
+[GeneratedDocument30]
 DocumentPath=Project Outputs for TP_2\toto.LDP
 DItemRevisionGUID=
 
-[GeneratedDocument66]
+[GeneratedDocument31]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.REP
 DItemRevisionGUID=
 
-[GeneratedDocument67]
+[GeneratedDocument32]
 DocumentPath=Project Outputs for TP_2\Gerber\toto.RUL
 DItemRevisionGUID=
 
-[GeneratedDocument68]
+[GeneratedDocument33]
 DocumentPath=Project Outputs for TP_2\NC Drill\toto.TXT
 DItemRevisionGUID=
 
-[GeneratedDocument69]
+[GeneratedDocument34]
 DocumentPath=Project Outputs for TP_2\toto.TXT
 DItemRevisionGUID=
 
@@ -493,7 +353,7 @@ GenerateBOM=1
 OutputJobsCount=0
 
 [Generic_EDE]
-OutputDir=Project Outputs for TP_2
+OutputDir=
 
 [OutputGroup1]
 Name=Netlist Outputs

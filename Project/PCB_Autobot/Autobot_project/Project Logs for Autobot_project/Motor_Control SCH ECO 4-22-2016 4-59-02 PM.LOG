@@ -1,0 +1,43 @@
+Change Value of Parameter Fabricant in Part L298N Old= New=STMICROELECTRONICS
+Change Value of Parameter RefFabricant in Part L298N Old= New=L298N
+Change Value of Parameter RefFournisseur in Part L298N Old= New=403295
+Added Parameter Fabricant=DIODES INC. to Part D1
+Added Parameter Fabricant=DIODES INC. to Part D2
+Added Parameter Fabricant=DIODES INC. to Part D3
+Added Parameter Fabricant=DIODES INC. to Part D4
+Added Parameter Fabricant=DIODES INC. to Part D5
+Added Parameter Fabricant=DIODES INC. to Part D6
+Added Parameter Fabricant=DIODES INC. to Part D7
+Added Parameter Fabricant=DIODES INC. to Part D8
+Added Parameter Fabricant= to Part B1
+Added Parameter Fabricant= to Part B2
+Added Parameter Fournisseur=Farnell to Part D1
+Added Parameter Fournisseur=Farnell to Part D2
+Added Parameter Fournisseur=Farnell to Part D3
+Added Parameter Fournisseur=Farnell to Part D4
+Added Parameter Fournisseur=Farnell to Part D5
+Added Parameter Fournisseur=Farnell to Part D6
+Added Parameter Fournisseur=Farnell to Part D7
+Added Parameter Fournisseur=Farnell to Part D8
+Added Parameter Fournisseur=Olimex to Part B1
+Added Parameter Fournisseur=Olimex to Part B2
+Added Parameter RefFabricant=MURS140-13-F to Part D1
+Added Parameter RefFabricant=MURS140-13-F to Part D2
+Added Parameter RefFabricant=MURS140-13-F to Part D3
+Added Parameter RefFabricant=MURS140-13-F to Part D4
+Added Parameter RefFabricant=MURS140-13-F to Part D5
+Added Parameter RefFabricant=MURS140-13-F to Part D6
+Added Parameter RefFabricant=MURS140-13-F to Part D7
+Added Parameter RefFabricant=MURS140-13-F to Part D8
+Added Parameter RefFabricant= to Part B1
+Added Parameter RefFabricant= to Part B2
+Added Parameter RefFournisseur=1858656 to Part D1
+Added Parameter RefFournisseur=1858656 to Part D2
+Added Parameter RefFournisseur=1858656 to Part D3
+Added Parameter RefFournisseur=1858656 to Part D4
+Added Parameter RefFournisseur=1858656 to Part D5
+Added Parameter RefFournisseur=1858656 to Part D6
+Added Parameter RefFournisseur=1858656 to Part D7
+Added Parameter RefFournisseur=1858656 to Part D8
+Added Parameter RefFournisseur= to Part B1
+Added Parameter RefFournisseur= to Part B2
