@@ -9,20 +9,48 @@
 #include <sys/attribs.h>
 #include "types.h"
 
-u32 test = 0;
+s8 logs[256];
+u32 id = 0;
+
+void    put_log(s8 *str)
+{
+    u32 i = id;
+    if (i)
+    {
+        while (logs[i])
+            i++;
+    }
+    while (*str)
+    {
+        logs[i] = *str;
+        str++;
+        i++;
+    }
+    logs[i] = 0;
+    U1TXREG = logs[id];
+    id++;
+}
 
 void __ISR(_EXTERNAL_1_VECTOR, IPL4SOFT) buttonHANDLER(void)
 {
-    U1TXREG = 'k';
+    put_log("kbunel\r\n");
+    put_log("4567noobs\r\n");
+    
+
     LATFbits.LATF1 = 1 ^ LATFbits.LATF1;
     IFS0bits.INT1IF = 0;
 }
 
 void __ISR(_UART_1_VECTOR, IPL7SRS) UARTHANDLER(void)
 {
-    //LATFbits.LATF1 = 1 ^ LATFbits.LATF1;
-    //U1TXREG = 'k';
-    test++;
+    if (logs[id])
+    {
+        U1TXREG = logs[id];
+        id++;
+    }
+    else
+        id = 0;
+    
     IFS0bits.U1TXIF = 0;
 }
 
