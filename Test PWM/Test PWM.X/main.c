@@ -16,18 +16,26 @@ void    put_log(s8 *str)
 {
     u32 i = id;
     if (i)
+    {
         while (logs[i])
             i++;
+    }
     while (*str)
-        logs[i++] = *str++;
+    {
+        logs[i] = *str;
+        str++;
+        i++;
+    }
     logs[i] = 0;
-    U1TXREG = logs[id++];
+    U1TXREG = logs[id];
+    id++;
 }
 
 void __ISR(_EXTERNAL_1_VECTOR, IPL4SOFT) buttonHANDLER(void)
 {
     put_log("kbunel\r\n");
     put_log("4567noobs\r\n");
+    
 
     LATFbits.LATF1 = 1 ^ LATFbits.LATF1;
     IFS0bits.INT1IF = 0;
@@ -36,20 +44,19 @@ void __ISR(_EXTERNAL_1_VECTOR, IPL4SOFT) buttonHANDLER(void)
 void __ISR(_UART_1_VECTOR, IPL7SRS) UARTHANDLER(void)
 {
     if (logs[id])
-        U1TXREG = logs[id++];
+    {
+        U1TXREG = logs[id];
+        id++;
+    }
     else
         id = 0;
+    
     IFS0bits.U1TXIF = 0;
 }
 
-void __ISR(_TIMER_2_VECTOR, IPL5SOFT) UARTHANDLER(void)
-{
-    if (logs[id])
-        U1TXREG = logs[id++];
-    else
-        id = 0;
-    IFS0bits.U1TXIF = 0;
-}
+/*
+ * 
+ */
 
 int main(void)
 {
@@ -86,31 +93,16 @@ int main(void)
     //U1MODEbits.UARTEN = 1;
     //U1MODEbits.ON = 1;
 
-    //PWM config
-    OC1CON = 0x0;
-    PR2 = 0xFF;
-    T2CONbits.TCKPS = 0b100;                           // 8Mhz / 2 / 16
-    
-    OC1RS = 0x78;
-    OC1R =  0x78;
-    OC1CON = 0x6;
-
-    IFS0CLR = 0x100;
-    IEC0SET = 0x100;
-    IPC2SET = 0x18;
-
-    OC1CONSET = 0x8000;
-    T2CONSET = 0x8000;
-
-
     //starting interrupts  
     IEC0bits.INT1IE = 1;
     IEC0bits.U1TXIE = 0x1;
 
     INTCONSET = _INTCON_MVEC_MASK;
     __builtin_enable_interrupts();
-
+    
     while (1)
+    {
         WDTCONbits.WDTCLR = 1;
+    }
     return (0);
 }
