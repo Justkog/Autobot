@@ -26,7 +26,7 @@ void __ISR(_EXTERNAL_1_VECTOR, IPL4Soft) buttonHANDLER(void)
     g_divider = g_divider * 2;
     if (g_divider > 16)
         g_divider = 1;
-    PR2 = 62500 / g_divider;
+    PR2 = 39062 / g_divider;
     u32 timer = 0;
     //small timer to leave after button push noise
     while (timer < 60000)
@@ -50,10 +50,10 @@ int main(void)
 
     T2CON = 0x0;
     TMR2 = 0x0;
-    PR2 = 62500;                    // 8Mhz : 8 (peripheral clock divisor) : 16 (prescale)
+    PR2 = 39062;                    // 8Mhz : 8 (peripheral clock divisor) : 16 (prescale)
                                     // = 62 500 timer ticks per sec
     
-    T2CONbits.TCKPS = 0b100;        // 1:16 prescale value
+    T2CONbits.TCKPS = 0b111;        // 1:16 prescale value
 
     //setup INT1 to interrupt on falling edge
     INTCONbits.INT1EP = 1;

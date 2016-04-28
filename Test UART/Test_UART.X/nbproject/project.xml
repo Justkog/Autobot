@@ -2,7 +2,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>Test_UART</name>
+            <name>Test_PWM</name>
             <creation-uuid>7c464749-2cb6-47bb-a755-830d13681220</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>

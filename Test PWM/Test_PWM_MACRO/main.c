@@ -43,12 +43,6 @@ void __ISR(_UART_1_VECTOR, IPL7SRS) UARTHANDLER(void)
     IFS0bits.U1TXIF = 0;
 }
 
-void __ISR(_TIMER_2_VECTOR, IPL5SOFT) UARTHANDLER(void)
-{
-    
-    IFS0bits.T2IF = 0;
-}
-
 int main(void)
 {
     //set high on LED pin as output value
@@ -84,22 +78,11 @@ int main(void)
     //U1MODEbits.UARTEN = 1;
     //U1MODEbits.ON = 1;
 
-    //PWM config
-    OC1CON = 0x0;
-    PR2 = 0xFF;
-    T2CONbits.TCKPS = 0b100;                           // 8Mhz / 2 / 16
-    
-    OC1RS = 0x78;
-    OC1R =  0x78;
-    OC1CON = 0x6;
+    /* Open Timer2 with Period register value */
+    OpenTimer2(T2_ON, 0x550);
 
-    IFS0CLR = 0x100;
-    IEC0SET = 0x100;
-    IPC2SET = 0x18;
-
-    OC1CONSET = 0x8000;
-    T2CONSET = 0x8000;
-
+     /* Enable OC | 32 bit Mode  | Timer2 is selected | Continuous O/P   | OC Pin High , S Compare value, Compare value*/
+    OpenOC1( OC_ON | OC_TIMER_MODE16 | OC_TIMER2_SRC | OC_PWM_FAULT_PIN_DISABLE | OC_HIGH_LOW , 0x100, 0x500 );
 
     //starting interrupts  
     IEC0bits.INT1IE = 1;
@@ -110,5 +93,8 @@ int main(void)
 
     while (1)
         WDTCONbits.WDTCLR = 1;
+
+    CloseOC1();
+    
     return (0);
 }
