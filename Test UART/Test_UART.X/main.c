@@ -8,7 +8,7 @@
 #include <p32xxxx.h>
 #include <sys/attribs.h>
 #include "types.h"
-#include <plib.h>
+//#include <plib.h>
 
 s8 logs[256];
 u32 id = 0;
@@ -43,7 +43,7 @@ void __ISR(_UART_1_VECTOR, IPL7SRS) UARTHANDLER(void)
     IFS0bits.U1TXIF = 0;
 }
 
-void __ISR(_TIMER_2_VECTOR, IPL5SOFT) UARTHANDLER(void)
+void __ISR(_TIMER_2_VECTOR, IPL7SOFT) Timer2HANDLER(void)
 {
     
     IFS0bits.T2IF = 0;
@@ -85,21 +85,20 @@ int main(void)
     //U1MODEbits.ON = 1;
 
     //PWM config
-    OC1CON = 0x0;
-    PR2 = 0xFF;
+    /*OC1CON = 0x0;                                      // turn off OC1 when performing setup
+    PR2 = 0xFF;                                        // Set period of Timer 2
     T2CONbits.TCKPS = 0b100;                           // 8Mhz / 2 / 16
     
-    OC1RS = 0x78;
-    OC1R =  0x78;
-    OC1CON = 0x6;
+    OC1RS = 0x78;                                       // Initialize secondary Compare register
+    OC1R =  0x78;                                       // Initialize primary Compare register
+    OC1CONbits.OCM = 0x6;                               // Set OC mode to PWM
 
-    IFS0CLR = 0x100;
-    IEC0SET = 0x100;
-    IPC2SET = 0x18;
+    IFS0CLR = 0x100;                                    // Clear Timer interrupt flag
+    IEC0SET = 0x100;                                    // Set timer interrupt
+    IPC2SET = 0x18;                                     // Set timer priority to 7
 
-    OC1CONSET = 0x8000;
-    T2CONSET = 0x8000;
-
+    T2CONSET = 0x8000;                                  // Enable timer 2
+    OC1CONSET = 0x8000;                                 // Enable Output compare*/
 
     //starting interrupts  
     IEC0bits.INT1IE = 1;
