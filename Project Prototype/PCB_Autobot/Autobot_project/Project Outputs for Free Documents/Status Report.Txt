@@ -1,0 +1,14 @@
+Project Outputs Generation Report
+---------------------------------
+Start Output Generation At 5:01:26 PM On 4/22/2016
+
+Output: Bill of Materials
+Type  : BOM
+From  : Variant [[No Variations]] of Project [Autobot_project.PrjPcb]
+   Generated File[Bill of Materials-Autobot_project.xlsx]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 5:01:51 PM On 4/22/2016
