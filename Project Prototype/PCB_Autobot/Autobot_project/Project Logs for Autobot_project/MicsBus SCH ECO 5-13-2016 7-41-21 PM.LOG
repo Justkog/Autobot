@@ -1,0 +1,60 @@
+Remove Pin=ICSP-1 From Net=GND
+Remove Pin=ICSP-2 From Net=3V3
+Remove Pin=ICSP-3 From Net=RST
+Remove Pin=ICSP-4 From Net=PGD2
+Remove Pin=ICSP-5 From Net=PGC2
+Remove Pin=PIC-1 From Net=BUT
+Remove Pin=PIC-2 From Net=BUMPER
+Remove Pin=PIC-9 From Net=PGC2
+Remove Pin=PIC-11 From Net=PWM2_M2
+Remove Pin=PIC-12 From Net=ENABLE_M2
+Remove Pin=PIC-14 From Net=PWM1_M2
+Remove Pin=PIC-18 From Net=RST
+Remove Pin=PIC-21 From Net=MIC
+Remove Pin=PIC-22 From Net=MIC
+Remove Pin=PIC-23 From Net=MIC
+Remove Pin=PIC-26 From Net=LEDR
+Remove Pin=PIC-27 From Net=LEDG
+Remove Pin=PIC-33 From Net=U1TX
+Remove Pin=PIC-36 From Net=MARVIN_IN
+Remove Pin=PIC-37 From Net=MARVIN_OUT
+Remove Pin=PIC-41 From Net=ENABLE_M1
+Remove Pin=PIC-43 From Net=PWM1_M1
+Remove Pin=PIC-44 From Net=PWM2_M1
+Remove Pin=R4-1 From Net=RST
+Remove Pin=UART-1 From Net=GND
+Remove Pin=UART-5 From Net=U1TX
+Change Component Footprint: Designator=C1 Old Footprint=CAPC1608N New Footprint=RAD-0.3
+Change Component Footprint: Designator=C2 Old Footprint=CAPC1608N New Footprint=RAD-0.3
+Change Component Footprint: Designator=C3 Old Footprint=CAPC1608N New Footprint=RAD-0.3
+Change Component Footprint: Designator=C4 Old Footprint=CAPC1608N New Footprint=RAD-0.3
+Change Component Footprint: Designator=C5 Old Footprint=CAPC1608N New Footprint=RAD-0.3
+Change Component Footprint: Designator=C8 Old Footprint=CAPC1608N New Footprint=RAD-0.3
+Change Component Footprint: Designator=C9 Old Footprint=CAPC1608N New Footprint=RAD-0.3
+Change Component Footprint: Designator=D1 Old Footprint=DIODE New Footprint=SMC
+Change Component Footprint: Designator=D2 Old Footprint=DIODE New Footprint=SMC
+Change Component Footprint: Designator=D3 Old Footprint=DIODE New Footprint=SMC
+Change Component Footprint: Designator=D4 Old Footprint=DIODE New Footprint=SMC
+Change Component Footprint: Designator=D5 Old Footprint=DIODE New Footprint=SMC
+Change Component Footprint: Designator=D6 Old Footprint=DIODE New Footprint=SMC
+Change Component Footprint: Designator=D7 Old Footprint=DIODE New Footprint=SMC
+Change Component Footprint: Designator=D8 Old Footprint=DIODE New Footprint=SMC
+Change Component Footprint: Designator=D9 Old Footprint=LED1608 New Footprint=LED-0
+Change Component Footprint: Designator=D10 Old Footprint=LED1608 New Footprint=LED-0
+Change Component Footprint: Designator=R1 Old Footprint=RESC1608N New Footprint=AXIAL-0.3
+Change Component Footprint: Designator=R2 Old Footprint=RESC1608N New Footprint=AXIAL-0.3
+Change Component Footprint: Designator=R3 Old Footprint=RESC1608N New Footprint=AXIAL-0.3
+Change Component Footprint: Designator=R4 Old Footprint=RESC1608N New Footprint=AXIAL-0.3
+Change Component Footprint: Designator=R5 Old Footprint=RESC1608N New Footprint=AXIAL-0.3
+Change Component Footprint: Designator=R6 Old Footprint=RESC1608N New Footprint=AXIAL-0.3
+Change Component Footprint: Designator=R7 Old Footprint=RESC1608N New Footprint=AXIAL-0.3
+Change Component Footprint: Designator=R8 Old Footprint=RESC1608N New Footprint=AXIAL-0.3
+Change Component Footprint: Designator=R9 Old Footprint=RESC1608N New Footprint=AXIAL-0.3
+Change Component Footprint: Designator=R10 Old Footprint=RESC1608N New Footprint=AXIAL-0.3
+Change Component Footprint: Designator=R11 Old Footprint=RESC1608N New Footprint=AXIAL-0.3
+Change Component Comment: Designator=R4 Old Comment==Value New Comment=100KR
+Change Component Comment: Designator=R1 Old Comment==Value New Comment=0R
+Change Component Comment: Designator=R3 Old Comment==Value New Comment=500KR
+Change Component Comment: Designator=R2 Old Comment==Value New Comment=2KR
+Change Component Comment: Designator=C4 Old Comment==Value New Comment=0.1uF
+Change Component Comment: Designator=C2 Old Comment==Value New Comment=10uF

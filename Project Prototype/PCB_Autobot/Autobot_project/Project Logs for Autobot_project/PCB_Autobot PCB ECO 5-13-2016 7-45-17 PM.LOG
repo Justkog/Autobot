@@ -1,0 +1,277 @@
+Added Component: Designator=AMP(Ampli)
+Added Component: Designator=B1(RB5-10.5)
+Added Component: Designator=B2(RB5-10.5)
+Added Component: Designator=BT1(BAT-2)
+Added Component: Designator=C1(CAPC1608N)
+Added Component: Designator=C2(CAPC1608N)
+Added Component: Designator=C3(CAPC1608N)
+Added Component: Designator=C4(CAPC1608N)
+Added Component: Designator=C5(CAPC1608N)
+Added Component: Designator=C6(CAPC1608N)
+Added Component: Designator=C7(CAPC1608N)
+Added Component: Designator=C8(CAPC1608N)
+Added Component: Designator=C9(CAPC1608N)
+Added Component: Designator=C10(CAPC1608N)
+Added Component: Designator=C11(CAPC1608N)
+Added Component: Designator=C12(CAPC1608N)
+Added Component: Designator=C13(CAPC1608N)
+Added Component: Designator=C14(CAPC1608N)
+Added Component: Designator=C15(CAPC1608N)
+Added Component: Designator=C16(CAPC1608N)
+Added Component: Designator=C17(CAPC1608N)
+Added Component: Designator=D1(DIODE)
+Added Component: Designator=D2(DIODE)
+Added Component: Designator=D3(DIODE)
+Added Component: Designator=D4(DIODE)
+Added Component: Designator=D5(DIODE)
+Added Component: Designator=D6(DIODE)
+Added Component: Designator=D7(DIODE)
+Added Component: Designator=D8(DIODE)
+Added Component: Designator=D9(LED1608)
+Added Component: Designator=D10(LED1608)
+Added Component: Designator=ICSP(6-pin Connector)
+Added Component: Designator=L1(0402-A)
+Added Component: Designator=L298N(L298N)
+Added Component: Designator=MK1(PIN2)
+Added Component: Designator=PIC(44TQFP)
+Added Component: Designator=R1(RESC1608N)
+Added Component: Designator=R2(RESC1608N)
+Added Component: Designator=R3(RESC1608N)
+Added Component: Designator=R4(RESC1608N)
+Added Component: Designator=R5(RESC1608N)
+Added Component: Designator=R6(RESC1608N)
+Added Component: Designator=R7(RESC1608N)
+Added Component: Designator=R8(RESC1608N)
+Added Component: Designator=R9(RESC1608N)
+Added Component: Designator=R10(RESC1608N)
+Added Component: Designator=R11(RESC1608N)
+Added Component: Designator=R12(RESC1608N)
+Added Component: Designator=R13(RESC1608N)
+Added Component: Designator=S1(SPST-2)
+Added Component: Designator=S2(SPST-2)
+Added Component: Designator=UART(6-pin Connector)
+Added Component: Designator=V Regulator(VReg)
+Added Pin To Net: NetName=GND Pin=AMP-2
+Added Pin To Net: NetName=GND Pin=AMP-4
+Added Pin To Net: NetName=3V3 Pin=AMP-6
+Added Pin To Net: NetName=NetB1_1 Pin=B1-1
+Added Pin To Net: NetName=NetB1_2 Pin=B1-2
+Added Pin To Net: NetName=NetB2_1 Pin=B2-1
+Added Pin To Net: NetName=NetB2_2 Pin=B2-2
+Added Pin To Net: NetName=GND Pin=BT1-2
+Added Pin To Net: NetName=GND Pin=C5-2
+Added Pin To Net: NetName=3V3 Pin=C6-1
+Added Pin To Net: NetName=GND Pin=C6-2
+Added Pin To Net: NetName=GND Pin=C7-2
+Added Pin To Net: NetName=NetC8_1 Pin=C8-1
+Added Pin To Net: NetName=GND Pin=C8-2
+Added Pin To Net: NetName=NetC9_1 Pin=C9-1
+Added Pin To Net: NetName=GND Pin=C9-2
+Added Pin To Net: NetName=GND Pin=C10-1
+Added Pin To Net: NetName=3V3 Pin=C10-2
+Added Pin To Net: NetName=GND Pin=C11-2
+Added Pin To Net: NetName=GND Pin=C12-1
+Added Pin To Net: NetName=3V3 Pin=C13-1
+Added Pin To Net: NetName=GND Pin=C13-2
+Added Pin To Net: NetName=GND Pin=C14-1
+Added Pin To Net: NetName=GND Pin=C16-1
+Added Pin To Net: NetName=GND Pin=C17-1
+Added Pin To Net: NetName=3V3 Pin=C17-2
+Added Pin To Net: NetName=GND Pin=D1-1
+Added Pin To Net: NetName=NetB1_1 Pin=D1-2
+Added Pin To Net: NetName=NetB1_1 Pin=D2-1
+Added Pin To Net: NetName=GND Pin=D3-1
+Added Pin To Net: NetName=NetB1_2 Pin=D3-2
+Added Pin To Net: NetName=NetB1_2 Pin=D4-1
+Added Pin To Net: NetName=GND Pin=D5-1
+Added Pin To Net: NetName=NetB2_1 Pin=D5-2
+Added Pin To Net: NetName=NetB2_1 Pin=D6-1
+Added Pin To Net: NetName=GND Pin=D7-1
+Added Pin To Net: NetName=NetB2_2 Pin=D7-2
+Added Pin To Net: NetName=NetB2_2 Pin=D8-1
+Added Pin To Net: NetName=NetD9_1 Pin=D9-1
+Added Pin To Net: NetName=GND Pin=D9-2
+Added Pin To Net: NetName=NetD10_1 Pin=D10-1
+Added Pin To Net: NetName=GND Pin=D10-2
+Added Pin To Net: NetName=GND Pin=ICSP-1
+Added Pin To Net: NetName=3V3 Pin=ICSP-2
+Added Pin To Net: NetName=RST Pin=ICSP-3
+Added Pin To Net: NetName=PGD2 Pin=ICSP-4
+Added Pin To Net: NetName=PGC2 Pin=ICSP-5
+Added Pin To Net: NetName=3V3 Pin=L1-2
+Added Pin To Net: NetName=NetL298N_1 Pin=L298N-1
+Added Pin To Net: NetName=NetB1_1 Pin=L298N-2
+Added Pin To Net: NetName=NetB1_2 Pin=L298N-3
+Added Pin To Net: NetName=PWM1_M1 Pin=L298N-5
+Added Pin To Net: NetName=ENABLE_M1 Pin=L298N-6
+Added Pin To Net: NetName=PWM2_M1 Pin=L298N-7
+Added Pin To Net: NetName=GND Pin=L298N-8
+Added Pin To Net: NetName=3V3 Pin=L298N-9
+Added Pin To Net: NetName=PWM1_M2 Pin=L298N-10
+Added Pin To Net: NetName=ENABLE_M2 Pin=L298N-11
+Added Pin To Net: NetName=PWM2_M2 Pin=L298N-12
+Added Pin To Net: NetName=NetB2_1 Pin=L298N-13
+Added Pin To Net: NetName=NetB2_2 Pin=L298N-14
+Added Pin To Net: NetName=NetL298N_1 Pin=L298N-15
+Added Pin To Net: NetName=GND Pin=MK1-1
+Added Pin To Net: NetName=BUT Pin=PIC-1
+Added Pin To Net: NetName=BUMPER Pin=PIC-2
+Added Pin To Net: NetName=GND Pin=PIC-6
+Added Pin To Net: NetName=PGD2 Pin=PIC-8
+Added Pin To Net: NetName=PGC2 Pin=PIC-9
+Added Pin To Net: NetName=3V3 Pin=PIC-10
+Added Pin To Net: NetName=PWM2_M2 Pin=PIC-11
+Added Pin To Net: NetName=ENABLE_M2 Pin=PIC-12
+Added Pin To Net: NetName=PWM1_M2 Pin=PIC-14
+Added Pin To Net: NetName=GND Pin=PIC-16
+Added Pin To Net: NetName=3V3 Pin=PIC-17
+Added Pin To Net: NetName=RST Pin=PIC-18
+Added Pin To Net: NetName=MIC0 Pin=PIC-21
+Added Pin To Net: NetName=MIC1 Pin=PIC-22
+Added Pin To Net: NetName=MIC2 Pin=PIC-23
+Added Pin To Net: NetName=LEDR Pin=PIC-26
+Added Pin To Net: NetName=LEDG Pin=PIC-27
+Added Pin To Net: NetName=3V3 Pin=PIC-28
+Added Pin To Net: NetName=GND Pin=PIC-29
+Added Pin To Net: NetName=U1TX Pin=PIC-33
+Added Pin To Net: NetName=MARVIN_IN Pin=PIC-36
+Added Pin To Net: NetName=MARVIN_OUT Pin=PIC-37
+Added Pin To Net: NetName=GND Pin=PIC-39
+Added Pin To Net: NetName=ENABLE_M1 Pin=PIC-41
+Added Pin To Net: NetName=PWM1_M1 Pin=PIC-43
+Added Pin To Net: NetName=PWM2_M1 Pin=PIC-44
+Added Pin To Net: NetName=3V3 Pin=R1-1
+Added Pin To Net: NetName=GND Pin=R2-2
+Added Pin To Net: NetName=3V3 Pin=R3-1
+Added Pin To Net: NetName=RST Pin=R4-1
+Added Pin To Net: NetName=GND Pin=R5-1
+Added Pin To Net: NetName=NetL298N_1 Pin=R5-2
+Added Pin To Net: NetName=NetD9_1 Pin=R6-1
+Added Pin To Net: NetName=LEDG Pin=R6-2
+Added Pin To Net: NetName=NetD10_1 Pin=R7-1
+Added Pin To Net: NetName=LEDR Pin=R7-2
+Added Pin To Net: NetName=NetC8_1 Pin=R8-1
+Added Pin To Net: NetName=VCC Pin=R8-2
+Added Pin To Net: NetName=BUT Pin=R9-1
+Added Pin To Net: NetName=NetC8_1 Pin=R9-2
+Added Pin To Net: NetName=NetC9_1 Pin=R10-1
+Added Pin To Net: NetName=VCC Pin=R10-2
+Added Pin To Net: NetName=BUMPER Pin=R11-1
+Added Pin To Net: NetName=NetC9_1 Pin=R11-2
+Added Pin To Net: NetName=3V3 Pin=R12-2
+Added Pin To Net: NetName=GND Pin=R13-1
+Added Pin To Net: NetName=GND Pin=S1-1
+Added Pin To Net: NetName=NetC8_1 Pin=S1-2
+Added Pin To Net: NetName=GND Pin=S2-1
+Added Pin To Net: NetName=NetC9_1 Pin=S2-2
+Added Pin To Net: NetName=GND Pin=UART-1
+Added Pin To Net: NetName=U1TX Pin=UART-5
+Added Pin To Net: NetName=GND Pin=V Regulator-1
+Added Pin To Net: NetName=6V Pin=C7-1
+Added Pin To Net: NetName=6V Pin=D2-2
+Added Pin To Net: NetName=6V Pin=D4-2
+Added Pin To Net: NetName=6V Pin=D6-2
+Added Pin To Net: NetName=6V Pin=D8-2
+Added Pin To Net: NetName=6V Pin=L298N-4
+Added Net: Name=6V
+Added Pin To Net: NetName=NetAMP_1 Pin=AMP-1
+Added Pin To Net: NetName=NetAMP_1 Pin=C1-1
+Added Net: Name=NetAMP_1
+Added Pin To Net: NetName=NetAMP_3 Pin=AMP-3
+Added Pin To Net: NetName=NetAMP_3 Pin=C3-1
+Added Net: Name=NetAMP_3
+Added Pin To Net: NetName=NetAMP_5 Pin=AMP-5
+Added Pin To Net: NetName=NetAMP_5 Pin=C2-2
+Added Pin To Net: NetName=NetAMP_5 Pin=C4-1
+Added Net: Name=NetAMP_5
+Added Pin To Net: NetName=NetAMP_7 Pin=AMP-7
+Added Pin To Net: NetName=NetAMP_7 Pin=C5-1
+Added Net: Name=NetAMP_7
+Added Pin To Net: NetName=NetAMP_8 Pin=AMP-8
+Added Pin To Net: NetName=NetAMP_8 Pin=C1-2
+Added Net: Name=NetAMP_8
+Added Pin To Net: NetName=NetBT1_1 Pin=BT1-1
+Added Pin To Net: NetName=NetBT1_1 Pin=C16-2
+Added Pin To Net: NetName=NetBT1_1 Pin=V Regulator-3
+Added Pin To Net: NetName=NetBT1_1 Pin=V Regulator-5
+Added Net: Name=NetBT1_1
+Added Pin To Net: NetName=NetC2_1 Pin=C2-1
+Added Net: Name=NetC2_1
+Added Pin To Net: NetName=NetC3_2 Pin=C3-2
+Added Pin To Net: NetName=NetC3_2 Pin=MK1-2
+Added Pin To Net: NetName=NetC3_2 Pin=R1-2
+Added Net: Name=NetC3_2
+Added Pin To Net: NetName=NetC4_2 Pin=C4-2
+Added Pin To Net: NetName=NetC4_2 Pin=R2-1
+Added Net: Name=NetC4_2
+Added Pin To Net: NetName=NetC11_1 Pin=C11-1
+Added Pin To Net: NetName=NetC11_1 Pin=PIC-7
+Added Net: Name=NetC11_1
+Added Pin To Net: NetName=NetC12_2 Pin=C12-2
+Added Pin To Net: NetName=NetC12_2 Pin=PIC-40
+Added Net: Name=NetC12_2
+Added Pin To Net: NetName=NetC14_2 Pin=C14-2
+Added Pin To Net: NetName=NetC14_2 Pin=R3-2
+Added Pin To Net: NetName=NetC14_2 Pin=R4-2
+Added Net: Name=NetC14_2
+Added Pin To Net: NetName=NetC15_1 Pin=C15-1
+Added Pin To Net: NetName=NetC15_1 Pin=V Regulator-6
+Added Net: Name=NetC15_1
+Added Pin To Net: NetName=NetC15_2 Pin=C15-2
+Added Pin To Net: NetName=NetC15_2 Pin=L1-1
+Added Pin To Net: NetName=NetC15_2 Pin=V Regulator-2
+Added Net: Name=NetC15_2
+Added Pin To Net: NetName=NetR12_1 Pin=R12-1
+Added Pin To Net: NetName=NetR12_1 Pin=R13-2
+Added Pin To Net: NetName=NetR12_1 Pin=V Regulator-4
+Added Net: Name=NetR12_1
+Added Class: Name=PowerSupply
+Added Member To Class: ClassName=MIC Member=Component AMP LM386
+Added Member To Class: ClassName=MotorControl Member=Component B1 Motor
+Added Member To Class: ClassName=MotorControl Member=Component B2 Motor
+Added Member To Class: ClassName=MIC Member=Component C1 10uF
+Added Member To Class: ClassName=MIC Member=Component C2 220uF
+Added Member To Class: ClassName=MIC Member=Component C3 10uF
+Added Member To Class: ClassName=MIC Member=Component C4 220uF
+Added Member To Class: ClassName=MIC Member=Component C5 10uF
+Added Member To Class: ClassName=MotorControl Member=Component C6 Cap
+Added Member To Class: ClassName=MotorControl Member=Component C7 Cap
+Added Member To Class: ClassName=PICZone Member=Component C8 100nF
+Added Member To Class: ClassName=PICZone Member=Component C9 100nF
+Added Member To Class: ClassName=PICZone Member=Component C10 0.1uF
+Added Member To Class: ClassName=PICZone Member=Component C11 10uF
+Added Member To Class: ClassName=PICZone Member=Component C12 0.1uF
+Added Member To Class: ClassName=PICZone Member=Component C13 0.1uF
+Added Member To Class: ClassName=PICZone Member=Component C14 0.1uF
+Added Member To Class: ClassName=MotorControl Member=Component D1 Diode
+Added Member To Class: ClassName=MotorControl Member=Component D2 Diode
+Added Member To Class: ClassName=MotorControl Member=Component D3 Diode
+Added Member To Class: ClassName=MotorControl Member=Component D4 Diode
+Added Member To Class: ClassName=MotorControl Member=Component D5 Diode
+Added Member To Class: ClassName=MotorControl Member=Component D6 Diode
+Added Member To Class: ClassName=MotorControl Member=Component D7 Diode
+Added Member To Class: ClassName=MotorControl Member=Component D8 Diode
+Added Member To Class: ClassName=PICZone Member=Component D9 LED green
+Added Member To Class: ClassName=PICZone Member=Component D10 LED red
+Added Member To Class: ClassName=PICZone Member=Component ICSP WS6F
+Added Member To Class: ClassName=MotorControl Member=Component L298N
+Added Member To Class: ClassName=MIC Member=Component MK1 Mic2
+Added Member To Class: ClassName=PICZone Member=Component PIC PIC32MX250F128D
+Added Member To Class: ClassName=MIC Member=Component R1 10KR
+Added Member To Class: ClassName=MIC Member=Component R2 10R
+Added Member To Class: ClassName=PICZone Member=Component R3 10KR
+Added Member To Class: ClassName=PICZone Member=Component R4 1KR
+Added Member To Class: ClassName=MotorControl Member=Component R5 0R
+Added Member To Class: ClassName=PICZone Member=Component R6 330R
+Added Member To Class: ClassName=PICZone Member=Component R7 330R
+Added Member To Class: ClassName=PICZone Member=Component R8 10K
+Added Member To Class: ClassName=PICZone Member=Component R9 330R
+Added Member To Class: ClassName=PICZone Member=Component R10 10K
+Added Member To Class: ClassName=PICZone Member=Component R11 330R
+Added Member To Class: ClassName=PICZone Member=Component S1 SW-PB
+Added Member To Class: ClassName=PICZone Member=Component S2 SW-PB
+Added Member To Class: ClassName=PICZone Member=Component UART FT232R
+Added Room: Name=MIC
+Added Room: Name=MotorControl
+Added Room: Name=PICZone
+Added Room: Name=PowerSupply
