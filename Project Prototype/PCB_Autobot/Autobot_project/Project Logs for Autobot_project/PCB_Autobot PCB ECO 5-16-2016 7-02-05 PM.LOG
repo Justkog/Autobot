@@ -1,0 +1,14 @@
+Removed Pin From Net: NetName=NetBT1_1 Pin=C16-2
+Removed Pin From Net: NetName=NetBT1_1 Pin=V Regulator-3
+Removed Pin From Net: NetName=NetBT1_1 Pin=V Regulator-5
+Added Component: Designator=S3(SPST-2)
+Added Pin To Net: NetName=6V Pin=C16-2
+Added Pin To Net: NetName=NetBT1_1 Pin=S3-1
+Added Pin To Net: NetName=6V Pin=S3-2
+Added Pin To Net: NetName=6V Pin=V Regulator-3
+Added Pin To Net: NetName=6V Pin=V Regulator-5
+Added Member To Class: ClassName=PowerSupply Member=Component S3 SW-PB
+Added Room: Name=MIC
+Added Room: Name=MotorControl
+Added Room: Name=PICZone
+Added Room: Name=PowerSupply

@@ -1,0 +1,10 @@
+Removed Pin From Net: NetName=GND Pin=R5-1
+Removed Member From Class: ClassName=MotorControl Member=R5
+Added Pin To Net: NetName=GND Pin=L298N-1
+Added Pin To Net: NetName=GND Pin=L298N-15
+Added Room: Name=MIC2
+Added Room: Name=MIC3
+Added Room: Name=MIC
+Added Room: Name=MotorControl
+Added Room: Name=PICZone
+Added Room: Name=PowerSupply

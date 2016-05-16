@@ -1,0 +1,21 @@
+Removed Member From Class: ClassName=MIC Member=C23
+Removed Member From Class: ClassName=MIC Member=C24
+Removed Member From Class: ClassName=MIC Member=C25
+Removed Member From Class: ClassName=MIC Member=C26
+Removed Member From Class: ClassName=MIC Member=C27
+Removed Member From Class: ClassName=MIC Member=MK3
+Removed Member From Class: ClassName=MIC Member=R16
+Removed Member From Class: ClassName=MIC Member=R17
+Added Member To Class: ClassName=MIC Member=Component C1 10uF
+Added Member To Class: ClassName=MIC Member=Component C2 220uF
+Added Member To Class: ClassName=MIC Member=Component C3 10uF
+Added Member To Class: ClassName=MIC Member=Component C4 220uF
+Added Member To Class: ClassName=MIC Member=Component C5 10uF
+Added Member To Class: ClassName=MIC Member=Component MK1 Mic2
+Added Member To Class: ClassName=MIC Member=Component R1 10KR
+Added Member To Class: ClassName=MIC Member=Component R2 10R
+Added Room: Name=MIC2
+Added Room: Name=MIC3
+Added Room: Name=MIC
+Added Room: Name=PICZone
+Added Room: Name=PowerSupply

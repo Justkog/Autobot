@@ -1,0 +1,7 @@
+Change Component Designator: OldDesignator=V Regulator NewDesignator=V Reg
+Added Room: Name=MIC2
+Added Room: Name=MIC3
+Added Room: Name=MIC
+Added Room: Name=MotorControl
+Added Room: Name=PICZone
+Added Room: Name=PowerSupply

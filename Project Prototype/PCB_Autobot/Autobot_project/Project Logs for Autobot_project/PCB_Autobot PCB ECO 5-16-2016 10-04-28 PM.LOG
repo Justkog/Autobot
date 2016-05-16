@@ -1,0 +1,11 @@
+Change Component Designator: OldDesignator=V Reg NewDesignator=V Regulator
+Change Net Name : Old Net Name=NetB1_1 New Net Name=OUTPUT1
+Change Net Name : Old Net Name=NetB1_2 New Net Name=OUTPUT2
+Change Net Name : Old Net Name=NetB2_1 New Net Name=OUTPUT3
+Change Net Name : Old Net Name=NetB2_2 New Net Name=OUTPUT4
+Added Room: Name=MIC2
+Added Room: Name=MIC3
+Added Room: Name=MIC
+Added Room: Name=MotorControl
+Added Room: Name=PICZone
+Added Room: Name=PowerSupply

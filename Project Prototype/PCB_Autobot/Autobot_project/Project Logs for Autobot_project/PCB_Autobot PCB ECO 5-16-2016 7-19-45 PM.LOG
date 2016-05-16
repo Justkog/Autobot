@@ -1,0 +1,5 @@
+Added Class: Name=MIC_BUS[0..2]
+Added Room: Name=MIC
+Added Room: Name=MotorControl
+Added Room: Name=PICZone
+Added Room: Name=PowerSupply

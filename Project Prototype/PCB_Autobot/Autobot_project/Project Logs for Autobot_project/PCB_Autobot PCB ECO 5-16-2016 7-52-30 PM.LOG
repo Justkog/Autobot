@@ -1,0 +1,86 @@
+Removed Member From Class: ClassName=MIC[1..3] Member=MIC0
+Added Component: Designator=AMP1(Ampli)
+Added Component: Designator=AMP2(Ampli)
+Added Component: Designator=C1(CAPC1608N)
+Added Component: Designator=C2(CAPC1608N)
+Added Component: Designator=C3(CAPC1608N)
+Added Component: Designator=C4(CAPC1608N)
+Added Component: Designator=C5(CAPC1608N)
+Added Component: Designator=C18(CAPC1608N)
+Added Component: Designator=C19(CAPC1608N)
+Added Component: Designator=C20(CAPC1608N)
+Added Component: Designator=C21(CAPC1608N)
+Added Component: Designator=C22(CAPC1608N)
+Added Component: Designator=MK1(PIN2)
+Added Component: Designator=MK2(PIN2)
+Added Component: Designator=R1(RESC1608N)
+Added Component: Designator=R2(RESC1608N)
+Added Component: Designator=R14(RESC1608N)
+Added Component: Designator=R15(RESC1608N)
+Added Pin To Net: NetName=GND Pin=AMP1-2
+Added Pin To Net: NetName=GND Pin=AMP1-4
+Added Pin To Net: NetName=3V3 Pin=AMP1-6
+Added Pin To Net: NetName=GND Pin=AMP2-2
+Added Pin To Net: NetName=GND Pin=AMP2-4
+Added Pin To Net: NetName=3V3 Pin=AMP2-6
+Added Pin To Net: NetName=GND Pin=C5-2
+Added Pin To Net: NetName=GND Pin=C22-2
+Added Pin To Net: NetName=GND Pin=MK1-1
+Added Pin To Net: NetName=GND Pin=MK2-1
+Added Pin To Net: NetName=3V3 Pin=R1-1
+Added Pin To Net: NetName=GND Pin=R2-2
+Added Pin To Net: NetName=3V3 Pin=R14-1
+Added Pin To Net: NetName=GND Pin=R15-2
+Change Net Name : Old Net Name=MIC0 New Net Name=MIC1
+Change Net Name : Old Net Name=MIC1 New Net Name=MIC2
+Change Net Name : Old Net Name=MIC2 New Net Name=MIC3
+Added Pin To Net: NetName=NetAMP1_1 Pin=AMP1-1
+Added Pin To Net: NetName=NetAMP1_1 Pin=C1-1
+Added Net: Name=NetAMP1_1
+Added Pin To Net: NetName=NetAMP1_3 Pin=AMP1-3
+Added Pin To Net: NetName=NetAMP1_3 Pin=C3-1
+Added Net: Name=NetAMP1_3
+Added Pin To Net: NetName=NetAMP1_5 Pin=AMP1-5
+Added Pin To Net: NetName=NetAMP1_5 Pin=C2-2
+Added Pin To Net: NetName=NetAMP1_5 Pin=C4-1
+Added Net: Name=NetAMP1_5
+Added Pin To Net: NetName=NetAMP1_7 Pin=AMP1-7
+Added Pin To Net: NetName=NetAMP1_7 Pin=C5-1
+Added Net: Name=NetAMP1_7
+Added Pin To Net: NetName=NetAMP1_8 Pin=AMP1-8
+Added Pin To Net: NetName=NetAMP1_8 Pin=C1-2
+Added Net: Name=NetAMP1_8
+Added Pin To Net: NetName=NetAMP2_1 Pin=AMP2-1
+Added Pin To Net: NetName=NetAMP2_1 Pin=C18-1
+Added Net: Name=NetAMP2_1
+Added Pin To Net: NetName=NetAMP2_3 Pin=AMP2-3
+Added Pin To Net: NetName=NetAMP2_3 Pin=C20-1
+Added Net: Name=NetAMP2_3
+Added Pin To Net: NetName=NetAMP2_5 Pin=AMP2-5
+Added Pin To Net: NetName=NetAMP2_5 Pin=C19-2
+Added Pin To Net: NetName=NetAMP2_5 Pin=C21-1
+Added Net: Name=NetAMP2_5
+Added Pin To Net: NetName=NetAMP2_7 Pin=AMP2-7
+Added Pin To Net: NetName=NetAMP2_7 Pin=C22-1
+Added Net: Name=NetAMP2_7
+Added Pin To Net: NetName=NetAMP2_8 Pin=AMP2-8
+Added Pin To Net: NetName=NetAMP2_8 Pin=C18-2
+Added Net: Name=NetAMP2_8
+Added Pin To Net: NetName=NetC19_1 Pin=C19-1
+Added Net: Name=NetC19_1
+Added Pin To Net: NetName=NetC20_2 Pin=C20-2
+Added Pin To Net: NetName=NetC20_2 Pin=MK2-2
+Added Pin To Net: NetName=NetC20_2 Pin=R14-2
+Added Net: Name=NetC20_2
+Added Pin To Net: NetName=NetC21_2 Pin=C21-2
+Added Pin To Net: NetName=NetC21_2 Pin=R15-1
+Added Net: Name=NetC21_2
+Added Class: Name=MIC2
+Added Class: Name=MIC3
+Added Member To Class: ClassName=MIC[1..3] Member=Element[3]: MIC
+Added Room: Name=MIC2
+Added Room: Name=MIC3
+Added Room: Name=MIC
+Added Room: Name=MotorControl
+Added Room: Name=PICZone
+Added Room: Name=PowerSupply
