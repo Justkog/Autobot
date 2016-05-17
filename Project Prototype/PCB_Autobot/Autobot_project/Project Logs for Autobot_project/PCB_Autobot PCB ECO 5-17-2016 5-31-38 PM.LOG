@@ -1,0 +1,155 @@
+Removed Pin From Net: NetName=GND Pin=AMP1-2
+Removed Pin From Net: NetName=GND Pin=AMP1-4
+Removed Pin From Net: NetName=3V3 Pin=AMP1-6
+Removed Pin From Net: NetName=GND Pin=AMP2-2
+Removed Pin From Net: NetName=GND Pin=AMP2-4
+Removed Pin From Net: NetName=3V3 Pin=AMP2-6
+Removed Pin From Net: NetName=GND Pin=AMP-2
+Removed Pin From Net: NetName=GND Pin=AMP-4
+Removed Pin From Net: NetName=3V3 Pin=AMP-6
+Removed Pin From Net: NetName=GND Pin=C5-2
+Removed Pin From Net: NetName=MIC3 Pin=C19-1
+Removed Pin From Net: NetName=GND Pin=C22-2
+Removed Pin From Net: NetName=GND Pin=C27-2
+Removed Pin From Net: NetName=GND Pin=MK1-1
+Removed Pin From Net: NetName=GND Pin=MK2-1
+Removed Pin From Net: NetName=GND Pin=MK3-1
+Removed Pin From Net: NetName=3V3 Pin=R1-1
+Removed Pin From Net: NetName=GND Pin=R2-2
+Removed Pin From Net: NetName=3V3 Pin=R14-1
+Removed Pin From Net: NetName=GND Pin=R15-2
+Removed Pin From Net: NetName=3V3 Pin=R16-1
+Removed Pin From Net: NetName=GND Pin=R17-2
+Added Component: Designator=AMP_U_MIC1(Ampli)
+Added Component: Designator=AMP_U_MIC2(Ampli)
+Added Component: Designator=AMP_U_MIC3(Ampli)
+Added Component: Designator=C1_U_MIC1(CAPC1608N)
+Added Component: Designator=C1_U_MIC2(CAPC1608N)
+Added Component: Designator=C1_U_MIC3(CAPC1608N)
+Added Component: Designator=C2_U_MIC1(CAPC1608N)
+Added Component: Designator=C2_U_MIC2(CAPC1608N)
+Added Component: Designator=C2_U_MIC3(CAPC1608N)
+Added Component: Designator=C3_U_MIC1(CAPC1608N)
+Added Component: Designator=C3_U_MIC2(CAPC1608N)
+Added Component: Designator=C3_U_MIC3(CAPC1608N)
+Added Component: Designator=C4_U_MIC1(CAPC1608N)
+Added Component: Designator=C4_U_MIC2(CAPC1608N)
+Added Component: Designator=C4_U_MIC3(CAPC1608N)
+Added Component: Designator=C5_U_MIC1(CAPC1608N)
+Added Component: Designator=C5_U_MIC2(CAPC1608N)
+Added Component: Designator=C5_U_MIC3(CAPC1608N)
+Added Component: Designator=MK1_U_MIC1(PIN2)
+Added Component: Designator=MK1_U_MIC2(PIN2)
+Added Component: Designator=MK1_U_MIC3(PIN2)
+Added Component: Designator=R1_U_MIC1(RESC1608N)
+Added Component: Designator=R1_U_MIC2(RESC1608N)
+Added Component: Designator=R1_U_MIC3(RESC1608N)
+Added Component: Designator=R2_U_MIC1(RESC1608N)
+Added Component: Designator=R2_U_MIC2(RESC1608N)
+Added Component: Designator=R2_U_MIC3(RESC1608N)
+Added Pin To Net: NetName=GND Pin=AMP_U_MIC1-2
+Added Pin To Net: NetName=GND Pin=AMP_U_MIC1-4
+Added Pin To Net: NetName=3V3 Pin=AMP_U_MIC1-6
+Added Pin To Net: NetName=GND Pin=AMP_U_MIC2-2
+Added Pin To Net: NetName=GND Pin=AMP_U_MIC2-4
+Added Pin To Net: NetName=3V3 Pin=AMP_U_MIC2-6
+Added Pin To Net: NetName=GND Pin=AMP_U_MIC3-2
+Added Pin To Net: NetName=GND Pin=AMP_U_MIC3-4
+Added Pin To Net: NetName=3V3 Pin=AMP_U_MIC3-6
+Added Pin To Net: NetName=MIC1 Pin=C2_U_MIC1-1
+Added Pin To Net: NetName=MIC2 Pin=C2_U_MIC2-1
+Added Pin To Net: NetName=MIC3 Pin=C2_U_MIC3-1
+Added Pin To Net: NetName=GND Pin=C5_U_MIC1-2
+Added Pin To Net: NetName=GND Pin=C5_U_MIC2-2
+Added Pin To Net: NetName=GND Pin=C5_U_MIC3-2
+Added Pin To Net: NetName=3V3 Pin=R1_U_MIC1-1
+Added Pin To Net: NetName=3V3 Pin=R1_U_MIC2-1
+Added Pin To Net: NetName=3V3 Pin=R1_U_MIC3-1
+Added Pin To Net: NetName=GND Pin=R2_U_MIC1-2
+Added Pin To Net: NetName=GND Pin=R2_U_MIC2-2
+Added Pin To Net: NetName=GND Pin=R2_U_MIC3-2
+Change Net Name : Old Net Name=ENABLE_M1 New Net Name=NetL298N_6
+Change Net Name : Old Net Name=ENABLE_M2 New Net Name=NetL298N_11
+Change Net Name : Old Net Name=PWM1_M1 New Net Name=NetL298N_5
+Change Net Name : Old Net Name=PWM1_M2 New Net Name=NetL298N_10
+Change Net Name : Old Net Name=PWM2_M1 New Net Name=NetL298N_7
+Change Net Name : Old Net Name=PWM2_M2 New Net Name=NetL298N_12
+Added Pin To Net: NetName=NetAMP_U_MIC1_1 Pin=AMP_U_MIC1-1
+Added Pin To Net: NetName=NetAMP_U_MIC1_1 Pin=C1_U_MIC1-1
+Added Net: Name=NetAMP_U_MIC1_1
+Added Pin To Net: NetName=NetAMP_U_MIC1_3 Pin=AMP_U_MIC1-3
+Added Pin To Net: NetName=NetAMP_U_MIC1_3 Pin=C3_U_MIC1-1
+Added Net: Name=NetAMP_U_MIC1_3
+Added Pin To Net: NetName=NetAMP_U_MIC1_5 Pin=AMP_U_MIC1-5
+Added Pin To Net: NetName=NetAMP_U_MIC1_5 Pin=C2_U_MIC1-2
+Added Pin To Net: NetName=NetAMP_U_MIC1_5 Pin=C4_U_MIC1-1
+Added Net: Name=NetAMP_U_MIC1_5
+Added Pin To Net: NetName=NetAMP_U_MIC1_7 Pin=AMP_U_MIC1-7
+Added Pin To Net: NetName=NetAMP_U_MIC1_7 Pin=C5_U_MIC1-1
+Added Net: Name=NetAMP_U_MIC1_7
+Added Pin To Net: NetName=NetAMP_U_MIC1_8 Pin=AMP_U_MIC1-8
+Added Pin To Net: NetName=NetAMP_U_MIC1_8 Pin=C1_U_MIC1-2
+Added Net: Name=NetAMP_U_MIC1_8
+Added Pin To Net: NetName=NetAMP_U_MIC2_1 Pin=AMP_U_MIC2-1
+Added Pin To Net: NetName=NetAMP_U_MIC2_1 Pin=C1_U_MIC2-1
+Added Net: Name=NetAMP_U_MIC2_1
+Added Pin To Net: NetName=NetAMP_U_MIC2_3 Pin=AMP_U_MIC2-3
+Added Pin To Net: NetName=NetAMP_U_MIC2_3 Pin=C3_U_MIC2-1
+Added Net: Name=NetAMP_U_MIC2_3
+Added Pin To Net: NetName=NetAMP_U_MIC2_5 Pin=AMP_U_MIC2-5
+Added Pin To Net: NetName=NetAMP_U_MIC2_5 Pin=C2_U_MIC2-2
+Added Pin To Net: NetName=NetAMP_U_MIC2_5 Pin=C4_U_MIC2-1
+Added Net: Name=NetAMP_U_MIC2_5
+Added Pin To Net: NetName=NetAMP_U_MIC2_7 Pin=AMP_U_MIC2-7
+Added Pin To Net: NetName=NetAMP_U_MIC2_7 Pin=C5_U_MIC2-1
+Added Net: Name=NetAMP_U_MIC2_7
+Added Pin To Net: NetName=NetAMP_U_MIC2_8 Pin=AMP_U_MIC2-8
+Added Pin To Net: NetName=NetAMP_U_MIC2_8 Pin=C1_U_MIC2-2
+Added Net: Name=NetAMP_U_MIC2_8
+Added Pin To Net: NetName=NetAMP_U_MIC3_1 Pin=AMP_U_MIC3-1
+Added Pin To Net: NetName=NetAMP_U_MIC3_1 Pin=C1_U_MIC3-1
+Added Net: Name=NetAMP_U_MIC3_1
+Added Pin To Net: NetName=NetAMP_U_MIC3_3 Pin=AMP_U_MIC3-3
+Added Pin To Net: NetName=NetAMP_U_MIC3_3 Pin=C3_U_MIC3-1
+Added Net: Name=NetAMP_U_MIC3_3
+Added Pin To Net: NetName=NetAMP_U_MIC3_5 Pin=AMP_U_MIC3-5
+Added Pin To Net: NetName=NetAMP_U_MIC3_5 Pin=C2_U_MIC3-2
+Added Pin To Net: NetName=NetAMP_U_MIC3_5 Pin=C4_U_MIC3-1
+Added Net: Name=NetAMP_U_MIC3_5
+Added Pin To Net: NetName=NetAMP_U_MIC3_7 Pin=AMP_U_MIC3-7
+Added Pin To Net: NetName=NetAMP_U_MIC3_7 Pin=C5_U_MIC3-1
+Added Net: Name=NetAMP_U_MIC3_7
+Added Pin To Net: NetName=NetAMP_U_MIC3_8 Pin=AMP_U_MIC3-8
+Added Pin To Net: NetName=NetAMP_U_MIC3_8 Pin=C1_U_MIC3-2
+Added Net: Name=NetAMP_U_MIC3_8
+Added Pin To Net: NetName=NetC3_U_MIC1_2 Pin=C3_U_MIC1-2
+Added Pin To Net: NetName=NetC3_U_MIC1_2 Pin=R1_U_MIC1-2
+Added Net: Name=NetC3_U_MIC1_2
+Added Pin To Net: NetName=NetC3_U_MIC2_2 Pin=C3_U_MIC2-2
+Added Pin To Net: NetName=NetC3_U_MIC2_2 Pin=R1_U_MIC2-2
+Added Net: Name=NetC3_U_MIC2_2
+Added Pin To Net: NetName=NetC3_U_MIC3_2 Pin=C3_U_MIC3-2
+Added Pin To Net: NetName=NetC3_U_MIC3_2 Pin=R1_U_MIC3-2
+Added Net: Name=NetC3_U_MIC3_2
+Added Pin To Net: NetName=NetC4_U_MIC1_2 Pin=C4_U_MIC1-2
+Added Pin To Net: NetName=NetC4_U_MIC1_2 Pin=R2_U_MIC1-1
+Added Net: Name=NetC4_U_MIC1_2
+Added Pin To Net: NetName=NetC4_U_MIC2_2 Pin=C4_U_MIC2-2
+Added Pin To Net: NetName=NetC4_U_MIC2_2 Pin=R2_U_MIC2-1
+Added Net: Name=NetC4_U_MIC2_2
+Added Pin To Net: NetName=NetC4_U_MIC3_2 Pin=C4_U_MIC3-2
+Added Pin To Net: NetName=NetC4_U_MIC3_2 Pin=R2_U_MIC3-1
+Added Net: Name=NetC4_U_MIC3_2
+Change Class Name : Old Net Name=MotorControl New Net Name=Motor_Control
+Change Class Name : Old Net Name=PICZone New Net Name=PIC
+Change Class Name : Old Net Name=PowerSupply New Net Name=Power_Supply
+Added Class: Name=U_MIC1
+Added Class: Name=U_MIC2
+Added Class: Name=U_MIC3
+Added Class: Name=MIC
+Added Room: Name=Motor_Control
+Added Room: Name=PIC
+Added Room: Name=Power_Supply
+Added Room: Name=U_MIC1
+Added Room: Name=U_MIC2
+Added Room: Name=U_MIC3

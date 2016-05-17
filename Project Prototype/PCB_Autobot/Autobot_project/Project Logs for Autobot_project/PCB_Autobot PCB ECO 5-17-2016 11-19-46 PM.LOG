@@ -1,0 +1,12 @@
+Added Component: Designator=MK1_U_MIC1(2-PIN CONNECTOR)
+Added Component: Designator=MK1_U_MIC2(2-PIN CONNECTOR)
+Added Component: Designator=MK1_U_MIC3(2-PIN CONNECTOR)
+Added Pin To Net: NetName=GND Pin=MK1_U_MIC1-1
+Added Pin To Net: NetName=NetC3_U_MIC1_2 Pin=MK1_U_MIC1-2
+Added Pin To Net: NetName=GND Pin=MK1_U_MIC2-1
+Added Pin To Net: NetName=NetC3_U_MIC2_2 Pin=MK1_U_MIC2-2
+Added Pin To Net: NetName=GND Pin=MK1_U_MIC3-1
+Added Pin To Net: NetName=NetC3_U_MIC3_2 Pin=MK1_U_MIC3-2
+Added Member To Class: ClassName=U_MIC1 Member=Component MK1_U_MIC1 (MK1) Mic
+Added Member To Class: ClassName=U_MIC2 Member=Component MK1_U_MIC2 (MK1) Mic
+Added Member To Class: ClassName=U_MIC3 Member=Component MK1_U_MIC3 (MK1) Mic
