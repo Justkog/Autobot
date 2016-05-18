@@ -1,0 +1,5 @@
+Removed Pin From Net: NetName=NetL298N_5 Pin=PIC-43
+Removed Pin From Net: NetName=NetL298N_7 Pin=PIC-44
+Change Component Designator: OldDesignator=R2 NewDesignator=R2_U_MIC1
+Added Pin To Net: NetName=NetL298N_7 Pin=PIC-43
+Added Pin To Net: NetName=NetL298N_5 Pin=PIC-44

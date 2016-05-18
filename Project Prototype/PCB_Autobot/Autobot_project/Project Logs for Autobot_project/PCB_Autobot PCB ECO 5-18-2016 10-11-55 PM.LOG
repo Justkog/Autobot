@@ -1,0 +1,6 @@
+Removed Pin From Net: NetName=3V3 Pin=AMP_U_MIC1-6
+Removed Pin From Net: NetName=3V3 Pin=AMP_U_MIC2-6
+Removed Pin From Net: NetName=3V3 Pin=AMP_U_MIC3-6
+Added Pin To Net: NetName=6V Pin=AMP_U_MIC1-6
+Added Pin To Net: NetName=6V Pin=AMP_U_MIC2-6
+Added Pin To Net: NetName=6V Pin=AMP_U_MIC3-6
