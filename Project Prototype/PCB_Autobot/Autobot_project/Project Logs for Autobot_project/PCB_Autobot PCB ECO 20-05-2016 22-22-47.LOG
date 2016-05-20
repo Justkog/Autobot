@@ -1,0 +1,33 @@
+Removed Pin From Net: NetName=MIC1 Pin=C2_U_MIC1-1
+Removed Pin From Net: NetName=NetAMP_U_MIC1_5 Pin=C2_U_MIC1-2
+Removed Pin From Net: NetName=MIC2 Pin=C2_U_MIC2-1
+Removed Pin From Net: NetName=NetAMP_U_MIC2_5 Pin=C2_U_MIC2-2
+Removed Pin From Net: NetName=MIC3 Pin=C2_U_MIC3-1
+Removed Pin From Net: NetName=NetAMP_U_MIC3_5 Pin=C2_U_MIC3-2
+Removed Member From Class: ClassName=U_MIC1 Member=C2_U_MIC1
+Removed Member From Class: ClassName=U_MIC2 Member=C2_U_MIC2
+Removed Member From Class: ClassName=U_MIC3 Member=C2_U_MIC3
+Added Component: Designator=R5_U_MIC1(RESC1608N)
+Added Component: Designator=R5_U_MIC2(RESC1608N)
+Added Component: Designator=R5_U_MIC3(RESC1608N)
+Added Component: Designator=R14_U_MIC1(RESC1608N)
+Added Component: Designator=R14_U_MIC2(RESC1608N)
+Added Component: Designator=R14_U_MIC3(RESC1608N)
+Added Pin To Net: NetName=NetAMP_U_MIC1_5 Pin=R5_U_MIC1-1
+Added Pin To Net: NetName=MIC1 Pin=R5_U_MIC1-2
+Added Pin To Net: NetName=NetAMP_U_MIC2_5 Pin=R5_U_MIC2-1
+Added Pin To Net: NetName=MIC2 Pin=R5_U_MIC2-2
+Added Pin To Net: NetName=NetAMP_U_MIC3_5 Pin=R5_U_MIC3-1
+Added Pin To Net: NetName=MIC3 Pin=R5_U_MIC3-2
+Added Pin To Net: NetName=MIC1 Pin=R14_U_MIC1-1
+Added Pin To Net: NetName=GND Pin=R14_U_MIC1-2
+Added Pin To Net: NetName=MIC2 Pin=R14_U_MIC2-1
+Added Pin To Net: NetName=GND Pin=R14_U_MIC2-2
+Added Pin To Net: NetName=MIC3 Pin=R14_U_MIC3-1
+Added Pin To Net: NetName=GND Pin=R14_U_MIC3-2
+Added Member To Class: ClassName=U_MIC1 Member=Component R5_U_MIC1 (R5) 820R
+Added Member To Class: ClassName=U_MIC2 Member=Component R5_U_MIC2 (R5) 820R
+Added Member To Class: ClassName=U_MIC3 Member=Component R5_U_MIC3 (R5) 820R
+Added Member To Class: ClassName=U_MIC1 Member=Component R14_U_MIC1 (R14) 1000R
+Added Member To Class: ClassName=U_MIC2 Member=Component R14_U_MIC2 (R14) 1000R
+Added Member To Class: ClassName=U_MIC3 Member=Component R14_U_MIC3 (R14) 1000R

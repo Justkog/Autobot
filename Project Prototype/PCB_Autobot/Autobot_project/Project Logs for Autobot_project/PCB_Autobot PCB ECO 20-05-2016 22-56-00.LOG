@@ -1,0 +1,12 @@
+Removed Pin From Net: NetName=NetL298N_12 Pin=PIC-11
+Removed Pin From Net: NetName=NetL298N_11 Pin=PIC-12
+Removed Pin From Net: NetName=NetL298N_10 Pin=PIC-14
+Removed Pin From Net: NetName=NetL298N_6 Pin=PIC-41
+Removed Pin From Net: NetName=NetL298N_7 Pin=PIC-43
+Removed Pin From Net: NetName=NetL298N_5 Pin=PIC-44
+Added Pin To Net: NetName=NetL298N_7 Pin=PIC-11
+Added Pin To Net: NetName=NetL298N_6 Pin=PIC-12
+Added Pin To Net: NetName=NetL298N_5 Pin=PIC-14
+Added Pin To Net: NetName=NetL298N_11 Pin=PIC-41
+Added Pin To Net: NetName=NetL298N_12 Pin=PIC-43
+Added Pin To Net: NetName=NetL298N_10 Pin=PIC-44
