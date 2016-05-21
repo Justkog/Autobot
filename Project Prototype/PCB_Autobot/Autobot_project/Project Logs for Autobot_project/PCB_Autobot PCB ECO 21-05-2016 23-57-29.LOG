@@ -1,0 +1,60 @@
+Change Component Designator: OldDesignator=AMP_U_MIC1 NewDesignator=AMP_MIC1
+Change Component Designator: OldDesignator=AMP_U_MIC2 NewDesignator=AMP_MIC2
+Change Component Designator: OldDesignator=AMP_U_MIC3 NewDesignator=AMP_MIC3
+Change Component Designator: OldDesignator=C1_U_MIC1 NewDesignator=C1_MIC1
+Change Component Designator: OldDesignator=C1_U_MIC2 NewDesignator=C1_MIC2
+Change Component Designator: OldDesignator=C1_U_MIC3 NewDesignator=C1_MIC3
+Change Component Designator: OldDesignator=C2_U_MIC1 NewDesignator=C2_MIC1
+Change Component Designator: OldDesignator=C2_U_MIC2 NewDesignator=C2_MIC2
+Change Component Designator: OldDesignator=C2_U_MIC3 NewDesignator=C2_MIC3
+Change Component Designator: OldDesignator=C3_U_MIC1 NewDesignator=C3_MIC1
+Change Component Designator: OldDesignator=C3_U_MIC2 NewDesignator=C3_MIC2
+Change Component Designator: OldDesignator=C3_U_MIC3 NewDesignator=C3_MIC3
+Change Component Designator: OldDesignator=C4_U_MIC1 NewDesignator=C4_MIC1
+Change Component Designator: OldDesignator=C4_U_MIC2 NewDesignator=C4_MIC2
+Change Component Designator: OldDesignator=C4_U_MIC3 NewDesignator=C4_MIC3
+Change Component Designator: OldDesignator=C5_U_MIC1 NewDesignator=C5_MIC1
+Change Component Designator: OldDesignator=C5_U_MIC2 NewDesignator=C5_MIC2
+Change Component Designator: OldDesignator=C5_U_MIC3 NewDesignator=C5_MIC3
+Change Component Designator: OldDesignator=C18_U_MIC1 NewDesignator=C18_MIC1
+Change Component Designator: OldDesignator=C18_U_MIC2 NewDesignator=C18_MIC2
+Change Component Designator: OldDesignator=C18_U_MIC3 NewDesignator=C18_MIC3
+Change Component Designator: OldDesignator=MK1_U_MIC1 NewDesignator=MK1_MIC1
+Change Component Designator: OldDesignator=MK1_U_MIC2 NewDesignator=MK1_MIC2
+Change Component Designator: OldDesignator=MK1_U_MIC3 NewDesignator=MK1_MIC3
+Change Component Designator: OldDesignator=R1_U_MIC1 NewDesignator=R1_MIC1
+Change Component Designator: OldDesignator=R1_U_MIC2 NewDesignator=R1_MIC2
+Change Component Designator: OldDesignator=R1_U_MIC3 NewDesignator=R1_MIC3
+Change Component Designator: OldDesignator=R2_U_MIC1 NewDesignator=R2_MIC1
+Change Component Designator: OldDesignator=R2_U_MIC2 NewDesignator=R2_MIC2
+Change Component Designator: OldDesignator=R2_U_MIC3 NewDesignator=R2_MIC3
+Change Component Designator: OldDesignator=R5_U_MIC1 NewDesignator=R5_MIC1
+Change Component Designator: OldDesignator=R5_U_MIC2 NewDesignator=R5_MIC2
+Change Component Designator: OldDesignator=R5_U_MIC3 NewDesignator=R5_MIC3
+Change Component Designator: OldDesignator=R14_U_MIC1 NewDesignator=R14_MIC1
+Change Component Designator: OldDesignator=R14_U_MIC2 NewDesignator=R14_MIC2
+Change Component Designator: OldDesignator=R14_U_MIC3 NewDesignator=R14_MIC3
+Change Net Name : Old Net Name=NetAMP_U_MIC1_1 New Net Name=NetAMP_MIC1_1
+Change Net Name : Old Net Name=NetAMP_U_MIC1_3 New Net Name=NetAMP_MIC1_3
+Change Net Name : Old Net Name=NetAMP_U_MIC1_5 New Net Name=NetAMP_MIC1_5
+Change Net Name : Old Net Name=NetAMP_U_MIC1_7 New Net Name=NetAMP_MIC1_7
+Change Net Name : Old Net Name=NetAMP_U_MIC1_8 New Net Name=NetAMP_MIC1_8
+Change Net Name : Old Net Name=NetAMP_U_MIC2_1 New Net Name=NetAMP_MIC2_1
+Change Net Name : Old Net Name=NetAMP_U_MIC2_3 New Net Name=NetAMP_MIC2_3
+Change Net Name : Old Net Name=NetAMP_U_MIC2_5 New Net Name=NetAMP_MIC2_5
+Change Net Name : Old Net Name=NetAMP_U_MIC2_7 New Net Name=NetAMP_MIC2_7
+Change Net Name : Old Net Name=NetAMP_U_MIC2_8 New Net Name=NetAMP_MIC2_8
+Change Net Name : Old Net Name=NetAMP_U_MIC3_1 New Net Name=NetAMP_MIC3_1
+Change Net Name : Old Net Name=NetAMP_U_MIC3_3 New Net Name=NetAMP_MIC3_3
+Change Net Name : Old Net Name=NetAMP_U_MIC3_5 New Net Name=NetAMP_MIC3_5
+Change Net Name : Old Net Name=NetAMP_U_MIC3_7 New Net Name=NetAMP_MIC3_7
+Change Net Name : Old Net Name=NetAMP_U_MIC3_8 New Net Name=NetAMP_MIC3_8
+Change Net Name : Old Net Name=NetC3_U_MIC1_2 New Net Name=NetC3_MIC1_2
+Change Net Name : Old Net Name=NetC3_U_MIC2_2 New Net Name=NetC3_MIC2_2
+Change Net Name : Old Net Name=NetC3_U_MIC3_2 New Net Name=NetC3_MIC3_2
+Change Net Name : Old Net Name=NetC4_U_MIC1_2 New Net Name=NetC4_MIC1_2
+Change Net Name : Old Net Name=NetC4_U_MIC2_2 New Net Name=NetC4_MIC2_2
+Change Net Name : Old Net Name=NetC4_U_MIC3_2 New Net Name=NetC4_MIC3_2
+Change Class Name : Old Net Name=U_MIC1 New Net Name=MIC1
+Change Class Name : Old Net Name=U_MIC2 New Net Name=MIC2
+Change Class Name : Old Net Name=U_MIC3 New Net Name=MIC3

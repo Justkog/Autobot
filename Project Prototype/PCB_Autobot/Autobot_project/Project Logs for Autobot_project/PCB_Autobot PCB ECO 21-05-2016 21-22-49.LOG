@@ -1,0 +1,4 @@
+Removed Pin From Net: NetName=MIC1 Pin=PIC-22
+Removed Pin From Net: NetName=MIC2 Pin=PIC-23
+Added Pin To Net: NetName=MIC2 Pin=PIC-22
+Added Pin To Net: NetName=MIC1 Pin=PIC-23
