@@ -1,0 +1,25 @@
+Removed Pin From Net: NetName=GND Pin=BT1-2
+Removed Pin From Net: NetName=6V Pin=C16-2
+Removed Pin From Net: NetName=GND Pin=C17-1
+Removed Pin From Net: NetName=3V3 Pin=C17-2
+Removed Pin From Net: NetName=3V3 Pin=L1-2
+Removed Pin From Net: NetName=3V3 Pin=R12-2
+Removed Pin From Net: NetName=GND Pin=R13-1
+Removed Pin From Net: NetName=6V Pin=S3-2
+Removed Pin From Net: NetName=GND Pin=V Reg-1
+Removed Pin From Net: NetName=6V Pin=V Reg-3
+Removed Pin From Net: NetName=6V Pin=V Reg-5
+Removed Member From Class: ClassName=Power_Supply Member=BT1
+Removed Member From Class: ClassName=Power_Supply Member=C17
+Removed Member From Class: ClassName=Power_Supply Member=L1
+Removed Member From Class: ClassName=Power_Supply Member=R12
+Removed Member From Class: ClassName=Power_Supply Member=R13
+Removed Member From Class: ClassName=Power_Supply Member=S3
+Change Component DesignItemId : Designator=V Reg Old DesignItemId=TPS562200 New DesignItemId=LM1117SX-3.3
+Change Component Comment : Designator=C16 Old Comment=22uF New Comment=10uF
+Change Component Comment : Designator=C15 Old Comment=100nF New Comment=10uF
+Change Component Comment : Designator=V Reg Old Comment=TPS562200 New Comment=LM1117SX-3.3
+Added Pin To Net: NetName=GND Pin=C15-1
+Added Pin To Net: NetName=6V Pin=C15-2
+Added Pin To Net: NetName=3V3 Pin=C16-2
+Added Pin To Net: NetName=6V Pin=V Reg-1

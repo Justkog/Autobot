@@ -1,0 +1,3 @@
+Added Component: Designator=V reg(TO-263-3)
+Added Pin To Net: NetName=GND Pin=V reg-3
+Added Member To Class: ClassName=Power_Supply Member=Component V reg LM1117SX-3.3
