@@ -28,7 +28,7 @@ PowerPortNamesTakePriority=0
 PushECOToAnnotationFile=1
 DItemRevisionGUID=
 ReportSuppressedErrorsInMessages=0
-OutputPath=
+OutputPath=Project Outputs for Autobot_project
 LogFolderPath=
 ManagedProjectGUID=
 
@@ -206,6 +206,23 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 DocumentUniqueId=DHODGQGI
 
+[Document11]
+DocumentPath=CAMtastic1.Cam
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+DocumentUniqueId=
+
 [GeneratedDocument1]
 DocumentPath=Project Outputs for Autobot_project\BOM\Bill of Materials-Autobot_project.xlsx
 DItemRevisionGUID=
@@ -216,6 +233,118 @@ DItemRevisionGUID=
 
 [GeneratedDocument3]
 DocumentPath=Project Outputs for Autobot_project\Design Rule Check - PCB_Autobot.html
+DItemRevisionGUID=
+
+[GeneratedDocument4]
+DocumentPath=Project Outputs for Autobot_project\NC Drill\PCB_Autobot-BoardEdgeRout.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument5]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.1
+DItemRevisionGUID=
+
+[GeneratedDocument6]
+DocumentPath=Project Outputs for Autobot_project\NC Drill\PCB_Autobot.DRR
+DItemRevisionGUID=
+
+[GeneratedDocument7]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.EXTREP
+DItemRevisionGUID=
+
+[GeneratedDocument8]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GBL
+DItemRevisionGUID=
+
+[GeneratedDocument9]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GBO
+DItemRevisionGUID=
+
+[GeneratedDocument10]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GBP
+DItemRevisionGUID=
+
+[GeneratedDocument11]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GBS
+DItemRevisionGUID=
+
+[GeneratedDocument12]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GD1
+DItemRevisionGUID=
+
+[GeneratedDocument13]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GG1
+DItemRevisionGUID=
+
+[GeneratedDocument14]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GKO
+DItemRevisionGUID=
+
+[GeneratedDocument15]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GM1
+DItemRevisionGUID=
+
+[GeneratedDocument16]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GM2
+DItemRevisionGUID=
+
+[GeneratedDocument17]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GM13
+DItemRevisionGUID=
+
+[GeneratedDocument18]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GM15
+DItemRevisionGUID=
+
+[GeneratedDocument19]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GM32
+DItemRevisionGUID=
+
+[GeneratedDocument20]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GML
+DItemRevisionGUID=
+
+[GeneratedDocument21]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GPB
+DItemRevisionGUID=
+
+[GeneratedDocument22]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GPT
+DItemRevisionGUID=
+
+[GeneratedDocument23]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GTL
+DItemRevisionGUID=
+
+[GeneratedDocument24]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GTO
+DItemRevisionGUID=
+
+[GeneratedDocument25]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GTP
+DItemRevisionGUID=
+
+[GeneratedDocument26]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.GTS
+DItemRevisionGUID=
+
+[GeneratedDocument27]
+DocumentPath=Project Outputs for Autobot_project\NC Drill\PCB_Autobot.LDP
+DItemRevisionGUID=
+
+[GeneratedDocument28]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.REP
+DItemRevisionGUID=
+
+[GeneratedDocument29]
+DocumentPath=Project Outputs for Autobot_project\Gerber\PCB_Autobot.RUL
+DItemRevisionGUID=
+
+[GeneratedDocument30]
+DocumentPath=Project Outputs for Autobot_project\NC Drill\PCB_Autobot.TXT
+DItemRevisionGUID=
+
+[GeneratedDocument31]
+DocumentPath=Project Outputs for Autobot_project\Pick Place\Pick Place for PCB_Autobot.csv
 DItemRevisionGUID=
 
 [Configuration1]
@@ -229,7 +358,7 @@ GenerateBOM=1
 OutputJobsCount=0
 
 [Generic_EDE]
-OutputDir=
+OutputDir=Project Outputs for Autobot_project
 
 [OutputGroup1]
 Name=Netlist Outputs

@@ -1,14 +1,13 @@
-Project Outputs Generation Report
----------------------------------
-Start Output Generation At 10:38:34 PM On 5/17/2016
+Output: NC Drill Files
+Type  : NC Drill
+From  : PCB Document [PCB_Autobot.PcbDoc]
+   Generated File[PCB_Autobot.TXT]
+   Generated File[PCB_Autobot-BoardEdgeRout.TXT]
+   Generated File[PCB_Autobot.LDP]
+   Generated File[PCB_Autobot.DRR]
 
-Output: Bill of Materials
-Type  : BOM
-From  : Variant [[No Variations]] of Project [Autobot_project.PrjPcb]
-   Generated File[Bill of Materials-Autobot_project.xlsx]
 
-
-Files Generated   : 1
+Files Generated   : 4
 Documents Printed : 0
 
-Finished Output Generation At 10:38:47 PM On 5/17/2016
+Finished Output Generation At 8:51:08 PM On 5/25/2016

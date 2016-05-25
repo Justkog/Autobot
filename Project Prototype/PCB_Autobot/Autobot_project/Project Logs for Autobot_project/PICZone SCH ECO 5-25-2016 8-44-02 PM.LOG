@@ -1,0 +1,8 @@
+Added Parameter Fabricant=MICROCHIP to Part PIC
+Added Parameter Fabricant=MOLEX to Part ICSP
+Added Parameter Fournisseur=Farnell to Part ICSP
+Added Parameter Fournisseur=Farnell to Part PIC
+Added Parameter RefFabricant=22-11-2062 to Part ICSP
+Added Parameter RefFabricant=PIC32MX250F128D-50I-PT to Part PIC
+Added Parameter RefFournisseur=1462951 to Part ICSP
+Added Parameter RefFournisseur=2357347 to Part PIC

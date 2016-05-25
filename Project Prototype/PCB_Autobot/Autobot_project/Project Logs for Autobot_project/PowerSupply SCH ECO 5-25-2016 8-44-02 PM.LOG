@@ -1,0 +1,8 @@
+Change Value of Parameter Fabricant in Part S3 Old= New=MULTICOMP
+Change Value of Parameter RefFabricant in Part S3 Old= New=R13-608C1-02-BB-9A
+Change Value of Parameter RefFournisseur in Part S3 Old= New=1634617
+Added Parameter Fabricant=TEXAS INSTRUMENT to Part V Reg
+Added Parameter Fournisseur=Farnell to Part V Reg
+Added Parameter Fournisseur=Olimex to Part BT1
+Added Parameter RefFabricant=LM1117SX-3.3/NOPB to Part V Reg
+Added Parameter RefFournisseur=2323594 to Part V Reg
