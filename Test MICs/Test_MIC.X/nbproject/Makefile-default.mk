@@ -45,17 +45,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=confbits.c main.c Logging.c ADC.c Button.c
+SOURCEFILES_QUOTED_IF_SPACED=confbits.c main.c Logging.c ADC.c Button.c DMA.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/confbits.o ${OBJECTDIR}/main.o ${OBJECTDIR}/Logging.o ${OBJECTDIR}/ADC.o ${OBJECTDIR}/Button.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/confbits.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/Logging.o.d ${OBJECTDIR}/ADC.o.d ${OBJECTDIR}/Button.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/confbits.o ${OBJECTDIR}/main.o ${OBJECTDIR}/Logging.o ${OBJECTDIR}/ADC.o ${OBJECTDIR}/Button.o ${OBJECTDIR}/DMA.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/confbits.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/Logging.o.d ${OBJECTDIR}/ADC.o.d ${OBJECTDIR}/Button.o.d ${OBJECTDIR}/DMA.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/confbits.o ${OBJECTDIR}/main.o ${OBJECTDIR}/Logging.o ${OBJECTDIR}/ADC.o ${OBJECTDIR}/Button.o
+OBJECTFILES=${OBJECTDIR}/confbits.o ${OBJECTDIR}/main.o ${OBJECTDIR}/Logging.o ${OBJECTDIR}/ADC.o ${OBJECTDIR}/Button.o ${OBJECTDIR}/DMA.o
 
 # Source Files
-SOURCEFILES=confbits.c main.c Logging.c ADC.c Button.c
+SOURCEFILES=confbits.c main.c Logging.c ADC.c Button.c DMA.c
 
 
 CFLAGS=
@@ -124,6 +124,12 @@ ${OBJECTDIR}/Button.o: Button.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/Button.o 
 	@${FIXDEPS} "${OBJECTDIR}/Button.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Button.o.d" -o ${OBJECTDIR}/Button.o Button.c   
 	
+${OBJECTDIR}/DMA.o: DMA.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/DMA.o.d 
+	@${RM} ${OBJECTDIR}/DMA.o 
+	@${FIXDEPS} "${OBJECTDIR}/DMA.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_ICD3=1 -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/DMA.o.d" -o ${OBJECTDIR}/DMA.o DMA.c   
+	
 else
 ${OBJECTDIR}/confbits.o: confbits.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -154,6 +160,12 @@ ${OBJECTDIR}/Button.o: Button.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/Button.o.d 
 	@${RM} ${OBJECTDIR}/Button.o 
 	@${FIXDEPS} "${OBJECTDIR}/Button.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/Button.o.d" -o ${OBJECTDIR}/Button.o Button.c   
+	
+${OBJECTDIR}/DMA.o: DMA.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/DMA.o.d 
+	@${RM} ${OBJECTDIR}/DMA.o 
+	@${FIXDEPS} "${OBJECTDIR}/DMA.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MMD -MF "${OBJECTDIR}/DMA.o.d" -o ${OBJECTDIR}/DMA.o DMA.c   
 	
 endif
 
