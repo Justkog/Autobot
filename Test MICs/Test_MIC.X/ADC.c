@@ -23,17 +23,40 @@
  * May need to disable the sound detection when the bot is moving to avoid movement noise, wind may also be an issue
  */
 
+u8  average_started = 0;
+s32 average = 0;
+s32 average_count = 30;
+s32 threshold = 23 * 100;
+
 void __ISR(_ADC_VECTOR, IPL7SRS) ADCHANDLER(void)
 {
     s32 val1 = ADC1BUF7;
     s32 val2 = ADC1BUF8;
     s32 val3 = ADC1BUF9;
-    if (val2 > 68)
+
+    if (!average_started)
     {
+        average = val2 * 100;
+        average_started = 1;
+    }
+
+    if (val2 * 100 > average + threshold || val2 * 100 < average - threshold)
+    {
+        //log_key_val("=>   Average XX.XX", average);
+        put_log("=>   Average : ");
+        put_log_nb(average / 100);
+        put_log(".");
+        put_nb_ln(average % 100);
         log_key_val("ADC value 7", val1);
         log_key_val("ADC value 8", val2);
         log_key_val("ADC value 9", val3);
     }
+
+    // update of the average
+    // (calculation is wrong as we remove a proportional part as the first element,
+    // but the approximation is ok as long as we don't have too crazy values)
+    average = val2 * 100 / average_count + average - average / average_count;
+
     IFS1bits.AD1IF = 0;
 }
 

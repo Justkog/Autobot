@@ -42,6 +42,8 @@ void    nb_to_str(s32 nb, s8 str[12])
         nb = nb % pos;
         pos = pos / 10;
     }
+    if (!started)
+        str[i++] = '0';
     str[i++] = 0;
 }
 
