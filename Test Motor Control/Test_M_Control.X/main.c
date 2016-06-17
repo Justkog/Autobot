@@ -56,7 +56,7 @@ void    initialiseMotorControl()
     OC2R =  0x0;                                        // Initialize primary Compare register
     OC2CONbits.OCM = 0x6;                               // Set OC mode to PWM
 
-    // Set peripherals to ON
+    // Set peripherals to ON630.00
     T2CONbits.TON = 1;                                  // Enable timer 2
     OC1CONbits.ON = 1;                                  // Enable Output compare
     OC2CONbits.ON = 1;                                  // Enable Output compare
