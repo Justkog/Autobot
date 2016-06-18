@@ -54,7 +54,7 @@ int main(int argc, char** argv)
             // 2. Clear the TCS control bit (TxCON<1> = 0) to select the internal PBCLK source.
                 // /!\ ASK GREGOIRE /!\
             // 3. Select the desired timer input clock prescale.
-                T3CONbits.TCKPS = 1;    // prescale de 1:8
+                T3CONbits.TCKPS = 0b011;    // prescale de 1:8
             // 4. Load/Clear the timer register TMRx.
                 TMR3 = 0;
             // 5. Load the period register PRx with the desired 16-bit match value.
@@ -69,6 +69,11 @@ int main(int argc, char** argv)
                 IEC0bits.T3IE = 1;
 */            // 7. Set the ON control bit (TxCON<15> = 1) to enable the timer.
                 T3CONbits.ON = 1;
+
+                OC1CONbits.ON = 1;  //
+                OC2CONbits.ON = 1;  // 
+                OC3CONbits.ON = 1;  //
+                OC4CONbits.ON = 1;  //
         // (un seul timer??) pour les moteurs
         // (pour le son??) si controle
     // setup des interrupts
