@@ -11,16 +11,12 @@
 
 void __ISR(_EXTERNAL_1_VECTOR, IPL4SOFT) buttonHANDLER(void)
 {
-    log_key_val("ADC value 0", ADC1BUF0);
-    log_key_val("ADC value 1", ADC1BUF1);
-    log_key_val("ADC value 2", ADC1BUF2);
-    log_key_val("ADC value 3", ADC1BUF3);
-    log_key_val("ADC value 4", ADC1BUF4);
-    log_key_val("ADC value 5", ADC1BUF5);
-    log_key_val("ADC value 6", ADC1BUF6);
-    log_key_val("ADC value 7", ADC1BUF7);
-    log_key_val("ADC value 8", ADC1BUF8);
+    DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
+    //DCH0ECONbits.CFORCE = 1;                    // A DMA transfer is forced to begin
+    DCH0ECONbits.SIRQEN = 1;                    // Start channel cell transfer if an interrupt matching CHAIRQ occurs
 
+    //counter = 0;
+    
     LATFbits.LATF1 = 1 ^ LATFbits.LATF1;
     IFS0bits.INT1IF = 0;
 }
@@ -42,10 +38,11 @@ int main(void)
     //UART logging initialisation
     init_logging();
 
+    put_str_ln("Initialising DMA...");
+    init_DMA();
+
     put_str_ln("Initialising ADC...");
     init_ADC();
-
-    init_DMA();
 
     //starting interrupts
     IEC0bits.INT1IE = 1;

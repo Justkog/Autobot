@@ -3,7 +3,7 @@
 #include <sys/attribs.h>
 #include "types.h"
 
-s8 logs[256];               //logs buffer
+s8 logs[512];               //logs buffer
 u32 id = 0;
 
 void    put_log(s8 *str)

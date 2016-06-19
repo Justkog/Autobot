@@ -27,35 +27,30 @@ u8  average_started = 0;
 s32 average = 0;
 s32 average_count = 30;
 s32 threshold = 23 * 100;
+u8  event_enabled = 1;
 
 void __ISR(_ADC_VECTOR, IPL7SRS) ADCHANDLER(void)
 {
-    s32 val1 = ADC1BUF7;
-    s32 val2 = ADC1BUF8;
-    s32 val3 = ADC1BUF9;
+    s32 val0 = ADC1BUF0;
 
     if (!average_started)
     {
-        average = val2 * 100;
+        average = val0 * 100;
         average_started = 1;
     }
 
-    if (val2 * 100 > average + threshold || val2 * 100 < average - threshold)
+    if (event_enabled && (val0 * 100 > average + threshold || val0 * 100 < average - threshold))
     {
-        //log_key_val("=>   Average XX.XX", average);
-        put_log("=>   Average : ");
-        put_log_nb(average / 100);
-        put_log(".");
-        put_nb_ln(average % 100);
-        log_key_val("ADC value 7", val1);
-        log_key_val("ADC value 8", val2);
-        log_key_val("ADC value 9", val3);
+        DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
+        //DCH0ECONbits.CFORCE = 1;                    // A DMA transfer is forced to begin
+        DCH0ECONbits.SIRQEN = 1;                    // Start channel cell transfer if an interrupt matching CHAIRQ occurs
+        IEC1bits.AD1IE = 0;
     }
 
     // update of the average
     // (calculation is wrong as we remove a proportional part as the first element,
     // but the approximation is ok as long as we don't have too crazy values)
-    average = val2 * 100 / average_count + average - average / average_count;
+    average = val0 * 100 / average_count + average - average / average_count;
 
     IFS1bits.AD1IF = 0;
 }
@@ -69,7 +64,7 @@ void    init_ADC()
     // 2. Select the analog inputs to the ADC multiplexers
     // Negative input select bit for Sample A Multiplexer Setting
     AD1CHSbits.CH0NA = 0;           // Channel 0 negative input is VREFL
-    //AD1CHSbits.CH0SA = 0x5;         // Channel 0 positive input is AN6
+    //AD1CHSbits.CH0SA = 0x5;         // Channel 0 positive input is AN5
 
     // 3. Select the format of the ADC result
     // Data output format bits
@@ -92,7 +87,7 @@ void    init_ADC()
 
     // 7. Set the number of conversions per interrupt (if interrupts used)
     // Sample/Convert sequences per interrupt selection bits
-    AD1CON2bits.SMPI = 0b1111;       // Interrupts at the completion of conversion of each 16th S/C sequence
+    AD1CON2bits.SMPI = 0b0000;       // Interrupts at the completion of conversion of each 16th S/C sequence
 
     // 8. Set Buffer Fill mode
     AD1CON2bits.BUFM = 0;           // Buffer configured as one 16-word buffer
@@ -108,7 +103,7 @@ void    init_ADC()
     AD1CON3bits.SAMC = 4;           // 4 TAD
 
     // 12. Select the ADC clock prescaler
-    AD1CON3bits.ADCS = 0b00001111;  // TAD = 32 * TPB
+    AD1CON3bits.ADCS = 2;  // TAD = 32 * TPB = 2 * (15 + 1) * TPB
 
     // 13. Turn the ADC module on
     AD1CON1bits.ON = 1;
