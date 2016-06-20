@@ -11,6 +11,10 @@
 
 void __ISR(_EXTERNAL_1_VECTOR, IPL4SOFT) buttonHANDLER(void)
 {
+    //no need to turn it on as it is chained
+    //DCH1CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
+    DCH1ECONbits.SIRQEN = 1;                    // Start channel cell transfer if an interrupt matching CHAIRQ occurs
+    
     DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
     //DCH0ECONbits.CFORCE = 1;                    // A DMA transfer is forced to begin
     DCH0ECONbits.SIRQEN = 1;                    // Start channel cell transfer if an interrupt matching CHAIRQ occurs

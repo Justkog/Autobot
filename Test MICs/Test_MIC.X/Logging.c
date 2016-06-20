@@ -3,15 +3,37 @@
 #include <sys/attribs.h>
 #include "types.h"
 
-s8 logs[512];               //logs buffer
+s8 logs[256];               //logs buffer
 u32 id = 0;
+
+char    wait_for_empty_log_buffer()
+{
+    while (id)
+    {
+        while (U1STAbits.UTXBF)
+            ;
+        if (logs[id])
+            U1TXREG = logs[id++];
+        else
+            id = 0;
+    }
+}
 
 void    put_log(s8 *str)
 {
     u32 i = id;
     if (i)
+    {
         while (logs[i])
+        {
             i++;
+        }
+    }
+    if (i >= sizeof(logs))
+    {
+        wait_for_empty_log_buffer();
+        i = 0;
+    }
     while (*str)
         logs[i++] = *str++;
     logs[i] = 0;
@@ -75,7 +97,7 @@ void    log_key_val(s8 *str, s32 nb)
     put_log("\r\n");
 }
 
-void    __ISR(_UART_1_VECTOR, IPL4SOFT) UARTHANDLER(void)
+void    __ISR(_UART_1_VECTOR, IPL6SOFT) UARTHANDLER(void)
 {
     if (logs[id])
         U1TXREG = logs[id++];
@@ -92,7 +114,7 @@ void    init_logging()
     U1MODE = 0x8000;
 
     //setting interrupt priority
-    IPC6bits.U1IP = 0x4;
+    IPC6bits.U1IP = 0x6;
 
     //?
     U1STAbits.UTXISEL = 0x1;

@@ -26,7 +26,7 @@
 u8  average_started = 0;
 s32 average = 0;
 s32 average_count = 30;
-s32 threshold = 23 * 100;
+s32 threshold = 50 * 100;
 u8  event_enabled = 1;
 
 void __ISR(_ADC_VECTOR, IPL7SRS) ADCHANDLER(void)
@@ -41,9 +41,13 @@ void __ISR(_ADC_VECTOR, IPL7SRS) ADCHANDLER(void)
 
     if (event_enabled && (val0 * 100 > average + threshold || val0 * 100 < average - threshold))
     {
+        DCH1ECONbits.SIRQEN = 1;
+
         DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
         //DCH0ECONbits.CFORCE = 1;                    // A DMA transfer is forced to begin
         DCH0ECONbits.SIRQEN = 1;                    // Start channel cell transfer if an interrupt matching CHAIRQ occurs
+
+        //disable ADC interrupts
         IEC1bits.AD1IE = 0;
     }
 
@@ -58,7 +62,11 @@ void __ISR(_ADC_VECTOR, IPL7SRS) ADCHANDLER(void)
 void    init_ADC()
 {
     // 1. Configure the analog port pins
+    TRISBbits.TRISB3 = 1;
+    TRISBbits.TRISB4 = 1;
     TRISBbits.TRISB5 = 1;
+    AD1PCFGbits.PCFG3 = 0;
+    AD1PCFGbits.PCFG4 = 0;
     AD1PCFGbits.PCFG5 = 0;
 
     // 2. Select the analog inputs to the ADC multiplexers
@@ -83,11 +91,13 @@ void    init_ADC()
 
     // 6. Select the Scan mode
     AD1CON2bits.CSCNA = 1;          // Input scan selection bit, enable scan mode
+    AD1CSSLbits.CSSL3 = 1;          // ADC Input scan selection bits, AN3 for input scan
+    AD1CSSLbits.CSSL4 = 1;          // ADC Input scan selection bits, AN4 for input scan
     AD1CSSLbits.CSSL5 = 1;          // ADC Input scan selection bits, AN5 for input scan
 
     // 7. Set the number of conversions per interrupt (if interrupts used)
     // Sample/Convert sequences per interrupt selection bits
-    AD1CON2bits.SMPI = 0b0000;       // Interrupts at the completion of conversion of each 16th S/C sequence
+    AD1CON2bits.SMPI = 2;       // Interrupts at the completion of conversion of each 3rd S/C sequence
 
     // 8. Set Buffer Fill mode
     AD1CON2bits.BUFM = 0;           // Buffer configured as one 16-word buffer
@@ -100,10 +110,10 @@ void    init_ADC()
 
     // 11. Select the sample time (if autoconvert used)
     //Auto sample time bits
-    AD1CON3bits.SAMC = 4;           // 4 TAD
+    AD1CON3bits.SAMC = 1;           // 4 TAD
 
     // 12. Select the ADC clock prescaler
-    AD1CON3bits.ADCS = 2;  // TAD = 32 * TPB = 2 * (15 + 1) * TPB
+    AD1CON3bits.ADCS = 1;  // TAD = 32 * TPB = 2 * (ADCS + 1) * TPB
 
     // 13. Turn the ADC module on
     AD1CON1bits.ON = 1;
