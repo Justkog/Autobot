@@ -11,7 +11,7 @@
  * 
  */
 
-void    pic_init(void)
+void    init_pic(void)
 {
     // initialiser tous les registres qui seront utilises
         // setup des GPIO (General Purpose Input Output)
@@ -26,7 +26,12 @@ void    pic_init(void)
 
 int main()
 {
-    pic_init();
+    init_pic();
+
+    init_button();
+
+    INTCONSET = _INTCON_MVEC_MASK;
+    __builtin_enable_interrupts();
 
     while (1)
     {

@@ -10,6 +10,7 @@
 
 # include <p32xxxx.h>
 # include "types.h"
+#include <sys/attribs.h>
 
 # define  LOG_BUFFER_SIZE   256
 
