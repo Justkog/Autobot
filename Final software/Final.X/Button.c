@@ -14,6 +14,9 @@ void __ISR(_EXTERNAL_1_VECTOR, IPL4SOFT) buttonHANDLER(void)
     //counter = 0;
 
     LATCbits.LATC1 = 1 ^ LATCbits.LATC1;
+
+    put_str_ln("YOLOSWAG!!!");
+    
     IFS0bits.INT1IF = 0;
 }
 

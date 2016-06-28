@@ -20,14 +20,12 @@ void    init_pic(void)
         // LED en output
             LATCbits.LATC1 = 1;
             TRISCbits.TRISC1 = 0;   // 0 = output
-        // BUT en input
-            //TRISDbits.TRISD8 = 1;   // 1 = input
 }
 
 int main()
 {
     init_pic();
-
+    init_logging();
     init_button();
 
     INTCONSET = _INTCON_MVEC_MASK;

@@ -1,9 +1,7 @@
 
-#include <p32xxxx.h>
-#include <sys/attribs.h>
-#include "types.h"
+#include "autobot.h"
 
-s8 logs[256];               //logs buffer
+s8 logs[64];               //logs buffer
 u32 id = 0;
 
 char    wait_for_empty_log_buffer()
@@ -99,26 +97,33 @@ void    log_key_val(s8 *str, s32 nb)
 
 void    __ISR(_UART_1_VECTOR, IPL6SOFT) UARTHANDLER(void)
 {
-    if (logs[id])
-        U1TXREG = logs[id++];
+    /*if (logs[0])
+        U1TXREG = 'a';
     else
-        id = 0;
-    IFS0bits.U1TXIF = 0;
+        id = 0;*/
+    IFS1bits.U1TXIF = 0;
 }
 
 void    init_logging()
 {
-    //UART config
-    U1BRG = 64;                                        //(80Mhz / 8 / 2) / (16 * 9600) - 1
-    U1STA = 0;
-    U1MODE = 0x8000;
+    TRISBbits.TRISB4 = 0;                               // Set RPB4 pin as output
+    // mapping
+    //OSCCON = 0x46;
+    //OSCCON = 0x57;
+    
+    // UART config
+    RPB4Rbits.RPB4R = 0b0001;                           // map UART 1 output on RPB4
+    U1BRG = 77;                                         //(48Mhz / 4) / (16 * 9600) - 1
+    U1STA = 0;                                          // reset UART Status and Control Registers
 
-    //setting interrupt priority
-    IPC6bits.U1IP = 0x6;
+    // Interrupt Setup
+    IEC1bits.U1TXIE = 0;                                // Switch interrupt OFF for setup
+    IFS1bits.U1TXIF = 0;                                // Reset interrupt flag
+    IPC8bits.U1IP = 0x6;                                // Set priority to 6 (only ADC has higher priority)
+    U1STAbits.UTXISEL = 1;                              // Interrupt generated when all chars are transmitted
+    U1STAbits.UTXEN = 1;                                // Transmit Enable bit
 
-    //?
-    U1STAbits.UTXISEL = 0x1;
-    U1STAbits.UTXEN = 0x1;
-
-    IEC0bits.U1TXIE = 0x1;
+    // Enable UART
+    IEC1bits.U1TXIE = 1;                                // Switch interrupt ON
+    U1MODEbits.ON = 1;                                  // Switch UART ON (after setup is completed)
 }
