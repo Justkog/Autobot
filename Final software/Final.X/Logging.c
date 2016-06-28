@@ -1,7 +1,8 @@
 
 #include "autobot.h"
+//#include <plib.h>
 
-s8 logs[64];               //logs buffer
+s8 logs[256];               //logs buffer
 u32 id = 0;
 
 char    wait_for_empty_log_buffer()
@@ -36,7 +37,10 @@ void    put_log(s8 *str)
         logs[i++] = *str++;
     logs[i] = 0;
     if (!id)
+    {
         U1TXREG = logs[id++];
+        IEC1bits.U1TXIE = 1;                                // Switch interrupt ON
+    }
 }
 
 void    nb_to_str(s32 nb, s8 str[12])
@@ -97,22 +101,44 @@ void    log_key_val(s8 *str, s32 nb)
 
 void    __ISR(_UART_1_VECTOR, IPL6SOFT) UARTHANDLER(void)
 {
-    /*if (logs[0])
-        U1TXREG = 'a';
+    if (logs[id])
+        U1TXREG = logs[id++];
     else
-        id = 0;*/
+    {
+        id = 0;
+        IEC1bits.U1TXIE = 0;                                // Switch interrupt ON
+    }
     IFS1bits.U1TXIF = 0;
 }
 
 void    init_logging()
 {
     TRISBbits.TRISB4 = 0;                               // Set RPB4 pin as output
-    // mapping
-    //OSCCON = 0x46;
-    //OSCCON = 0x57;
+
+
+    // Mapping
+    /*unsigned int status1, status2;
+    mSYSTEMUnlock(status1, status2);
+    PPSUnLock;
+    PPSOutput(1, RPB4, U1TX);
+    PPSLock;
+    mSYSTEMLock(status1, status2);*/
+    /*SYSKEY = 0x00000000;                                // Ensure OSCCON is locked
+    SYSKEY = 0xAA996655;                                // Write Key1 to SYSKEY
+    SYSKEY = 0x556699AA;                                // Write Key2 to SYSKEY*/
+                                                        // OSCCON is now unlocked
+
+    CFGCONbits.IOLOCK = 0;                              // Allow writes to the control registers
+
+    RPB4Rbits.RPB4R = 0b0001;                           // map UART 1 output on RPB4
+
+    CFGCONbits.IOLOCK = 1;                              // Prevent writes to the control registers*/
+
+                                                        // Relock SYSKEY
+    /*SYSKEY = 0x00000000;                                // Write any value other than Key1 or Key2
+                                                        // OSCCON is relocked*/
     
     // UART config
-    RPB4Rbits.RPB4R = 0b0001;                           // map UART 1 output on RPB4
     U1BRG = 77;                                         //(48Mhz / 4) / (16 * 9600) - 1
     U1STA = 0;                                          // reset UART Status and Control Registers
 
@@ -124,6 +150,5 @@ void    init_logging()
     U1STAbits.UTXEN = 1;                                // Transmit Enable bit
 
     // Enable UART
-    IEC1bits.U1TXIE = 1;                                // Switch interrupt ON
     U1MODEbits.ON = 1;                                  // Switch UART ON (after setup is completed)
 }

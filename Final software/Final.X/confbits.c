@@ -21,7 +21,7 @@
 
 // DEVCFG1
 #pragma config FNOSC = FRCPLL           // Oscillator Selection Bits (Fast RC Osc with PLL)
-#pragma config FSOSCEN = ON             // Secondary Oscillator Enable (Enabled)
+#pragma config FSOSCEN = OFF             // Secondary Oscillator Enable (Disabled)
 #pragma config IESO = ON                // Internal/External Switch Over (Enabled)
 #pragma config POSCMOD = HS             // Primary Oscillator Configuration (HS osc mode)
 #pragma config OSCIOFNC = OFF           // CLKO Output Signal Active on the OSCO Pin (Disabled)
