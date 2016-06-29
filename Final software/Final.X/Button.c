@@ -19,14 +19,21 @@ void __ISR(_EXTERNAL_1_VECTOR, IPL3SOFT) buttonHANDLER(void)
 
     //counter = 0;
 
-    LATCbits.LATC1 = 1 ^ LATCbits.LATC1;          // Toggle LED
+    //LATCbits.LATC1 = 1 ^ LATCbits.LATC1;          // Toggle LED
 
-    //put_str_ln("YOLOSWAG!!!");
-    //DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
+    put_str_ln("dumping ADC");
+    DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
     //DCH0ECONbits.CFORCE = 1;                    // A DMA transfer is forced to begin
     //DCH0ECONbits.SIRQEN = 1;                    // Start channel cell transfer if an interrupt matching CHAIRQ occurs*/
 
-    fuck_the_motor();
+    //IEC0bits.AD1IE = 1;
+
+
+    //fuck_the_motor();
+
+    u32 waiter = 500000;
+    while (waiter)
+        waiter--;
 
     IFS0bits.INT1IF = 0;
 }

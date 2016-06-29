@@ -39,8 +39,8 @@ void    put_log(s8 *str)
     logs[i] = 0;
     if (!id)
     {
-        IEC1bits.U1TXIE = 1;                                // Switch interrupt ON
         U1TXREG = logs[id++];
+        IEC1bits.U1TXIE = 1;                                // Switch interrupt ON
     }
 }
 
@@ -107,7 +107,7 @@ void    __ISR(_UART_1_VECTOR, IPL6SOFT) UARTHANDLER(void)
     else
     {
         id = 0;
-        IEC1bits.U1TXIE = 0;                                // Switch interrupt ON
+        IEC1bits.U1TXIE = 0;                                // Switch interrupt OFF
     }
     IFS1bits.U1TXIF = 0;
 }

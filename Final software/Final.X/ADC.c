@@ -33,9 +33,32 @@ u8  print = 0;
 
 void __ISR(_ADC_VECTOR, IPL7SOFT) ADCHANDLER(void)
 {
-    s32 val0 = ADC1BUF0;
+    s32 val0 = ADC1BUF0;                            // MIC3
+    s32 val1 = ADC1BUF1;                            // MIC2
+    s32 val2 = ADC1BUF2;                            // MIC1
+    ADC1BUF0;
+    ADC1BUF1;
+    ADC1BUF2;
 
-    if (!average_started && (val0 > -25 || val0 < -100))
+    if (val0 < -300)// || val1 > 250 || val2 < -300)
+    {
+        /*put_str_ln("Event");
+        log_key_val("v0", val0);
+        log_key_val("v1", val1);
+        log_key_val("v2", val2);*/
+
+        //IEC1bits.DMA0IE = 1;
+        DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
+        //DMACONbits.ON = 1;
+
+        IFS0bits.AD1IF = 0;
+        IEC0bits.AD1IE = 0;
+
+        //IEC1bits.DMA0IE = 1;
+        //DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
+    }
+
+    /*if (!average_started && (val0 > -25 || val0 < -100))
     {
         IFS0bits.AD1IF = 0;
         return;
@@ -56,7 +79,24 @@ void __ISR(_ADC_VECTOR, IPL7SOFT) ADCHANDLER(void)
         log_key_val("value", val0);
         log_key_val("average", average / 100);
 
+        IFS0bits.AD1IF = 0;
+        IEC0bits.AD1IE = 0;
+
         DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
+
+
+        /*AD1CON1bits.ON = 0;
+
+        DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
+
+        AD1CSSLbits.CSSL2 = 1;          // ADC Input scan selection bits, AN2 for input scan
+        AD1CSSLbits.CSSL3 = 1;          // ADC Input scan selection bits, AN3 for input scan
+        AD1CSSLbits.CSSL4 = 1;          // ADC Input scan selection bits, AN4 for input scan
+
+        AD1CON2bits.SMPI = 2;
+
+        AD1CON1bits.ON = 1;
+        
         //DCH0ECONbits.CFORCE = 1;                    // A DMA transfer is forced to begin
         //DCH0ECONbits.SIRQEN = 1;                    // Start channel cell transfer if an interrupt matching CHAIRQ occurs
 
@@ -68,8 +108,8 @@ void __ISR(_ADC_VECTOR, IPL7SOFT) ADCHANDLER(void)
 
         //disable ADC interrupts
         //IFS0bits.AD1IF = 0;
-        IEC0bits.AD1IE = 0;
-    }
+        //IEC0bits.AD1IE = 0;
+    }*/
 
     /*if (print)
     {
@@ -85,7 +125,7 @@ void __ISR(_ADC_VECTOR, IPL7SOFT) ADCHANDLER(void)
     // update of the average
     // (calculation is wrong as we remove a proportional part as the first element,
     // but the approximation is ok as long as we don't have too crazy values)
-    average = val0 * 100 / average_count + average - average / average_count;
+    //average = val0 * 100 / average_count + average - average / average_count;
 
     //log_key_val("value", ADC1BUF0);
 
@@ -132,7 +172,7 @@ void    init_ADC()
 
     // 7. Set the number of conversions per interrupt (if interrupts used)
     // Sample/Convert sequences per interrupt selection bits
-    AD1CON2bits.SMPI = 0;       // Interrupts at the completion of conversion of each 3rd S/C sequence
+    AD1CON2bits.SMPI = 2;       // Interrupts at the completion of conversion of each 3rd S/C sequence
 
     // 8. Set Buffer Fill mode
     AD1CON2bits.BUFM = 0;           // Buffer configured as one 16-word buffer
@@ -148,10 +188,10 @@ void    init_ADC()
     AD1CON3bits.SAMC = 3;           // 3 TAD
 
     // 12. Select the ADC clock prescaler
-    AD1CON3bits.ADCS = 5;  // TAD = 32 * TPB = 2 * (ADCS + 1) * TPB
+    AD1CON3bits.ADCS = 2;  // TAD = 32 * TPB = 2 * (ADCS + 1) * TPB
 
     // 13. Turn the ADC module on
-    AD1CON1bits.ON = 1;
+    //AD1CON1bits.ON = 1;
 
     // 14. ADC interrupt configuration
     // a) clear the interrupt flag bit
@@ -164,5 +204,7 @@ void    init_ADC()
     IEC0bits.AD1IE = 1;
 
     // 15. Start the conversion sequence by initiating sampling
+
+    AD1CON1bits.ON = 1;
     
 }

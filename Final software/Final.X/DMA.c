@@ -22,7 +22,7 @@ void __ISR(_DMA_0_VECTOR, IPL4SOFT) DMA0HANDLER(void)
     u32 i = 0;
     while (i < 16)
     {
-        log_key_val("dest 0 value", buffer[0][i]);
+        log_key_val("b0", buffer[0][i]);
         //log_key_val("dest 1 value", buffer[1][i]);
         //buffer[0][i] = 0;
         i++;
@@ -36,11 +36,13 @@ void __ISR(_DMA_0_VECTOR, IPL4SOFT) DMA0HANDLER(void)
     while (count < 320000)
         count++;
     
-    IEC0bits.AD1IE = 1;             //restart ADC interrupt
+    //IEC0bits.AD1IE = 1;             //restart ADC interrupt
 
     DCH0INTbits.CHDDIF = 0;
     IFS1bits.DMA0IF = 0;
     DCH0CONbits.CHEN = 0;
+
+    IEC0bits.AD1IE = 1;
 
     //DCH1INTbits.CHDDIF = 0;         // Clear the Channel block transfer complete interrupt flag
     //IFS1bits.DMA1IF = 0;            // Clear the DMA0 interrupt flags
@@ -59,7 +61,7 @@ void    init_DMA()
     DCH0CONbits.CHEN = 0;           // Channel 0 off
     DCH0CONbits.CHCHN = 0;          // no chaining
     DCH0CONbits.CHPRI = 3;          // Priority 3 (highest)
-
+    DCH0CONbits.CHAEN = 1;
     // Slave Channel 1 setup
     /*DCH1CONbits.CHEN = 0;           // Channel 1 off
     DCH1CONbits.CHCHN = 1;          // chaining
@@ -68,7 +70,7 @@ void    init_DMA()
     DCH1CONbits.CHCHNS = 0;         // Chain to channel higher in natural priority (CH1 will be enabled by CH0 transfer complete*/
 
     // Program the transfer on Channel 1
-    DCH0SSA = Virt2Phy0(&ADC1BUF0);             // Transfer source physical address
+    DCH0SSA = Virt2Phy0(&ADC1BUF2);             // Transfer source physical address
     DCH0DSA = Virt2Phy0(buffer[0]);             // Transfer destination physical address
     DCH0SSIZ = sizeof(ADC1BUF0);                // Source size
     DCH0DSIZ = sizeof(buffer[0]);               // Destination size
@@ -87,7 +89,7 @@ void    init_DMA()
 
     // Master Channel 0
     DCH0INTCLR = 0x00FF00FF;        // Clear existing events, disable all interrupts
-    //DCH0INTbits.CHERIE = 1;         // Enable Channel address error interrupt
+    DCH0INTbits.CHERIE = 1;         // Enable Channel address error interrupt
     DCH0INTbits.CHDDIE = 1;         // Enable Channel destination done interrupt
 
     // Slave Channel 1
