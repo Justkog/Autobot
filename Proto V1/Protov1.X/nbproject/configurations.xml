@@ -19,8 +19,8 @@
       <itemPath>log.c</itemPath>
       <itemPath>motor.c</itemPath>
       <itemPath>mic.c</itemPath>
-      <itemPath>pwm.c</itemPath>
       <itemPath>timer.c</itemPath>
+      <itemPath>pwm.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

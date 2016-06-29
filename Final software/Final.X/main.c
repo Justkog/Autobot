@@ -7,11 +7,7 @@
 
 #include "autobot.h"
 
-/*
- * 
- */
-
-void    init_pic(void)
+void    pic_init(void)
 {
     // initialiser tous les registres qui seront utilises
         // setup des GPIO (General Purpose Input Output)
@@ -19,22 +15,25 @@ void    init_pic(void)
             // les LAT definissent l'etat du pin
         // LED en output
             LATCbits.LATC1 = 1;
-            ANSELCbits.ANSC1 = 0;
+            ANSELCbits.ANSC1 = 0;   // set pin mode to digital (0 = digital, 1 = analogic)
             TRISCbits.TRISC1 = 0;   // 0 = output
 }
 
 int main()
 {
-    init_pic();
-    init_logging();
-    init_button();
+    pic_init();
+    logging_init();
+    button_init();
+    pwm_init();
+    motor_timer_init();
 
     //put_str_ln("Initialising DMA...");
-    init_DMA();
+    //init_DMA();
 
     //put_str_ln("Initialising ADC...");
-    init_ADC();
+    //init_ADC();
 
+    // setup des interrupts
     INTCONSET = _INTCON_MVEC_MASK;
     __builtin_enable_interrupts();
 

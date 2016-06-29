@@ -30,6 +30,7 @@ void    put_log(s8 *str)
     }
     if (i >= sizeof(logs))
     {
+        IEC1bits.U1TXIE = 0;
         wait_for_empty_log_buffer();
         i = 0;
     }
@@ -38,8 +39,8 @@ void    put_log(s8 *str)
     logs[i] = 0;
     if (!id)
     {
-        U1TXREG = logs[id++];
         IEC1bits.U1TXIE = 1;                                // Switch interrupt ON
+        U1TXREG = logs[id++];
     }
 }
 
@@ -111,7 +112,7 @@ void    __ISR(_UART_1_VECTOR, IPL6SOFT) UARTHANDLER(void)
     IFS1bits.U1TXIF = 0;
 }
 
-void    init_logging()
+void    logging_init()
 {
     TRISBbits.TRISB4 = 0;                               // Set RPB4 pin as output
 
@@ -128,11 +129,11 @@ void    init_logging()
     SYSKEY = 0x556699AA;                                // Write Key2 to SYSKEY*/
                                                         // OSCCON is now unlocked
 
-    CFGCONbits.IOLOCK = 0;                              // Allow writes to the control registers
+    //CFGCONbits.IOLOCK = 0;                              // Allow writes to the control registers
 
     RPB4Rbits.RPB4R = 0b0001;                           // map UART 1 output on RPB4
 
-    CFGCONbits.IOLOCK = 1;                              // Prevent writes to the control registers*/
+    //CFGCONbits.IOLOCK = 1;                              // Prevent writes to the control registers*/
 
                                                         // Relock SYSKEY
     /*SYSKEY = 0x00000000;                                // Write any value other than Key1 or Key2

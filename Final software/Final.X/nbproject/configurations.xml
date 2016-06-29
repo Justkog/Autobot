@@ -16,10 +16,13 @@
                    projectFiles="true">
       <itemPath>confbits.c</itemPath>
       <itemPath>main.c</itemPath>
-      <itemPath>Button.c</itemPath>
       <itemPath>Logging.c</itemPath>
       <itemPath>ADC.c</itemPath>
       <itemPath>DMA.c</itemPath>
+      <itemPath>pwm.c</itemPath>
+      <itemPath>timer.c</itemPath>
+      <itemPath>motor.c</itemPath>
+      <itemPath>button.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

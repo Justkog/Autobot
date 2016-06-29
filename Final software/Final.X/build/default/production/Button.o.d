@@ -1,4 +1,4 @@
-build/default/production/Button.o:  \
-Button.c  \
+build/default/production/button.o:  \
+button.c  \
 autobot.h  \
 types.h 

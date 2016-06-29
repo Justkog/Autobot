@@ -1,4 +1,4 @@
-build/default/debug/Button.o:  \
-Button.c  \
+build/default/debug/button.o:  \
+button.c  \
 autobot.h  \
 types.h 

@@ -42,7 +42,7 @@ void    initialiseMotorControl()
     T2CONbits.TCKPS = 0b111;                            // prescale
     IFS0bits.T2IF = 0;                                  // Clear Timer interrupt flag
     IEC0bits.T2IE = 1;                                  // Set timer interrupt
-    IPC2bits.T2IP = 0x7;                              // Set timer priority to 7
+    IPC2bits.T2IP = 0x7;                                // Set timer priority to 7
 
     //input 1 initialisation
     OC1CON = 0x0;                                       // turn off OC1 when performing setup
