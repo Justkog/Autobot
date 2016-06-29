@@ -18,6 +18,8 @@
       <itemPath>main.c</itemPath>
       <itemPath>Button.c</itemPath>
       <itemPath>Logging.c</itemPath>
+      <itemPath>ADC.c</itemPath>
+      <itemPath>DMA.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

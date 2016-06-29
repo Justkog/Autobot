@@ -19,6 +19,7 @@ void    init_pic(void)
             // les LAT definissent l'etat du pin
         // LED en output
             LATCbits.LATC1 = 1;
+            ANSELCbits.ANSC1 = 0;
             TRISCbits.TRISC1 = 0;   // 0 = output
 }
 
@@ -27,6 +28,12 @@ int main()
     init_pic();
     init_logging();
     init_button();
+
+    //put_str_ln("Initialising DMA...");
+    init_DMA();
+
+    //put_str_ln("Initialising ADC...");
+    init_ADC();
 
     INTCONSET = _INTCON_MVEC_MASK;
     __builtin_enable_interrupts();

@@ -1,7 +1,7 @@
 
 #include "autobot.h"
 
-void __ISR(_EXTERNAL_1_VECTOR, IPL4SOFT) buttonHANDLER(void)
+void __ISR(_EXTERNAL_1_VECTOR, IPL3SOFT) buttonHANDLER(void)
 {
     //no need to turn it on as it is chained
     //DCH1CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
@@ -13,9 +13,12 @@ void __ISR(_EXTERNAL_1_VECTOR, IPL4SOFT) buttonHANDLER(void)
 
     //counter = 0;
 
-    LATCbits.LATC1 = 1 ^ LATCbits.LATC1;
+    //LATCbits.LATC1 = 1 ^ LATCbits.LATC1;
 
-    put_str_ln("YOLOSWAG!!!");
+    //put_str_ln("YOLOSWAG!!!");
+    DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
+    //DCH0ECONbits.CFORCE = 1;                    // A DMA transfer is forced to begin
+    //DCH0ECONbits.SIRQEN = 1;                    // Start channel cell transfer if an interrupt matching CHAIRQ occurs*/
     
     IFS0bits.INT1IF = 0;
 }
@@ -38,7 +41,7 @@ void    init_button()
     IFS0bits.INT1IF = 0;
 
     //set priority
-    IPC1bits.INT1IP = 4;
+    IPC1bits.INT1IP = 3;
 
     //starting interrupts
     IEC0bits.INT1IE = 1;
