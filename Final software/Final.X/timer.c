@@ -49,12 +49,11 @@ void    pwm_timer_init(void)
 
 void    motor_timer_init(void)
 {
-    T4CONbits.ON = 0;
-    T4CONbits.TCKPS = 0b111;                // presale 1:256
-    TMR4 = 0;
-
     //disable interrupt
     IEC0bits.T4IE = 0;
+
+    T4CONbits.ON = 0;
+    T4CONbits.TCKPS = 0b111;                // presale 1:256
 
     //clear interrupt
     IFS0bits.T4IF = 0;
@@ -65,17 +64,21 @@ void    motor_timer_init(void)
     //PR4 = 45000;                                     // 48 000 000 / 4 / 256 = 46 875 ticks for one second
 }
 
+void    motor_timer_start(void)
+{
+    // Set the TxIE interrupt enable bit in the IECx register.
+    IEC0bits.T4IE = 1;
+
+    // Set the ON control bit (TxCON<15> = 1) to enable the timer.
+    T4CONbits.ON = 1;
+}
+
 void __ISR(_TIMER_4_VECTOR, IPL3SOFT) motorTimerHANDLER(void)
 {
-    log_key_val("motor delay i", motor_delay_ms);
     if (motor_delay_ms == 0)
     {
-        put_str_ln("restore");
+        motor_timer_init();
         Motor_Restore();
-        // Clear the TxIE interrupt enable bit in the IECx register.
-        IEC0bits.T4IE = 0;
-        // Clear the ON control bit (TxCON<15> = 1) to disable the timer.
-        //T4CONbits.ON = 0;
     }
     else
         Start_Motor_Timer(motor_delay_ms);
@@ -85,6 +88,7 @@ void __ISR(_TIMER_4_VECTOR, IPL3SOFT) motorTimerHANDLER(void)
 
 void Start_Motor_Timer(u32 delay)
 {
+    TMR4 = 0;
     motor_delay_ms = delay;
     if (motor_delay_ms > 1000)
     {
@@ -97,10 +101,5 @@ void Start_Motor_Timer(u32 delay)
         PR4 = motor_delay_ms;
         motor_delay_ms = 0;
     }
-
-    // Set the TxIE interrupt enable bit in the IECx register.
-    IEC0bits.T4IE = 1;
-
-    // Set the ON control bit (TxCON<15> = 1) to enable the timer.
-    T4CONbits.ON = 1;
+    motor_timer_start();
 }

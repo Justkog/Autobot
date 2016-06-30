@@ -7,8 +7,10 @@
 
 #include "autobot.h"
 
+u8 save_available = 1;
+
 // set motor handicap with mechanical testing to balance the manufacture differences
-u8 motor_1_handicap = 95;
+u8 motor_1_handicap = 85;
 u8 motor_2_handicap = 100;
 
 s8 motor_step = 1;
@@ -20,111 +22,190 @@ u8 motor_gear_current_2 = 3;
 u8 prev_motor_gear_current_1 = 0;
 u8 prev_motor_gear_current_2 = 0;
 
-//Motor Controls FOT WINNERS ONLY !!!
-/*STOP(delai)
-right turn (angle)
-left turn (angle)*/
+u8      action_table_length = 0;
+u8      action_table_index = 0;
+void    (*action_table[ACTION_TABLE_MAX_LENGTH])(u16);
+u16     action_table_arg[ACTION_TABLE_MAX_LENGTH];
+
+
+void    Reset_Motor_Instructions(void)
+{
+    Motor_Control_Stop(0);
+    u8      i = 0;
+    while (i < ACTION_TABLE_MAX_LENGTH)
+    {
+        action_table[i] = 0;
+        action_table_arg[i] = 0;
+        i++;
+    }
+    action_table_index = 0;
+    action_table_length = 0;
+}
+
+void    Add_Motor_Instruction(void (*action)(u16), u16 delay)
+{
+    if (action_table_length < ACTION_TABLE_MAX_LENGTH)
+    {
+        action_table[action_table_length] = action;
+        action_table_arg[action_table_length] = delay;
+    }
+    action_table_length++;
+}
+
+void    Execute_Motor_Instructions(void)
+{
+    if(action_table_index < ACTION_TABLE_MAX_LENGTH &&
+            action_table[action_table_index])
+    {
+        log_key_val("index", action_table_index);
+        (*action_table[action_table_index])(action_table_arg[action_table_index]);
+        action_table_index++;
+    }
+    else
+    {
+        Reset_Motor_Instructions();
+    }
+}
 
 void    Motor_Save()
 {
-    prev_motor_gear_current_1 = motor_gear_current_1;
-    prev_motor_gear_current_2 = motor_gear_current_2;
-    log_key_val("1", prev_motor_gear_current_1);
-    log_key_val("2", prev_motor_gear_current_2);
+    if (save_available)
+    {
+        prev_motor_gear_current_1 = motor_gear_current_1;
+        prev_motor_gear_current_2 = motor_gear_current_2;
+        save_available = 0;
+    }
 }
 
 void    Motor_Restore()
 {
-    log_key_val("11", prev_motor_gear_current_1);
-    log_key_val("22", prev_motor_gear_current_2);
     motor_gear_current_1 = prev_motor_gear_current_1;
     motor_gear_current_2 = prev_motor_gear_current_2;
     set_Motor_Speed();
+    save_available = 1;
+    Execute_Motor_Instructions();
 }
 
 void    Motor_Delay(u16 delay_ms)
 {
+    log_key_val("Delay ", delay_ms);
     Start_Motor_Timer(delay_ms);
 }
 
-void    Motor_Control_Forward(u8 gear)
+void    Motor_Control_Forward(u16 delay)
 {
-    if (3 < gear && gear <= 6)
+    if (motor_gear_current_1 == motor_gear_current_2)
     {
-        motor_gear_current_1 = gear;
-        motor_gear_current_2 = gear;
+        if (motor_gear_current_1 < 6)
+        {
+            motor_gear_current_1++;
+            motor_gear_current_2++;
+        }
         set_Motor_Speed();
+        log_key_val("Forward to ", motor_gear_current_1);
+    }
+    Motor_Save();
+    Motor_Delay(delay);
+}
+
+void    Motor_Control_Backward(u16 delay)
+{
+    if (motor_gear_current_1 == motor_gear_current_2)
+    {
+        if (0 < motor_gear_current_1)
+        {
+            motor_gear_current_1--;
+            motor_gear_current_2--;
+
+        }
+        set_Motor_Speed();
+        log_key_val("Backward to ", motor_gear_current_1);
+    }
+    Motor_Save();
+    Motor_Delay(delay);
+}
+
+void    Motor_Emergency_Stop()
+{
+    motor_timer_init();
+    Motor_Control_Stop(0);
+    Reset_Motor_Instructions;
+    Add_Motor_Instruction(Motor_Control_Backward, EMERGENCY_STOP_BACKWARD_DELAY);
+    Execute_Motor_Instructions();
+}
+
+void    Motor_Control_Stop(u16 delay_ms)
+{
+    
+    if (delay_ms)
+    {
+        prev_motor_gear_current_1 = 3;
+        prev_motor_gear_current_2 = 3;
+        save_available = 0;
+        Motor_Delay(delay_ms);
+        put_str_ln("stop");
+    }
+    else
+    {
+        prev_motor_gear_current_1 = 3;
+        prev_motor_gear_current_2 = 3;
+        motor_gear_current_1 = 3;
+        motor_gear_current_2 = 3;
+        set_Motor_Speed();
+        put_str_ln("stop without delay");
+        save_available = 1;
     }
 }
 
-void    Motor_Control_Backward(u8 gear)
+void    Motor_Control_Turn_Left(u16 delay)
 {
-    if (0 <= gear && gear < 3)
+    Motor_Save();
+    if (motor_gear_current_1 == motor_gear_current_2)
     {
-        motor_gear_current_1 = gear;
-        motor_gear_current_2 = gear;
-        set_Motor_Speed();
+        if (motor_gear_current_2 > 3)
+            motor_gear_current_2--;
+        else if (motor_gear_current_2 < 3)
+            motor_gear_current_2++;
     }
-}
-
-// RAJOUTER LE DELAI
-void Motor_Control_stop(void)
-{
-    motor_gear_current_1 = 3;
-    motor_gear_current_2 = 3;
     set_Motor_Speed();
+    put_str_ln("Turning left");
+    Motor_Delay(delay);
 }
 
-void    Motor_Control_Speed_Up(void)
+void    Motor_Control_Turn_Right(u16 delay)
 {
+    Motor_Save();
     if (motor_gear_current_1 == motor_gear_current_2)
     {
-        if (3 < motor_gear_current_1 && motor_gear_current_1 < 6)
-        {
-            motor_gear_current_1++;
-            motor_gear_current_2++;
-        }
-        else if (0 < motor_gear_current_1 && motor_gear_current_1 < 3)
-        {
+        if (motor_gear_current_1 > 3)
             motor_gear_current_1--;
-            motor_gear_current_2--;
-        }
-        set_Motor_Speed();
-    }
-}
-
-void    Motor_Control_Slow_Down(void)
-{
-    if (motor_gear_current_1 == motor_gear_current_2)
-    {
-        if (3 < motor_gear_current_1 && motor_gear_current_1 <= 6)
-        {
-            motor_gear_current_1--;
-            motor_gear_current_2--;
-        }
-        else if (0 <= motor_gear_current_1 && motor_gear_current_1 < 3)
-        {
+        else if (motor_gear_current_1 < 3)
             motor_gear_current_1++;
-            motor_gear_current_2++;
-        }
-        set_Motor_Speed();
     }
+    set_Motor_Speed();
+    put_str_ln("Turning right");
+    Motor_Delay(delay);
 }
 
 void    fuck_the_motor(void)
 {
-    Motor_Save();
-    Motor_Control_Forward(6);
-    Motor_Delay(1500);
-
-    //Motor_Control_Forward(6);
-/*    motor_gear_current_1 += motor_step;
-    if (motor_gear_current_1 <= 0 || motor_gear_current_1 >= sizeof(motor_gear) - 1)
-        motor_step = -motor_step;
-
-    set_Motor_1_Speed(motor_gear[motor_gear_current_1]);
-    set_Motor_2_Speed(motor_gear[motor_gear_current_2]);*/
-
+    u8  i = 0;
+    while (i < 5)
+    {
+        put_str_ln("");
+       i++;
+    }
+    Reset_Motor_Instructions();
+    Add_Motor_Instruction(Motor_Control_Forward, 500);
+    Add_Motor_Instruction(Motor_Control_Forward, 500);
+    Add_Motor_Instruction(Motor_Control_Turn_Left, 3000);
+    Add_Motor_Instruction(Motor_Delay, 1000);
+    Add_Motor_Instruction(Motor_Control_Turn_Left, 3000);
+    Add_Motor_Instruction(Motor_Delay, 1000);
+    Add_Motor_Instruction(Motor_Control_Turn_Left, 3000);
+    Add_Motor_Instruction(Motor_Delay, 1000);
+    Add_Motor_Instruction(Motor_Control_Turn_Left, 3000);
+    Execute_Motor_Instructions();
 }
 
 void    set_Motor_Speed(void)

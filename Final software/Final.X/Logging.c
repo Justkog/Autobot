@@ -1,8 +1,7 @@
 
 #include "autobot.h"
-//#include <plib.h>
 
-s8 logs[256];               //logs buffer
+s8 logs[LOG_BUFFER_SIZE];
 u32 id = 0;
 
 char    wait_for_empty_log_buffer()
