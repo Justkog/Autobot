@@ -1,7 +1,5 @@
 
-#include <p32xxxx.h>
-#include <sys/attribs.h>
-#include "types.h"
+#include "autobot.h"
 
 //#include <plib.h>
 
@@ -17,12 +15,13 @@ unsigned int Virt2Phy0(const void* p)
     return (int)p<0?((int)p&0x1FFFFFFFL):(unsigned int)((unsigned char*)p+0x40000000L);
 }
 
-void __ISR(_DMA_0_VECTOR, IPL4SOFT) DMA0HANDLER(void)
+//void __ISR(_DMA_0_VECTOR, ISR_IPL(PRIORITY_MIC)) DMA0HANDLER(void)
+void __ISR(_DMA_0_VECTOR, IPL6SOFT) DMA0HANDLER(void)
 {
     u32 i = 0;
     while (i < 16)
     {
-        log_key_val("b0", buffer[0][i]);
+        //log_key_val("b0", buffer[0][i]);
         //log_key_val("dest 1 value", buffer[1][i]);
         //buffer[0][i] = 0;
         i++;
@@ -98,7 +97,7 @@ void    init_DMA()
     DCH1INTbits.CHDDIE = 1;         // Enable Channel destination done interrupt*/
 
     // Master Channel
-    IPC10bits.DMA0IP = 4;            // Set Interrupt priority to 4
+    IPC10bits.DMA0IP = PRIORITY_MIC;            // Set Interrupt priority to 4
     IEC1bits.DMA0IE = 1;            // Enable DMA Channel 0 interrupts
 
     // Slave Channel

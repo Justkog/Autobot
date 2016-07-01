@@ -1,7 +1,5 @@
 
-#include <p32xxxx.h>
-#include <sys/attribs.h>
-#include "types.h"
+#include "autobot.h"
 
 /*
  *
@@ -24,28 +22,59 @@
  */
 
 u8  average_started = 0;
-s32 average = 0;
-s32 average_count = 30;
-s32 threshold = 50 * 100;
+s32 mic_1_average = 0;
+s32 mic_2_average = 0;
+s32 mic_3_average = 0;
+s32 threshold = SOUND_THRESHOLD * 128;
 u8  event_enabled = 1;
+u8  average_counter = 0;
 
 u8  print = 0;
 
-void __ISR(_ADC_VECTOR, IPL7SOFT) ADCHANDLER(void)
+void Reset_Mic_Procedure()
 {
-    s32 val0 = ADC1BUF0;                            // MIC3
-    s32 val1 = ADC1BUF1;                            // MIC2
-    s32 val2 = ADC1BUF2;                            // MIC1
-    ADC1BUF0;
-    ADC1BUF1;
-    ADC1BUF2;
+    average_counter = 0;
+}
 
-    if (val0 < -300)// || val1 > 250 || val2 < -300)
+void Print_average()
+{
+    log_key_val("mic 1", mic_1_average);
+    log_key_val("mic 2", mic_2_average);
+    log_key_val("mic 3", mic_3_average);
+    log_key_val("threshold", threshold);
+}
+
+//void __ISR(_ADC_VECTOR, ISR_IPL(PRIORITY_MIC)) ADCHANDLER(void)
+void __ISR(_ADC_VECTOR, IPL6SOFT) ADCHANDLER(void)
+{
+    s32 val3 = ADC1BUF0;                            // MIC3
+    s32 val2 = ADC1BUF1;                            // MIC2
+    s32 val1 = ADC1BUF2;                            // MIC1
+    //ADC1BUF0;
+    //ADC1BUF1;
+    //ADC1BUF2;
+
+    mic_1_average = val1 * 128 / SOUND_AVERAGE_VALUE_COUNT + mic_1_average - mic_1_average / SOUND_AVERAGE_VALUE_COUNT;
+    mic_2_average = val2 * 128 / SOUND_AVERAGE_VALUE_COUNT + mic_2_average - mic_2_average / SOUND_AVERAGE_VALUE_COUNT;
+    mic_3_average = val3 * 128 / SOUND_AVERAGE_VALUE_COUNT + mic_3_average - mic_3_average / SOUND_AVERAGE_VALUE_COUNT;
+
+    if (average_counter < SOUND_AVERAGE_VALUE_COUNT)
     {
-        /*put_str_ln("Event");
-        log_key_val("v0", val0);
-        log_key_val("v1", val1);
-        log_key_val("v2", val2);*/
+        average_counter++;
+        return ;
+    }
+
+    if (val1 * 128 < mic_1_average - threshold ||
+            val2 * 128 < mic_2_average - threshold ||
+            val3 * 128 < mic_3_average - threshold)
+    {
+        put_str_ln("Event");
+        log_key_val("mic 1", val1);
+        log_key_val("mic 1 av", mic_1_average / 128);
+        log_key_val("mic 2", val2);
+        log_key_val("mic 2 av", mic_2_average / 128);
+        log_key_val("mic 3", val3);
+        log_key_val("mic 3 av", mic_3_average / 128);
 
         //IEC1bits.DMA0IE = 1;
         DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
@@ -125,8 +154,9 @@ void __ISR(_ADC_VECTOR, IPL7SOFT) ADCHANDLER(void)
     // update of the average
     // (calculation is wrong as we remove a proportional part as the first element,
     // but the approximation is ok as long as we don't have too crazy values)
-    //average = val0 * 100 / average_count + average - average / average_count;
+    // average = val0 * 100 / average_count + average - average / average_count;
 
+    
     //log_key_val("value", ADC1BUF0);
 
     IFS0bits.AD1IF = 0;
@@ -198,13 +228,12 @@ void    init_ADC()
     IFS0bits.AD1IF = 0;
 
     // b) Select the ADC interrupt priority and subpriority
-    IPC5bits.AD1IP = 0x7;
+    IPC5bits.AD1IP = PRIORITY_MIC;
 
     // c) Enable the interruptions
     IEC0bits.AD1IE = 1;
 
     // 15. Start the conversion sequence by initiating sampling
-
     AD1CON1bits.ON = 1;
     
 }

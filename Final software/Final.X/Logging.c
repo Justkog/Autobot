@@ -19,6 +19,8 @@ char    wait_for_empty_log_buffer()
 
 void    put_log(s8 *str)
 {
+    if (!(*str))
+        return;
     u32 i = id;
     if (i)
     {
@@ -99,7 +101,8 @@ void    log_key_val(s8 *str, s32 nb)
     put_log("\r\n");
 }
 
-void    __ISR(_UART_1_VECTOR, IPL6SOFT) UARTHANDLER(void)
+//void    __ISR(_UART_1_VECTOR, ISR_IPL(PRIORITY_UART)) UARTHANDLER(void)
+void    __ISR(_UART_1_VECTOR, IPL5SOFT) UARTHANDLER(void)
 {
     if (logs[id])
         U1TXREG = logs[id++];
@@ -145,7 +148,7 @@ void    logging_init()
     // Interrupt Setup
     IEC1bits.U1TXIE = 0;                                // Switch interrupt OFF for setup
     IFS1bits.U1TXIF = 0;                                // Reset interrupt flag
-    IPC8bits.U1IP = 0x6;                                // Set priority to 6 (only ADC has higher priority)
+    IPC8bits.U1IP = PRIORITY_UART;                      // Set priority to 6 (only ADC has higher priority)
     U1STAbits.UTXISEL = 1;                              // Interrupt generated when all chars are transmitted
     U1STAbits.UTXEN = 1;                                // Transmit Enable bit
 

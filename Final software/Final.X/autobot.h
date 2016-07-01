@@ -9,11 +9,15 @@
 # define AUTOBOT_H
 
 # include <p32xxxx.h>
-# include "types.h"
 # include <sys/attribs.h>
+# include "config.h"
+# include "types.h"
 
-# define LOG_BUFFER_SIZE                256
-# define ACTION_TABLE_MAX_LENGTH        16
-# define EMERGENCY_STOP_BACKWARD_DELAY  500
+
+# define CAT(a, ...)                    a ## __VA_ARGS__
+# define TMP(a, ...)                    CAT(a, __VA_ARGS__)
+# define ISR_IPL(p)                     CAT(TMP(IPL, p), SOFT)
+
+# define STR(p)                         #p
 
 #endif

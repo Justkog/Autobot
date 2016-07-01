@@ -24,20 +24,22 @@ int main()
     pic_init();
     logging_init();
     button_init();
+    bumper_init();
     pwm_init();
     motor_timer_init();
 
     //put_str_ln("Initialising DMA...");
-    //init_DMA();
+    init_DMA();
 
     //put_str_ln("Initialising ADC...");
-    //init_ADC();
+    init_ADC();
 
     // setup des interrupts
     INTCONSET = _INTCON_MVEC_MASK;
     __builtin_enable_interrupts();
 
-    put_str_ln("Ready.");
+    if (VERBOSE_PIC_STATUS)
+        put_str_ln("Ready.");
 
     while (1)
     {

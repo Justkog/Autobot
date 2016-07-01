@@ -59,7 +59,7 @@ void    motor_timer_init(void)
     IFS0bits.T4IF = 0;
 
     //set priority
-    IPC4bits.T4IP = 3;
+    IPC4bits.T4IP = PRIORITY_MOTOR();
 
     //PR4 = 45000;                                     // 48 000 000 / 4 / 256 = 46 875 ticks for one second
 }
@@ -73,7 +73,8 @@ void    motor_timer_start(void)
     T4CONbits.ON = 1;
 }
 
-void __ISR(_TIMER_4_VECTOR, IPL3SOFT) motorTimerHANDLER(void)
+//void __ISR(_TIMER_4_VECTOR, ISR_IPL(PRIORITY_MOTOR)) motorTimerHANDLER(void)
+void __ISR(_TIMER_4_VECTOR, IPL7SOFT) motorTimerHANDLER(void)
 {
     if (motor_delay_ms == 0)
     {
