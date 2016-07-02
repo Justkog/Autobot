@@ -13,10 +13,21 @@ void    pic_init(void)
         // setup des GPIO (General Purpose Input Output)
             // les TRIS definissent la direction du pin
             // les LAT definissent l'etat du pin
-        // LED en output
-            LATCbits.LATC1 = 1;
-            ANSELCbits.ANSC1 = 0;   // set pin mode to digital (0 = digital, 1 = analogic)
-            TRISCbits.TRISC1 = 0;   // 0 = output
+    
+    // LED en output
+    LATCbits.LATC2 = 1;
+    ANSELCbits.ANSC2 = 0;   // set pin mode to digital (0 = digital, 1 = analogic)
+    TRISCbits.TRISC2 = 0;   // 0 = output
+}
+
+void    Stop_Green_Led(void)
+{
+    LATCbits.LATC2 = 0;
+}
+
+void    Start_Green_Led(void)
+{
+    LATCbits.LATC2 = 1;
 }
 
 int main()
@@ -27,9 +38,10 @@ int main()
     bumper_init();
     pwm_init();
     motor_timer_init();
+    button_timer_init();
 
     //put_str_ln("Initialising DMA...");
-    init_DMA();
+    //init_DMA();
 
     //put_str_ln("Initialising ADC...");
     init_ADC();

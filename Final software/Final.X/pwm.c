@@ -31,10 +31,10 @@ void    pwm_init(void)
     OC2CONbits.OCTSEL = 1;  // L298 - Input 3
     OC1CONbits.OCTSEL = 1;  // L298 - Input 4
             // 2. Set the PWM duty cycle by writing to the OCxRS register.
-    OC3RS = 128;
-    OC4RS = 128;
-    OC2RS = 128;
-    OC1RS = 128;
+    OC3RS = MOTOR_PWM_PERIOD;
+    OC4RS = MOTOR_PWM_PERIOD;
+    OC2RS = MOTOR_PWM_PERIOD;
+    OC1RS = MOTOR_PWM_PERIOD;
             // 3. Write the OCxR register with the initial duty cycle.
     OC3R = 0;
     OC4R = 0;

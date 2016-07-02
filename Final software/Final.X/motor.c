@@ -7,26 +7,58 @@
 
 #include "autobot.h"
 
-u8 save_available = 1;
+void    Stop_Bot(u16 arg);
+void    Motor_Control_Stop(u16 delay_ms);
+
+u8      save_available = 1;
 
 // set motor handicap with mechanical testing to balance the manufacture differences
-u8 motor_1_handicap = 85;
-u8 motor_2_handicap = 100;
+u8      motor_1_handicap = 85;
+u8      motor_2_handicap = 100;
 
-s8 motor_step = 1;
-s8 motor_gear[7] = {-100, -80, -60, 0, 60, 80, 100};
+s8      motor_step = 1;
+s8      motor_gear[7] = {-100, -80, -60, 0, 60, 80, 100};
 
-u8 motor_gear_current_1 = 3;
-u8 motor_gear_current_2 = 3;
+u8      motor_gear_current_1 = 3;
+u8      motor_gear_current_2 = 3;
 
-u8 prev_motor_gear_current_1 = 0;
-u8 prev_motor_gear_current_2 = 0;
+u8      prev_motor_gear_current_1 = 3;
+u8      prev_motor_gear_current_2 = 3;
 
 u8      action_table_length = 0;
 u8      action_table_index = 0;
 void    (*action_table[ACTION_TABLE_MAX_LENGTH])(u16);
 u16     action_table_arg[ACTION_TABLE_MAX_LENGTH];
 
+u8      keep_rolling_mode = 0;          // Mode to listen while rolling
+u8      flee_mode = 0;                  // Mode to flee the sound source
+u8      auto_circle_mode = 0;           // Mode to circle infinitely in a threshold determined radius
+
+u8      Is_Keep_Rolling_Mode(void)
+{
+    return (keep_rolling_mode);
+}
+
+void    Switch_Keep_Rolling_Mode(void)
+{
+    if (keep_rolling_mode)
+        keep_rolling_mode = 0;
+    else
+        keep_rolling_mode = 1;
+}
+
+u8      Is_Flee_Mode(void)
+{
+    return (flee_mode);
+}
+
+void    Switch_Flee_Mode(void)
+{
+    if (flee_mode)
+        flee_mode = 0;
+    else
+        flee_mode = 1;
+}
 
 void    Reset_Motor_Instructions(void)
 {
@@ -75,6 +107,7 @@ void    Execute_Motor_Instructions(void)
     if(action_table_index < ACTION_TABLE_MAX_LENGTH &&
             action_table[action_table_index])
     {
+        Disable_ADC();
         if (VERBOSE_MOTOR_SOFTWARE)
             log_key_val("Execute instruction number", action_table_index);
         (*action_table[action_table_index])(action_table_arg[action_table_index]);
@@ -83,6 +116,7 @@ void    Execute_Motor_Instructions(void)
     else
     {
         Reset_Motor_Instructions();
+        Enable_ADC();
     }
 }
 
@@ -158,6 +192,9 @@ void    Motor_Control_Emergency_Stop()
     motor_timer_init();
     Reset_Motor_Instructions();
     Add_Motor_Instruction(Motor_Control_Backward, EMERGENCY_STOP_BACKWARD_DELAY);
+    Add_Motor_Instruction(Motor_Control_Stop, 50);
+    Add_Motor_Instruction(Motor_Control_Stop, 3000);
+    Add_Motor_Instruction(Stop_Bot, 0);
     Execute_Motor_Instructions();
 }
 
@@ -251,14 +288,20 @@ void    set_Motor_1_Speed(void)
     s8 speed = motor_gear[motor_gear_current_1];
     if (speed < 0)
     {
-        OC3RS = (100 + speed) * motor_1_handicap * 128 / 10000;
-        OC4RS = motor_1_handicap * 128 / 100;
+        OC3RS = (100 + speed) * motor_1_handicap * MOTOR_PWM_PERIOD / 10000;
+        OC4RS = MOTOR_PWM_PERIOD;
+    }
+    else if (speed > 0)
+    {
+        OC3RS = MOTOR_PWM_PERIOD;
+        OC4RS = (100 - speed) * motor_1_handicap * MOTOR_PWM_PERIOD / 10000;
     }
     else
     {
-        OC3RS = motor_1_handicap * 128 / 100;
-        OC4RS = (100 - speed) * motor_1_handicap * 128 / 10000;
+        OC3RS = MOTOR_PWM_PERIOD;
+        OC4RS = MOTOR_PWM_PERIOD;
     }
+    
     if (VERBOSE_MOTOR_HARDWARE)
     {
         put_str_ln("motor 1");
@@ -272,14 +315,20 @@ void    set_Motor_2_Speed(void)
     s8 speed = motor_gear[motor_gear_current_2];
     if (speed < 0)
     {
-        OC2RS = (100 + speed) * motor_2_handicap * 128 / 10000;
-        OC1RS = motor_2_handicap * 128 / 100;
+        OC2RS = (100 + speed) * motor_2_handicap * MOTOR_PWM_PERIOD / 10000;
+        OC1RS = MOTOR_PWM_PERIOD;
+    }
+    else if (speed > 0)
+    {
+        OC2RS = MOTOR_PWM_PERIOD;
+        OC1RS = (100 - speed) * motor_2_handicap * MOTOR_PWM_PERIOD / 10000;
     }
     else
     {
-        OC2RS = motor_2_handicap * 128 / 100;
-        OC1RS = (100 - speed) * motor_2_handicap * 128 / 10000;
+        OC2RS = MOTOR_PWM_PERIOD;
+        OC1RS = MOTOR_PWM_PERIOD;
     }
+    
     if (VERBOSE_MOTOR_HARDWARE)
     {
         put_str_ln("motor 2");

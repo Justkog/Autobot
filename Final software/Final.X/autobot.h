@@ -14,10 +14,20 @@
 # include "types.h"
 
 
-# define CAT(a, ...)                    a ## __VA_ARGS__
-# define TMP(a, ...)                    CAT(a, __VA_ARGS__)
-# define ISR_IPL(p)                     CAT(TMP(IPL, p), SOFT)
+# define CONCAT(x,y,z) x##y##z
+# define IPL_ISR(x) CONCAT(IPL,x,SOFT)
 
-# define STR(p)                         #p
+void    Motor_Control_Turn_Left(u16 delay);
+void    Motor_Control_Turn_Right(u16 delay);
+void    Motor_Control_Stop(u16 delay_ms);
+void    Motor_Control_Emergency_Stop();
+void    Motor_Control_Backward(u16 delay);
+void    Motor_Control_Forward(u16 delay);
+
+void    Start_Bot(void);
+void    Stop_Bot(u16 arg);
+
+void    Enable_ADC(void);
+void    Disable_ADC(void);
 
 #endif

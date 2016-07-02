@@ -6,7 +6,7 @@ u32 id = 0;
 
 char    wait_for_empty_log_buffer()
 {
-    while (id)
+    while (id && id < LOG_BUFFER_SIZE)
     {
         while (U1STAbits.UTXBF)
             ;
@@ -15,6 +15,8 @@ char    wait_for_empty_log_buffer()
         else
             id = 0;
     }
+    if (id >= LOG_BUFFER_SIZE)
+        id = 0;
 }
 
 void    put_log(s8 *str)
@@ -101,8 +103,7 @@ void    log_key_val(s8 *str, s32 nb)
     put_log("\r\n");
 }
 
-//void    __ISR(_UART_1_VECTOR, ISR_IPL(PRIORITY_UART)) UARTHANDLER(void)
-void    __ISR(_UART_1_VECTOR, IPL5SOFT) UARTHANDLER(void)
+void    __ISR(_UART_1_VECTOR, IPL_ISR(PRIORITY_UART)) UARTHANDLER(void)
 {
     if (logs[id])
         U1TXREG = logs[id++];

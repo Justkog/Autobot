@@ -26,66 +26,167 @@ s32 mic_1_average = 0;
 s32 mic_2_average = 0;
 s32 mic_3_average = 0;
 s32 threshold = SOUND_THRESHOLD * 128;
-u8  event_enabled = 1;
+s32 thresholds[5] = { SOUND_THRESHOLD_1 * 128, 
+                        SOUND_THRESHOLD_2 * 128,
+                        SOUND_THRESHOLD_3 * 128, 
+                        SOUND_THRESHOLD_4 * 128,
+                        SOUND_THRESHOLD_5 * 128};
+u8  selected_threshold_index = 1;
 u8  average_counter = 0;
 
-u8  print = 0;
+// to be deleted
+u8  event_enabled = 1;
 
-void Reset_Mic_Procedure()
+u16 register_values = 0;
+
+// sound based configuration : 
+// -> 2 claps less than 2 sec appart (and more than 500ms each) = flee switch
+// -> 3 claps less than 3 sec appart (and more than 500ms each) = keep rolling switch
+// -> 4 claps less than 4 sec appart (and more than 500ms each) = auto circle switch
+
+// User feedback after each config :
+// 2 leds shutdown 2 sec
+// red led lights up 3 sec if flee mode
+// green led lights up 3 sec if keep rolling mode
+// red led 500 ms blinking 3 sec if auto circle mode
+// green led 500 ms blinking 3 sec if none
+// back to green only
+
+void Reset_Mic_Procedure(void)
 {
     average_counter = 0;
+    threshold = thresholds[selected_threshold_index];
 }
 
-void Print_average()
+void Change_Threshold(void)
 {
-    log_key_val("mic 1", mic_1_average);
-    log_key_val("mic 2", mic_2_average);
-    log_key_val("mic 3", mic_3_average);
+    selected_threshold_index++;
+    if (selected_threshold_index > 4)
+        selected_threshold_index = 0;
+    if (VERBOSE_MIC_SOFTWARE)
+        log_key_val("threshold change to", selected_threshold_index);
+    threshold = thresholds[selected_threshold_index];
+}
+
+void    Show_Battery_Status(void)
+{
+    u8 battery_level = 0;
+    if (mic_3_average > BATTERY_LEVEL_100_MIC3_AVG)
+        battery_level = 4;
+    else if (mic_3_average > BATTERY_LEVEL_75_MIC3_AVG)
+        battery_level = 3;
+    else if (mic_3_average > BATTERY_LEVEL_50_MIC3_AVG)
+        battery_level = 2;
+    else
+        battery_level = 1;
+    
+    if (VERBOSE_MIC_SOFTWARE)
+        log_key_val("battery status", battery_level);
+    
+}
+
+void Print_average(void)
+{
+    log_key_val("mic 1 avg", mic_1_average);
+    log_key_val("mic 2 avg", mic_2_average);
+    log_key_val("mic 3 avg", mic_3_average);
     log_key_val("threshold", threshold);
 }
 
-//void __ISR(_ADC_VECTOR, ISR_IPL(PRIORITY_MIC)) ADCHANDLER(void)
-void __ISR(_ADC_VECTOR, IPL6SOFT) ADCHANDLER(void)
+void    Disable_ADC(void)
 {
-    s32 val3 = ADC1BUF0;                            // MIC3
-    s32 val2 = ADC1BUF1;                            // MIC2
-    s32 val1 = ADC1BUF2;                            // MIC1
+    IEC0bits.AD1IE = 0;                         // Disable ADC interrutpions
+}
+
+void    Enable_ADC(void)
+{
+    IEC0bits.AD1IE = 1;                         // Disable ADC interrutpions
+}
+
+void __ISR(_ADC_VECTOR, IPL_ISR(PRIORITY_MIC)) ADCHANDLER(void)
+{
+    s32 val3 = ADC1BUF0 * 128;                            // MIC3 (left)
+    s32 val2 = ADC1BUF1 * 128;                            // MIC2 (back)
+    s32 val1 = ADC1BUF2 * 128;                            // MIC1 (right)
     //ADC1BUF0;
     //ADC1BUF1;
     //ADC1BUF2;
 
-    mic_1_average = val1 * 128 / SOUND_AVERAGE_VALUE_COUNT + mic_1_average - mic_1_average / SOUND_AVERAGE_VALUE_COUNT;
-    mic_2_average = val2 * 128 / SOUND_AVERAGE_VALUE_COUNT + mic_2_average - mic_2_average / SOUND_AVERAGE_VALUE_COUNT;
-    mic_3_average = val3 * 128 / SOUND_AVERAGE_VALUE_COUNT + mic_3_average - mic_3_average / SOUND_AVERAGE_VALUE_COUNT;
+    /*mic_1_average = val1 / SOUND_AVERAGE_VALUE_COUNT + mic_1_average - mic_1_average / SOUND_AVERAGE_VALUE_COUNT;
+    mic_2_average = val2 / SOUND_AVERAGE_VALUE_COUNT + mic_2_average - mic_2_average / SOUND_AVERAGE_VALUE_COUNT;
+    mic_3_average = val3 / SOUND_AVERAGE_VALUE_COUNT + mic_3_average - mic_3_average / SOUND_AVERAGE_VALUE_COUNT;*/
 
+    if (register_values)
+    {
+        Register_Value(register_values, val1, val2, val3);
+        register_values++;
+        if (register_values >= SOUND_BUFFER_SIZE)
+        {
+            register_values = 0;
+            if (VERBOSE_MIC_HARDWARE)
+            {
+                Print_Event_Values();
+                Print_Buffer_Values(18);
+            }
+            if (VERBOSE_MIC_SOFTWARE)
+                put_str_ln("Recording done");
+            s32 count = 0;
+            while (count < 320000)
+                count++;
+            if (!Is_Bot_Started())
+                IEC0bits.AD1IE = 1;                 // Reactivate ADC interruptions
+        }
+        IFS0bits.AD1IF = 0;                         // Reset ADC interrutpion flag
+        return ;
+    }
+    
     if (average_counter < SOUND_AVERAGE_VALUE_COUNT)
     {
+        mic_1_average = val1 / SOUND_AVERAGE_VALUE_COUNT + mic_1_average - mic_1_average / SOUND_AVERAGE_VALUE_COUNT;
+        mic_2_average = val2 / SOUND_AVERAGE_VALUE_COUNT + mic_2_average - mic_2_average / SOUND_AVERAGE_VALUE_COUNT;
+        mic_3_average = val3 / SOUND_AVERAGE_VALUE_COUNT + mic_3_average - mic_3_average / SOUND_AVERAGE_VALUE_COUNT;
         average_counter++;
         return ;
     }
 
-    if (val1 * 128 < mic_1_average - threshold ||
-            val2 * 128 < mic_2_average - threshold ||
-            val3 * 128 < mic_3_average - threshold)
+    if (val1 < mic_1_average - threshold ||
+            val2 < mic_2_average - threshold ||
+            val3 < mic_3_average - threshold)
     {
-        put_str_ln("Event");
-        log_key_val("mic 1", val1);
-        log_key_val("mic 1 av", mic_1_average / 128);
-        log_key_val("mic 2", val2);
-        log_key_val("mic 2 av", mic_2_average / 128);
-        log_key_val("mic 3", val3);
-        log_key_val("mic 3 av", mic_3_average / 128);
-
+        //DCH0CONbits.CHEN = 1;                       // Turn DMA channel ON, initiate a transfer
+        register_values = 1;
+        
+        Register_Event_Values(val1, val2, val3, 
+                                mic_1_average, mic_2_average, mic_3_average,
+                                threshold);
+        
+        if (VERBOSE_MIC_HARDWARE)
+        {
+            /*put_str_ln("Event");
+            log_key_val("mic 1", val1);
+            log_key_val("mic 1 av", mic_1_average);
+            log_key_val("mic 2", val2);
+            log_key_val("mic 2 av", mic_2_average);
+            log_key_val("mic 3", val3);
+            log_key_val("mic 3 av", mic_3_average);             //*/
+        }
+        
         //IEC1bits.DMA0IE = 1;
-        DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
+        //DCH1CONbits.CHEN = 1;                       // Turn DMA channel ON, initiate a transfer
+        //DCH0CONbits.CHEN = 1;                       // Turn DMA channel ON, initiate a transfer
         //DMACONbits.ON = 1;
-
-        IFS0bits.AD1IF = 0;
-        IEC0bits.AD1IE = 0;
+        
+        IFS0bits.AD1IF = 0;                         // Reset ADC interrutpion flag
+        //IEC0bits.AD1IE = 0;                         // Disable ADC interrutpions
+        return ;
 
         //IEC1bits.DMA0IE = 1;
         //DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
     }
+    
+    mic_1_average = val1 / SOUND_AVERAGE_VALUE_COUNT + mic_1_average - mic_1_average / SOUND_AVERAGE_VALUE_COUNT;
+    mic_2_average = val2 / SOUND_AVERAGE_VALUE_COUNT + mic_2_average - mic_2_average / SOUND_AVERAGE_VALUE_COUNT;
+    mic_3_average = val3 / SOUND_AVERAGE_VALUE_COUNT + mic_3_average - mic_3_average / SOUND_AVERAGE_VALUE_COUNT;
 
     /*if (!average_started && (val0 > -25 || val0 < -100))
     {
@@ -159,10 +260,10 @@ void __ISR(_ADC_VECTOR, IPL6SOFT) ADCHANDLER(void)
     
     //log_key_val("value", ADC1BUF0);
 
-    IFS0bits.AD1IF = 0;
+    IFS0bits.AD1IF = 0;                         // Reset ADC interrutpion flag
 }
 
-void    init_ADC()
+void    init_ADC(void)
 {
     // 1. Configure the analog port pins
     TRISBbits.TRISB0 = 1;
@@ -215,10 +316,10 @@ void    init_ADC()
 
     // 11. Select the sample time (if autoconvert used)
     // Auto sample time bits
-    AD1CON3bits.SAMC = 3;           // 3 TAD
+    AD1CON3bits.SAMC = 5;           // 3 TAD
 
     // 12. Select the ADC clock prescaler
-    AD1CON3bits.ADCS = 2;  // TAD = 32 * TPB = 2 * (ADCS + 1) * TPB
+    AD1CON3bits.ADCS = 3;  // TAD = 32 * TPB = 2 * (ADCS + 1) * TPB
 
     // 13. Turn the ADC module on
     //AD1CON1bits.ON = 1;
@@ -235,5 +336,7 @@ void    init_ADC()
 
     // 15. Start the conversion sequence by initiating sampling
     AD1CON1bits.ON = 1;
+    
+    Reset_Mic_Procedure();
     
 }
