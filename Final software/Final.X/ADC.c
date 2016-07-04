@@ -18,7 +18,8 @@
  * 4/ Once this is done the workflow restarts from the beginning
  * 
  *
- * May need to disable the sound detection when the bot is moving to avoid movement noise, wind may also be an issue
+ * Need to disable the sound detection when the bot is moving to avoid movement noise, 
+ * wind may also be an issue
  */
 
 u8  average_started = 0;
@@ -31,7 +32,7 @@ s32 thresholds[5] = { SOUND_THRESHOLD_1 * 128,
                         SOUND_THRESHOLD_3 * 128, 
                         SOUND_THRESHOLD_4 * 128,
                         SOUND_THRESHOLD_5 * 128};
-u8  selected_threshold_index = 1;
+u8  selected_threshold_index = 2;
 u8  average_counter = 0;
 
 // to be deleted
@@ -40,17 +41,27 @@ u8  event_enabled = 1;
 u16 register_values = 0;
 
 // sound based configuration : 
-// -> 2 claps less than 2 sec appart (and more than 500ms each) = flee switch
-// -> 3 claps less than 3 sec appart (and more than 500ms each) = keep rolling switch
+// -> 3 claps less than 2 sec appart (and more than 500ms each) = flee switch
 // -> 4 claps less than 4 sec appart (and more than 500ms each) = auto circle switch
 
 // User feedback after each config :
 // 2 leds shutdown 2 sec
 // red led lights up 3 sec if flee mode
-// green led lights up 3 sec if keep rolling mode
-// red led 500 ms blinking 3 sec if auto circle mode
+// green led lights up 3 sec if auto circle mode
 // green led 500 ms blinking 3 sec if none
 // back to green only
+
+u8  sound_config_claps = 0;
+
+u8  Get_Sound_Config_Claps(void)
+{
+    return (sound_config_claps);
+}
+
+u8  Reset_Sound_Config_Claps(void)
+{
+    sound_config_claps = 0;
+}
 
 void Reset_Mic_Procedure(void)
 {
@@ -83,6 +94,17 @@ void    Show_Battery_Status(void)
     if (VERBOSE_MIC_SOFTWARE)
         log_key_val("battery status", battery_level);
     
+    Stop_Green_Led();
+    Value_Display(battery_level);
+}
+
+void    Show_Threshold_Status(void)
+{
+    if (VERBOSE_MIC_SOFTWARE)
+        log_key_val("threshold status", selected_threshold_index + 1);
+    
+    Stop_Green_Led();
+    Value_Display(selected_threshold_index + 1);
 }
 
 void Print_average(void)
@@ -105,9 +127,9 @@ void    Enable_ADC(void)
 
 void __ISR(_ADC_VECTOR, IPL_ISR(PRIORITY_MIC)) ADCHANDLER(void)
 {
-    s32 val3 = ADC1BUF0 * 128;                            // MIC3 (left)
+    s32 val3 = ADC1BUF0 * 128;                            // MIC3 (right)
     s32 val2 = ADC1BUF1 * 128;                            // MIC2 (back)
-    s32 val1 = ADC1BUF2 * 128;                            // MIC1 (right)
+    s32 val1 = ADC1BUF2 * 128;                            // MIC1 (left)
     //ADC1BUF0;
     //ADC1BUF1;
     //ADC1BUF2;
@@ -120,19 +142,54 @@ void __ISR(_ADC_VECTOR, IPL_ISR(PRIORITY_MIC)) ADCHANDLER(void)
     {
         Register_Value(register_values, val1, val2, val3);
         register_values++;
-        if (register_values >= SOUND_BUFFER_SIZE)
+        if (register_values >= SOUND_BUFFER_SIZE - 1)
         {
             register_values = 0;
             if (VERBOSE_MIC_HARDWARE)
             {
                 Print_Event_Values();
-                Print_Buffer_Values(18);
+                Print_Buffer_Values(16);
             }
             if (VERBOSE_MIC_SOFTWARE)
                 put_str_ln("Recording done");
+            
+            // Analyse the sound
+            if (Is_Bot_Started())
+            {
+                // Analyse the sound and act
+                Analyse_And_Move();
+            }
+            else
+            {
+                // Register the sound based config and reset the related timer
+                if (!Is_Sound_Timer_Registering_Config())
+                {
+                    Start_Sound_Timer_Config_Register();
+                    Start_Sound_Timer();
+                    sound_config_claps++;
+                }
+                else
+                {
+                    if (Get_Sound_Half_Seconds_Since_Sound() > 0)
+                    {
+                        Stop_Sound_Timer();
+                        sound_config_claps++;
+                        if (sound_config_claps == 4)
+                        {
+                            Switch_Auto_Circle_Mode();
+                            Stop_Sound_Timer_Config_Register();
+                        }
+                        else
+                            Start_Sound_Timer();
+                    }
+                }
+            }
+            
+            //wait before resampling the ADC
             s32 count = 0;
             while (count < 320000)
                 count++;
+            
             if (!Is_Bot_Started())
                 IEC0bits.AD1IE = 1;                 // Reactivate ADC interruptions
         }
@@ -140,7 +197,7 @@ void __ISR(_ADC_VECTOR, IPL_ISR(PRIORITY_MIC)) ADCHANDLER(void)
         return ;
     }
     
-    if (average_counter < SOUND_AVERAGE_VALUE_COUNT)
+    if (average_counter <= SOUND_AVERAGE_VALUE_COUNT)
     {
         mic_1_average = val1 / SOUND_AVERAGE_VALUE_COUNT + mic_1_average - mic_1_average / SOUND_AVERAGE_VALUE_COUNT;
         mic_2_average = val2 / SOUND_AVERAGE_VALUE_COUNT + mic_2_average - mic_2_average / SOUND_AVERAGE_VALUE_COUNT;

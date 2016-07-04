@@ -30,6 +30,11 @@ void    Start_Green_Led(void)
     LATCbits.LATC2 = 1;
 }
 
+void    Switch_Green_Led(void)
+{
+    LATCbits.LATC2 = LATCbits.LATC2 ^ 1;
+}
+
 int main()
 {
     pic_init();
@@ -39,6 +44,7 @@ int main()
     pwm_init();
     motor_timer_init();
     button_timer_init();
+    sound_config_timer_init();
 
     //put_str_ln("Initialising DMA...");
     //init_DMA();

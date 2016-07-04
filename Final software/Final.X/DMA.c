@@ -25,7 +25,7 @@ unsigned int Virt2Phy0(const void* p)
 
 void    Print_Buffer_Values(u8 count)
 {
-    u32 i = 0;
+    u8 i = 0;
     while (i < count)
     {
         log_key_val("m1", buffer[2][i] * 128);
@@ -65,6 +65,98 @@ void    Register_Value(u16 index, s32 val1, s32 val2, s32 val3)
     buffer[0][index] = val3 / 128;
 }
 
+s32     Get_Buffer_Avg(u8 buffer_id)
+{
+    if (buffer_id == 0)
+        return (mic_3_avg);
+    else if (buffer_id == 1)
+        return (mic_2_avg);
+    else if (buffer_id == 2)
+        return (mic_3_avg);
+}
+
+/*
+ *
+ * This function is used to find the sound in the mic following the one which triggered
+ * It also provides the delay behind the main mic in ticks
+ *  
+ */
+
+u8     Find_Next_Mic(u8 start_tick, u8 *ticks_ahead, s32 threshold,  u8 start_buffer)
+{
+    u8 i = start_tick;
+    while (i < SOUND_BUFFER_SIZE)
+    {
+        u8 buffer_id = 0;
+        while (buffer_id < 3)
+        {
+            if (buffer_id == start_buffer)
+            {
+                buffer_id++;
+                continue;
+            }
+            s32 avg = Get_Buffer_Avg(buffer_id);
+            if (buffer[buffer_id][i] * 128 < avg - threshold)
+            {
+                *ticks_ahead = i;
+                return (buffer_id);
+            }
+            buffer_id++;
+        }
+        i++;
+    }
+    *ticks_ahead = 0;
+    return (3);
+}
+
+/*
+ * This function calculates the turn delay
+ * in case the right or left mic triggered the event
+ * 
+ * found_mic is the second receiver mic
+ * if it corresponds to the second front facing (close_mic)
+ * we get a shortened delay compared to 60°
+ * 
+ * else we get a longer delay compared to 60°
+ */
+
+u16     Calculate_Turn_Delay(u8 found_mic, u8 close_mic, u8 far_mic, u8 ticks_ahead)
+{
+    u16 turn_delay = SIXTY_DEGREES_TURN_DELAY;             // Default turn delay
+    s16 turn_precision = 0;
+    if (far_mic == found_mic)
+    {
+        // second is back so we turn more
+        turn_precision = (MIC_ADC_TICKS_DISTANCE - ticks_ahead) * TICK_DELAY_FACTOR;
+    }
+    else if (close_mic == found_mic)
+    {
+        // second is right, 25 represents the max observed ticks ahead
+        turn_precision = (-MIC_ADC_TICKS_DISTANCE + ticks_ahead) * TICK_DELAY_FACTOR;
+    }
+    if (turn_precision < -turn_delay)
+    {
+        turn_precision = -turn_delay + TICK_DELAY_FACTOR;
+    }
+    turn_delay = turn_delay + turn_precision;
+    return (turn_delay);
+}
+
+/*
+ * Special function for back mic,
+ * The more ticks from the next mic,
+ * The more we have to turn
+ */
+
+u16     Calculate_Back_Turn_Delay(u8 ticks_ahead)
+{
+    u16 turn_delay = SIXTY_DEGREES_TURN_DELAY * 2;             // Default turn delay
+    s16 turn_precision = 0;
+    turn_precision = ticks_ahead * TICK_DELAY_FACTOR;
+    turn_delay = turn_delay + turn_precision;
+    return (turn_delay);
+}
+
 void    Analyse_And_Move()
 {
     // Mic 1 is the first sequentially sampled,
@@ -74,6 +166,13 @@ void    Analyse_And_Move()
     // a sound may be seen on mic 1 and not mic 3
     // even if they receive it at the exact same moment
 
+    if (VERBOSE_MIC_SOFTWARE)
+    {
+        log_key_val("m1", buffer[2][0] * 128);
+        log_key_val("m2", buffer[1][0] * 128);
+        log_key_val("m3", buffer[0][0] * 128);
+    }
+    
     // if all mics recorded a surge, do nothing (vibrations)
     if (buffer[2][0] * 128 < mic_1_avg - current_threshold && 
             buffer[1][0] * 128 < mic_2_avg - current_threshold &&
@@ -91,8 +190,8 @@ void    Analyse_And_Move()
     }
 
     // if right and left mic, go straight
-    else if (buffer[2][0] * 128 < mic_1_avg - current_threshold / 3 && 
-            buffer[0][0] * 128 < mic_3_avg - current_threshold / 3)
+    else if (buffer[2][0] * 128 < mic_1_avg - current_threshold / 2 && 
+            buffer[0][0] * 128 < mic_3_avg - current_threshold / 2)
     {
         if (VERBOSE_MOTOR_SOFTWARE)
             put_str_ln("Going straight");
@@ -101,9 +200,11 @@ void    Analyse_And_Move()
             motor_timer_init();
             Reset_Motor_Instructions();
             Reset_Mic_Procedure();
+            Add_Motor_Instruction(Motor_Control_Forward, 100);
+            Add_Motor_Instruction(Motor_Control_Forward, 500);
             Add_Motor_Instruction(Motor_Control_Forward, 1000);
             Add_Motor_Instruction(Motor_Control_Stop, 50);
-            Add_Motor_Instruction(Motor_Control_Stop, NEW_RECORD_DELAY + 500);
+            Add_Motor_Instruction(Motor_Control_Stop, NEW_RECORD_DELAY);
             Add_Motor_Instruction(Enable_ADC, 0);
             Execute_Motor_Instructions();
         }
@@ -112,15 +213,29 @@ void    Analyse_And_Move()
     // if left mic, turn left
     else if(buffer[2][0] * 128 < mic_1_avg - current_threshold)
     {
+        u8 ticks_ahead = 0;
+        u8 next_mic = Find_Next_Mic(0, &ticks_ahead, current_threshold / 2, 2);
+        u16 turn_delay = Calculate_Turn_Delay(next_mic, 0, 1, ticks_ahead);
         if (VERBOSE_MOTOR_SOFTWARE)
+        {
             put_str_ln("Going left");
+            log_key_val("next mic is", next_mic);
+            log_key_val("ticks ahead", ticks_ahead);
+            log_key_val("delay", turn_delay);
+        }
         if (MOVEMENT_ACTIVATED)
         {
             motor_timer_init();
             Reset_Motor_Instructions();
             Reset_Mic_Procedure();
             Add_Motor_Instruction(Motor_Control_Forward, 50);
-            Add_Motor_Instruction(Motor_Control_Turn_Left, 300);
+            Add_Motor_Instruction(Motor_Control_Turn_Left, turn_delay);
+            Add_Motor_Instruction(Motor_Control_Forward, 50);
+            Add_Motor_Instruction(Motor_Control_Forward, 50);
+            Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
+            Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
+            Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
+            Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Stop, 50);
             Add_Motor_Instruction(Motor_Control_Stop, NEW_RECORD_DELAY);
             Add_Motor_Instruction(Enable_ADC, 0);
@@ -131,15 +246,29 @@ void    Analyse_And_Move()
     // if right mic, turn right
     else if(buffer[0][0] * 128 < mic_3_avg - current_threshold)
     {
+        u8 ticks_ahead = 0;
+        u8 next_mic = Find_Next_Mic(0, &ticks_ahead, current_threshold / 2, 0);
+        u16 turn_delay = Calculate_Turn_Delay(next_mic, 2, 1, ticks_ahead);
         if (VERBOSE_MOTOR_SOFTWARE)
+        {
             put_str_ln("Going right");
+            log_key_val("next mic is", next_mic);
+            log_key_val("ticks ahead", ticks_ahead);
+            log_key_val("delay", turn_delay);
+        }
         if (MOVEMENT_ACTIVATED)
         {
             motor_timer_init();
             Reset_Motor_Instructions();
             Reset_Mic_Procedure();
             Add_Motor_Instruction(Motor_Control_Forward, 50);
-            Add_Motor_Instruction(Motor_Control_Turn_Right, 300);
+            Add_Motor_Instruction(Motor_Control_Turn_Right, turn_delay);
+            Add_Motor_Instruction(Motor_Control_Forward, 50);
+            Add_Motor_Instruction(Motor_Control_Forward, 50);
+            Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
+            Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
+            Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
+            Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Stop, 50);
             Add_Motor_Instruction(Motor_Control_Stop, NEW_RECORD_DELAY);
             Add_Motor_Instruction(Enable_ADC, 0);
@@ -150,15 +279,34 @@ void    Analyse_And_Move()
     // if back mic, turn around approx 140°
     else if(buffer[1][0] * 128 < mic_2_avg - current_threshold)
     {
+        u8 ticks_ahead = 0;
+        u8 next_mic = Find_Next_Mic(0, &ticks_ahead, current_threshold / 2, 1);
+        u16 turn_delay = Calculate_Back_Turn_Delay(ticks_ahead);
         if (VERBOSE_MOTOR_SOFTWARE)
+        {
             put_str_ln("Going back");
+            log_key_val("next mic is", next_mic);
+            log_key_val("ticks ahead", ticks_ahead);
+            log_key_val("delay", turn_delay);
+        }
         if (MOVEMENT_ACTIVATED)
         {
             motor_timer_init();
             Reset_Motor_Instructions();
             Reset_Mic_Procedure();
             Add_Motor_Instruction(Motor_Control_Backward, 50);
-            Add_Motor_Instruction(Motor_Control_Turn_Right, 1000);
+            if (next_mic == 2)
+                Add_Motor_Instruction(Motor_Control_Turn_Left, turn_delay);
+            else
+                Add_Motor_Instruction(Motor_Control_Turn_Right, turn_delay);
+            Add_Motor_Instruction(Motor_Control_Forward, 50);
+            Add_Motor_Instruction(Motor_Control_Forward, 50);
+            Add_Motor_Instruction(Motor_Control_Forward, 50);
+            Add_Motor_Instruction(Motor_Control_Forward, 50);
+            Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
+            Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
+            Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
+            Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Stop, 50);
             Add_Motor_Instruction(Motor_Control_Stop, NEW_RECORD_DELAY);
             Add_Motor_Instruction(Enable_ADC, 0);
@@ -167,7 +315,7 @@ void    Analyse_And_Move()
     }
 }
 
-void __ISR(_DMA_2_VECTOR, IPL_ISR(PRIORITY_MIC)) DMAHANDLER(void)
+/*void __ISR(_DMA_2_VECTOR, IPL_ISR(PRIORITY_MIC)) DMAHANDLER(void)
 {
     if (VERBOSE_MIC_HARDWARE)
     {
@@ -209,7 +357,7 @@ void __ISR(_DMA_2_VECTOR, IPL_ISR(PRIORITY_MIC)) DMAHANDLER(void)
 
     if (!Is_Bot_Started())
         IEC0bits.AD1IE = 1;                 // Reactivate ADC interruptions
-}
+}*/
 
 void    init_DMA()
 {

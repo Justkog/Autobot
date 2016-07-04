@@ -13,8 +13,8 @@ void    Motor_Control_Stop(u16 delay_ms);
 u8      save_available = 1;
 
 // set motor handicap with mechanical testing to balance the manufacture differences
-u8      motor_1_handicap = 85;
-u8      motor_2_handicap = 100;
+u8      motor_1_handicap = MOTOR_1_HANDICAP;
+u8      motor_2_handicap = MOTOR_2_HANDICAP;
 
 s8      motor_step = 1;
 s8      motor_gear[7] = {-100, -80, -60, 0, 60, 80, 100};
@@ -45,6 +45,8 @@ void    Switch_Keep_Rolling_Mode(void)
         keep_rolling_mode = 0;
     else
         keep_rolling_mode = 1;
+    if (VERBOSE_MOTOR_SOFTWARE)
+        log_key_val("Keep Rolling Mode", flee_mode);
 }
 
 u8      Is_Flee_Mode(void)
@@ -58,6 +60,23 @@ void    Switch_Flee_Mode(void)
         flee_mode = 0;
     else
         flee_mode = 1;
+    if (VERBOSE_MOTOR_SOFTWARE)
+        log_key_val("Flee Mode", flee_mode);
+}
+
+u8      Is_Auto_Circle_Mode(void)
+{
+    return (auto_circle_mode);
+}
+
+void    Switch_Auto_Circle_Mode(void)
+{
+    if (auto_circle_mode)
+        auto_circle_mode = 0;
+    else
+        auto_circle_mode = 1;
+    if (VERBOSE_MOTOR_SOFTWARE)
+        log_key_val("Auto Circle Mode", auto_circle_mode);
 }
 
 void    Reset_Motor_Instructions(void)
@@ -191,9 +210,12 @@ void    Motor_Control_Emergency_Stop()
         put_str_ln("/!\\ EMERGENCY STOP /!\\");
     motor_timer_init();
     Reset_Motor_Instructions();
-    Add_Motor_Instruction(Motor_Control_Backward, EMERGENCY_STOP_BACKWARD_DELAY);
-    Add_Motor_Instruction(Motor_Control_Stop, 50);
-    Add_Motor_Instruction(Motor_Control_Stop, 3000);
+    if (MOVEMENT_ACTIVATED)
+    {
+        Add_Motor_Instruction(Motor_Control_Backward, EMERGENCY_STOP_BACKWARD_DELAY);
+        Add_Motor_Instruction(Motor_Control_Stop, 50);
+        Add_Motor_Instruction(Motor_Control_Stop, 3000);
+    }
     Add_Motor_Instruction(Stop_Bot, 0);
     Execute_Motor_Instructions();
 }

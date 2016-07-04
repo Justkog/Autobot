@@ -22,6 +22,8 @@ void    Start_Bot(void)
         put_str_ln("Bot started");
     
     Stop_Green_Led();
+    Reset_Mic_Procedure();
+    Enable_Bumper();
     
     //put_str_ln("dumping ADC");
     //Print_average();
@@ -36,6 +38,7 @@ void    Stop_Bot(u16 arg)
         put_str_ln("Bot stopped");
     Start_Green_Led();
     Reset_Mic_Procedure();
+    Disable_Bumper();
     Enable_ADC();
 }
 
@@ -46,6 +49,8 @@ u8    Is_Bot_Started(void)
 
 void __ISR(_EXTERNAL_2_VECTOR, IPL_ISR(PRIORITY_MOTOR)) bumperHANDLER(void)
 {
+    if (VERBOSE_MOTOR_SOFTWARE)
+        put_str_ln("/!\\ BUMPER TOUCHED /!\\");
     Motor_Control_Emergency_Stop();
     // Relancer une phase d'ecoute ??? (Pas dans le cahier des charges)
     IFS0bits.INT2IF = 0;
@@ -68,18 +73,21 @@ void __ISR(_EXTERNAL_1_VECTOR, IPL_ISR(PRIORITY_MOTOR)) buttonHANDLER(void)
         if(Get_Button_Seconds_Since_Push() < 2)
         {
             Start_Bot();
+            Stop_Button_Timer();
+            Enable_ADC();
         }
         else if(Get_Button_Seconds_Since_Push() >= 2 &&
                 Get_Button_Seconds_Since_Push() < 5)
         {
             Change_Threshold();
+            Show_Threshold_Status();
         }
-        else if(Get_Button_Seconds_Since_Push() >= 5)
+        /*else if(Get_Button_Seconds_Since_Push() >= 5)
         {
             Show_Battery_Status();
-        }
-        Stop_Button_Timer();
-        Enable_ADC();
+        }*/
+        //Stop_Button_Timer();
+        //Enable_ADC();
     }
     else
     {
@@ -139,7 +147,19 @@ void    bumper_init()
     IFS0bits.INT2IF = 0;                        // Clear Interrupt Flag
     IPC2bits.INT2IP = PRIORITY_MOTOR;           // Set Interrupt Priority to MAX level
     IPC2bits.INT2IS = SUBPRIORITY_EMERGENCY;    // Set Interrupt subpriority to MAX level
+    IEC0bits.INT2IE = 0;                        // Disable BUMPER Interrupt
+}
+
+void    Enable_Bumper(void)
+{
+    IFS0bits.INT2IF = 0;                        // Clear Interrupt Flag
     IEC0bits.INT2IE = 1;                        // Start BUMPER Interrupt
+}
+
+void    Disable_Bumper(void)
+{
+    IFS0bits.INT2IF = 0;                        // Clear Interrupt Flag
+    IEC0bits.INT2IE = 0;                        // Disable BUMPER Interrupt
 }
 
 void    button_init()

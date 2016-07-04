@@ -31,14 +31,22 @@ void    put_log(s8 *str)
             i++;
         }
     }
-    if (i >= sizeof(logs))
+    /*if (i >= sizeof(logs))
     {
         IEC1bits.U1TXIE = 0;
         wait_for_empty_log_buffer();
         i = 0;
-    }
+    }*/
     while (*str)
+    {
+        if (i >= sizeof(logs))
+        {
+            IEC1bits.U1TXIE = 0;
+            wait_for_empty_log_buffer();
+            i = 0;
+        }
         logs[i++] = *str++;
+    }
     logs[i] = 0;
     if (!id)
     {

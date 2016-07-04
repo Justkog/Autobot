@@ -16,6 +16,7 @@
  */
 
 u32 motor_delay_ms = 0;
+s8 value_status = 0;
 
 // PWM timer (3)
 
@@ -90,6 +91,8 @@ void    Stop_Button_Timer(void)
 {
     TMR5 = 0;
     
+    IFS0bits.T5IF = 0;
+    
     // Set the TxIE interrupt enable bit in the IECx register.
     IEC0bits.T5IE = 0;
 
@@ -99,13 +102,35 @@ void    Stop_Button_Timer(void)
     button_seconds_since_push = 0;
 }
 
+void    Value_Display(u8 blinks)
+{
+    IEC0bits.INT1IE = 0;                                // Disable button
+    value_status = blinks * 2 + 1;                      // the +1 is to light it back at the end
+    log_key_val("value blinks", value_status);
+}
+
 void __ISR(_TIMER_5_VECTOR, IPL_ISR(PRIORITY_MOTOR)) buttonTimerHANDLER(void)
 {
     button_seconds_since_push++;
     
-    if (button_seconds_since_push > 10)
+    if (value_status > 0)
     {
-        Stop_Button_Timer();
+        Switch_Green_Led();
+        value_status--;
+        if (!value_status)
+        {
+            Stop_Button_Timer();
+            IFS0bits.INT1IF = 0;
+            INTCONbits.INT1EP = 1;                      // Change back button interrupt to falling edge
+            IEC0bits.INT1IE = 1;                        // Enable the button interrupt
+            Enable_ADC();
+        }
+    }
+    else if (button_seconds_since_push == 5)
+    {
+        //Stop_Button_Timer();
+        Show_Battery_Status();
+        //Enable_ADC();
     }
     else
     {
@@ -118,6 +143,12 @@ void __ISR(_TIMER_5_VECTOR, IPL_ISR(PRIORITY_MOTOR)) buttonTimerHANDLER(void)
 // Sound config timer (2)
 
 u8      half_seconds_since_sound = 0;
+u8      registering_config = 0;
+
+u8      Get_Sound_Half_Seconds_Since_Sound(void)
+{
+    return (half_seconds_since_sound);
+}
 
 void    sound_config_timer_init(void)
 {
@@ -134,6 +165,26 @@ void    sound_config_timer_init(void)
     IPC2bits.T2IP = PRIORITY_MOTOR;
 
     PR2 = 46875 / 2;                            // Ticks for 500 ms
+}
+
+u8      Is_Sound_Timer_Registering_Config(void)
+{
+    return (registering_config);
+}
+
+void    Start_Sound_Timer_Config_Register(void)
+{
+    if (VERBOSE_MIC_SOFTWARE)
+        put_str_ln("start sound config register");
+    registering_config = 1;
+}
+
+void    Stop_Sound_Timer_Config_Register(void)
+{
+    if (VERBOSE_MIC_SOFTWARE)
+        put_str_ln("stop sound config register");
+    registering_config = 0;
+    Reset_Sound_Config_Claps();
 }
 
 void    Start_Sound_Timer(void)
@@ -163,15 +214,22 @@ void    Stop_Sound_Timer(void)
 void __ISR(_TIMER_2_VECTOR, IPL_ISR(PRIORITY_MOTOR)) soundTimerHANDLER(void)
 {
     half_seconds_since_sound++;
+    if (VERBOSE_MIC_SOFTWARE)
+        log_key_val("half seconds since sound", half_seconds_since_sound);
     
-    if (half_seconds_since_sound > 10)
+    if (half_seconds_since_sound > 3)
     {
+        if (Get_Sound_Config_Claps() == 3)
+        {
+            Switch_Flee_Mode();
+        }
         Stop_Sound_Timer();
+        Stop_Sound_Timer_Config_Register();
     }
-    else
+    /*else
     {
         Start_Sound_Timer();
-    }
+    }*/
 
     IFS0bits.T2IF = 0;
 }
