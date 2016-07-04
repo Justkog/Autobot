@@ -148,7 +148,7 @@ void __ISR(_ADC_VECTOR, IPL_ISR(PRIORITY_MIC)) ADCHANDLER(void)
             if (VERBOSE_MIC_HARDWARE)
             {
                 Print_Event_Values();
-                Print_Buffer_Values(16);
+                Print_Buffer_Values(2);
             }
             if (VERBOSE_MIC_SOFTWARE)
                 put_str_ln("Recording done");

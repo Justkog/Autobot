@@ -13,7 +13,6 @@
 # include "config.h"
 # include "types.h"
 
-
 # define CONCAT(x,y,z) x##y##z
 # define IPL_ISR(x) CONCAT(IPL,x,SOFT)
 
@@ -23,6 +22,7 @@ void    Motor_Control_Stop(u16 delay_ms);
 void    Motor_Control_Emergency_Stop();
 void    Motor_Control_Backward(u16 delay);
 void    Motor_Control_Forward(u16 delay);
+void    set_Motor_Speed(void);
 
 void    Start_Bot(void);
 void    Stop_Bot(u16 arg);

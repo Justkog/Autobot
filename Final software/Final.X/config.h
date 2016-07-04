@@ -15,17 +15,21 @@
 
 # define MOTOR_PWM_PERIOD               1024
 
-# define MOTOR_1_HANDICAP               100
-# define MOTOR_2_HANDICAP               100
+# define MOTOR_1_GEAR_1_HANDICAP        920
+# define MOTOR_1_GEAR_2_HANDICAP        970
+# define MOTOR_1_GEAR_3_HANDICAP        970
+# define MOTOR_2_GEAR_1_HANDICAP        1000
+# define MOTOR_2_GEAR_2_HANDICAP        1000
+# define MOTOR_2_GEAR_3_HANDICAP        1000
 
-# define ACTION_TABLE_MAX_LENGTH        16
+# define ACTION_TABLE_MAX_LENGTH        32
 # define EMERGENCY_STOP_BACKWARD_DELAY  500
 # define NEW_RECORD_DELAY               2000
-# define SIXTY_DEGREES_TURN_DELAY       1000            //25 * TICK_DELAY_FACTOR
-# define TICK_DELAY_FACTOR              40              // SIXTY_DEGREES_TURN_DELAY / 25
+# define SIXTY_DEGREES_TURN_DELAY       300            //25 * TICK_DELAY_FACTOR
+# define TICK_DELAY_FACTOR              12              // SIXTY_DEGREES_TURN_DELAY / 25
 # define SIDE_SWIM_DELAY                600
 
-# define MOVEMENT_ACTIVATED             0
+# define MOVEMENT_ACTIVATED             1
 
 # define SOUND_AVERAGE_VALUE_COUNT      64
 # define SOUND_THRESHOLD                75
@@ -45,7 +49,7 @@
 # define BATTERY_LEVEL_25_MIC3_AVG     (-110 * 128)
 
 # define VERBOSE_PIC_STATUS             1
-# define VERBOSE_MOTOR_HARDWARE         0
+# define VERBOSE_MOTOR_HARDWARE         1
 # define VERBOSE_MOTOR_SOFTWARE         1
 # define VERBOSE_MIC_HARDWARE           1
 # define VERBOSE_MIC_SOFTWARE           1

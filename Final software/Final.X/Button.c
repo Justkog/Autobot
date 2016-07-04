@@ -85,7 +85,8 @@ void __ISR(_EXTERNAL_1_VECTOR, IPL_ISR(PRIORITY_MOTOR)) buttonHANDLER(void)
         /*else if(Get_Button_Seconds_Since_Push() >= 5)
         {
             Show_Battery_Status();
-        }*/
+       // }*/
+
         //Stop_Button_Timer();
         //Enable_ADC();
     }
@@ -132,8 +133,8 @@ void __ISR(_EXTERNAL_1_VECTOR, IPL_ISR(PRIORITY_MOTOR)) buttonHANDLER(void)
     //while (waiter)
     //    waiter--;
 
-
-    //fuck_the_motor();
+    /*Disable_ADC();
+    fuck_the_motor();*/
     
     IFS0bits.INT1IF = 0;
 }

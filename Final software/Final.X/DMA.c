@@ -150,6 +150,8 @@ u16     Calculate_Turn_Delay(u8 found_mic, u8 close_mic, u8 far_mic, u8 ticks_ah
 
 u16     Calculate_Back_Turn_Delay(u8 ticks_ahead)
 {
+    if (ticks_ahead > 25)
+        ticks_ahead = 25;
     u16 turn_delay = SIXTY_DEGREES_TURN_DELAY * 2;             // Default turn delay
     s16 turn_precision = 0;
     turn_precision = ticks_ahead * TICK_DELAY_FACTOR;
@@ -202,7 +204,7 @@ void    Analyse_And_Move()
             Reset_Mic_Procedure();
             Add_Motor_Instruction(Motor_Control_Forward, 100);
             Add_Motor_Instruction(Motor_Control_Forward, 500);
-            Add_Motor_Instruction(Motor_Control_Forward, 1000);
+            Add_Motor_Instruction(Motor_Control_Forward, 3000);
             Add_Motor_Instruction(Motor_Control_Stop, 50);
             Add_Motor_Instruction(Motor_Control_Stop, NEW_RECORD_DELAY);
             Add_Motor_Instruction(Enable_ADC, 0);
@@ -232,6 +234,7 @@ void    Analyse_And_Move()
             Add_Motor_Instruction(Motor_Control_Turn_Left, turn_delay);
             Add_Motor_Instruction(Motor_Control_Forward, 50);
             Add_Motor_Instruction(Motor_Control_Forward, 50);
+            Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
@@ -266,6 +269,7 @@ void    Analyse_And_Move()
             Add_Motor_Instruction(Motor_Control_Forward, 50);
             Add_Motor_Instruction(Motor_Control_Forward, 50);
             Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
+            Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
@@ -299,14 +303,14 @@ void    Analyse_And_Move()
                 Add_Motor_Instruction(Motor_Control_Turn_Left, turn_delay);
             else
                 Add_Motor_Instruction(Motor_Control_Turn_Right, turn_delay);
-            Add_Motor_Instruction(Motor_Control_Forward, 50);
+            /*Add_Motor_Instruction(Motor_Control_Forward, 50);
             Add_Motor_Instruction(Motor_Control_Forward, 50);
             Add_Motor_Instruction(Motor_Control_Forward, 50);
             Add_Motor_Instruction(Motor_Control_Forward, 50);
             Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
-            Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
+            Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);*/
             Add_Motor_Instruction(Motor_Control_Stop, 50);
             Add_Motor_Instruction(Motor_Control_Stop, NEW_RECORD_DELAY);
             Add_Motor_Instruction(Enable_ADC, 0);

@@ -13,8 +13,8 @@ void    Motor_Control_Stop(u16 delay_ms);
 u8      save_available = 1;
 
 // set motor handicap with mechanical testing to balance the manufacture differences
-u8      motor_1_handicap = MOTOR_1_HANDICAP;
-u8      motor_2_handicap = MOTOR_2_HANDICAP;
+u16      motor_1_handicap[3] = {MOTOR_1_GEAR_1_HANDICAP, MOTOR_1_GEAR_2_HANDICAP, MOTOR_1_GEAR_3_HANDICAP};
+u16      motor_2_handicap[3] = {MOTOR_2_GEAR_1_HANDICAP, MOTOR_2_GEAR_2_HANDICAP, MOTOR_2_GEAR_3_HANDICAP};
 
 s8      motor_step = 1;
 s8      motor_gear[7] = {-100, -80, -60, 0, 60, 80, 100};
@@ -46,7 +46,7 @@ void    Switch_Keep_Rolling_Mode(void)
     else
         keep_rolling_mode = 1;
     if (VERBOSE_MOTOR_SOFTWARE)
-        log_key_val("Keep Rolling Mode", flee_mode);
+        log_key_val("Keep Rolling Mode", keep_rolling_mode);
 }
 
 u8      Is_Flee_Mode(void)
@@ -287,36 +287,51 @@ void    fuck_the_motor(void)
        i++;
     }
     Reset_Motor_Instructions();
-    Add_Motor_Instruction(Motor_Control_Forward, 500);
-    Add_Motor_Instruction(Motor_Control_Forward, 500);
+    Add_Motor_Instruction(Motor_Control_Forward, 2000);
+    Add_Motor_Instruction(Motor_Control_Forward, 2000);
+    Add_Motor_Instruction(Motor_Control_Forward, 2000);
+    Add_Motor_Instruction(Motor_Control_Stop, 50);
+    Add_Motor_Instruction(Motor_Control_Backward, 2000);
+    Add_Motor_Instruction(Motor_Control_Backward, 2000);
+    Add_Motor_Instruction(Motor_Control_Backward, 2000);
+    Add_Motor_Instruction(Motor_Control_Stop, 50);
+    /*Add_Motor_Instruction(Motor_Control_Forward, 500);
     Add_Motor_Instruction(Motor_Control_Turn_Left, 3000);
     Add_Motor_Instruction(Motor_Delay, 1000);
     Add_Motor_Instruction(Motor_Control_Turn_Left, 3000);
     Add_Motor_Instruction(Motor_Delay, 1000);
     Add_Motor_Instruction(Motor_Control_Turn_Left, 3000);
     Add_Motor_Instruction(Motor_Delay, 1000);
-    Add_Motor_Instruction(Motor_Control_Turn_Left, 3000);
+    Add_Motor_Instruction(Motor_Control_Turn_Left, 3000);*/
     Execute_Motor_Instructions();
 }
 
-void    set_Motor_Speed(void)
+u8    get_Motor_Handicap(u8 gear)
 {
-    set_Motor_1_Speed();
-    set_Motor_2_Speed();
+    if (gear > 3)
+    {
+        return (gear - 4);
+    }
+    else
+    {
+        return (2 - gear);
+    }
 }
 
 void    set_Motor_1_Speed(void)
 {
     s8 speed = motor_gear[motor_gear_current_1];
+    u8 handicap = get_Motor_Handicap(motor_gear_current_1);
+
     if (speed < 0)
     {
-        OC3RS = (100 + speed) * motor_1_handicap * MOTOR_PWM_PERIOD / 10000;
-        OC4RS = MOTOR_PWM_PERIOD;
+        OC3RS = (100 + speed) * motor_1_handicap[handicap] * MOTOR_PWM_PERIOD / 100000;
+        OC4RS = MOTOR_PWM_PERIOD * motor_1_handicap[handicap] / 1000;
     }
     else if (speed > 0)
     {
-        OC3RS = MOTOR_PWM_PERIOD;
-        OC4RS = (100 - speed) * motor_1_handicap * MOTOR_PWM_PERIOD / 10000;
+        OC3RS = MOTOR_PWM_PERIOD * motor_1_handicap[handicap] / 1000;
+        OC4RS = (100 - speed) * motor_1_handicap[handicap] * MOTOR_PWM_PERIOD / 100000;
     }
     else
     {
@@ -327,6 +342,7 @@ void    set_Motor_1_Speed(void)
     if (VERBOSE_MOTOR_HARDWARE)
     {
         put_str_ln("motor 1");
+        log_key_val("Handicap", handicap);
         log_key_val("L298 - Output 1", OC3RS);
         log_key_val("L298 - Output 2", OC4RS);
     }
@@ -335,15 +351,17 @@ void    set_Motor_1_Speed(void)
 void    set_Motor_2_Speed(void)
 {
     s8 speed = motor_gear[motor_gear_current_2];
+    u8 handicap = get_Motor_Handicap(motor_gear_current_2);
+
     if (speed < 0)
     {
-        OC2RS = (100 + speed) * motor_2_handicap * MOTOR_PWM_PERIOD / 10000;
-        OC1RS = MOTOR_PWM_PERIOD;
+        OC2RS = (100 + speed) * motor_2_handicap[handicap] * MOTOR_PWM_PERIOD / 100000;
+        OC1RS = MOTOR_PWM_PERIOD * motor_2_handicap[handicap] / 1000;
     }
     else if (speed > 0)
     {
-        OC2RS = MOTOR_PWM_PERIOD;
-        OC1RS = (100 - speed) * motor_2_handicap * MOTOR_PWM_PERIOD / 10000;
+        OC2RS = MOTOR_PWM_PERIOD * motor_2_handicap[handicap] / 1000;
+        OC1RS = (100 - speed) * motor_2_handicap[handicap] * MOTOR_PWM_PERIOD / 100000;
     }
     else
     {
@@ -354,7 +372,14 @@ void    set_Motor_2_Speed(void)
     if (VERBOSE_MOTOR_HARDWARE)
     {
         put_str_ln("motor 2");
+        log_key_val("Handicap", handicap);
         log_key_val("L298 - Output 3", OC2RS);
         log_key_val("L298 - Output 4", OC1RS);
     }
  }
+
+void    set_Motor_Speed(void)
+{
+    set_Motor_1_Speed();
+    set_Motor_2_Speed();
+}
