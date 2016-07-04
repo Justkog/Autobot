@@ -278,7 +278,7 @@ void    Motor_Control_Turn_Right(u16 delay)
     Motor_Delay(delay);
 }
 
-void    fuck_the_motor(void)
+void    test_the_motor(void)
 {
     u8  i = 0;
     while (i < 5)
@@ -295,14 +295,6 @@ void    fuck_the_motor(void)
     Add_Motor_Instruction(Motor_Control_Backward, 2000);
     Add_Motor_Instruction(Motor_Control_Backward, 2000);
     Add_Motor_Instruction(Motor_Control_Stop, 50);
-    /*Add_Motor_Instruction(Motor_Control_Forward, 500);
-    Add_Motor_Instruction(Motor_Control_Turn_Left, 3000);
-    Add_Motor_Instruction(Motor_Delay, 1000);
-    Add_Motor_Instruction(Motor_Control_Turn_Left, 3000);
-    Add_Motor_Instruction(Motor_Delay, 1000);
-    Add_Motor_Instruction(Motor_Control_Turn_Left, 3000);
-    Add_Motor_Instruction(Motor_Delay, 1000);
-    Add_Motor_Instruction(Motor_Control_Turn_Left, 3000);*/
     Execute_Motor_Instructions();
 }
 

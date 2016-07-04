@@ -27,7 +27,7 @@ void    pwm_timer_init(void)
             // 1. Clear the ON control bit (TxCON<15> = 0) to disable the timer.
                 T3CONbits.ON = 0;
             // 2. Clear the TCS control bit (TxCON<1> = 0) to select the internal PBCLK source.
-                // /!\ ASK GREGOIRE /!\
+                
             // 3. Select the desired timer input clock prescale.
                 T3CONbits.TCKPS = 0b111;    // prescale de 1:256
             // 4. Load/Clear the timer register TMRx.
@@ -45,9 +45,6 @@ void    pwm_timer_init(void)
 */            // 7. Set the ON control bit (TxCON<15> = 1) to enable the timer.
                 T3CONbits.ON = 1;
 
-                
-        // (un seul timer??) pour les moteurs
-        // (pour le son??) si controle
 }
 
 // Button timer (5)
@@ -226,10 +223,6 @@ void __ISR(_TIMER_2_VECTOR, IPL_ISR(PRIORITY_MOTOR)) soundTimerHANDLER(void)
         Stop_Sound_Timer();
         Stop_Sound_Timer_Config_Register();
     }
-    /*else
-    {
-        Start_Sound_Timer();
-    }*/
 
     IFS0bits.T2IF = 0;
 }

@@ -17,17 +17,12 @@ u8      bot_started = 0;
 void    Start_Bot(void)
 {
     bot_started = 1;
-    //LATCbits.LATC1 = 0;                         // Toggle Green LED
     if (VERBOSE_PIC_STATUS)
         put_str_ln("Bot started");
     
     Stop_Green_Led();
     Reset_Mic_Procedure();
     Enable_Bumper();
-    
-    //put_str_ln("dumping ADC");
-    //Print_average();
-    //DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
 }
 
 void    Stop_Bot(u16 arg)
@@ -82,13 +77,6 @@ void __ISR(_EXTERNAL_1_VECTOR, IPL_ISR(PRIORITY_MOTOR)) buttonHANDLER(void)
             Change_Threshold();
             Show_Threshold_Status();
         }
-        /*else if(Get_Button_Seconds_Since_Push() >= 5)
-        {
-            Show_Battery_Status();
-       // }*/
-
-        //Stop_Button_Timer();
-        //Enable_ADC();
     }
     else
     {
@@ -109,32 +97,9 @@ void __ISR(_EXTERNAL_1_VECTOR, IPL_ISR(PRIORITY_MOTOR)) buttonHANDLER(void)
             Stop_Bot(50);
         }
     }
-    //no need to turn it on as it is chained
-    //DCH1CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
-    //DCH1ECONbits.SIRQEN = 1;                    // Start channel cell transfer if an interrupt matching CHAIRQ occurs
-
-    //DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
-    //DCH0ECONbits.CFORCE = 1;                    // A DMA transfer is forced to begin
-    //DCH0ECONbits.SIRQEN = 1;                    // Start channel cell transfer if an interrupt matching CHAIRQ occurs
-
-    //counter = 0;
-
-    //LATCbits.LATC1 = 1 ^ LATCbits.LATC1;          // Toggle LED
-
-    //put_str_ln("dumping ADC");
-    //Print_average();
-    //DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
-    //DCH0ECONbits.CFORCE = 1;                    // A DMA transfer is forced to begin
-    //DCH0ECONbits.SIRQEN = 1;                    // Start channel cell transfer if an interrupt matching CHAIRQ occurs*/
-
-    //IEC0bits.AD1IE = 1;
-
-    //u32 waiter = 500000;
-    //while (waiter)
-    //    waiter--;
 
     /*Disable_ADC();
-    fuck_the_motor();*/
+    test_the_motor();*/
     
     IFS0bits.INT1IF = 0;
 }

@@ -130,13 +130,6 @@ void __ISR(_ADC_VECTOR, IPL_ISR(PRIORITY_MIC)) ADCHANDLER(void)
     s32 val3 = ADC1BUF0 * 128;                            // MIC3 (right)
     s32 val2 = ADC1BUF1 * 128;                            // MIC2 (back)
     s32 val1 = ADC1BUF2 * 128;                            // MIC1 (left)
-    //ADC1BUF0;
-    //ADC1BUF1;
-    //ADC1BUF2;
-
-    /*mic_1_average = val1 / SOUND_AVERAGE_VALUE_COUNT + mic_1_average - mic_1_average / SOUND_AVERAGE_VALUE_COUNT;
-    mic_2_average = val2 / SOUND_AVERAGE_VALUE_COUNT + mic_2_average - mic_2_average / SOUND_AVERAGE_VALUE_COUNT;
-    mic_3_average = val3 / SOUND_AVERAGE_VALUE_COUNT + mic_3_average - mic_3_average / SOUND_AVERAGE_VALUE_COUNT;*/
 
     if (register_values)
     {
@@ -217,105 +210,20 @@ void __ISR(_ADC_VECTOR, IPL_ISR(PRIORITY_MIC)) ADCHANDLER(void)
                                 mic_1_average, mic_2_average, mic_3_average,
                                 threshold);
         
-        if (VERBOSE_MIC_HARDWARE)
-        {
-            /*put_str_ln("Event");
-            log_key_val("mic 1", val1);
-            log_key_val("mic 1 av", mic_1_average);
-            log_key_val("mic 2", val2);
-            log_key_val("mic 2 av", mic_2_average);
-            log_key_val("mic 3", val3);
-            log_key_val("mic 3 av", mic_3_average);             //*/
-        }
-        
-        //IEC1bits.DMA0IE = 1;
-        //DCH1CONbits.CHEN = 1;                       // Turn DMA channel ON, initiate a transfer
         //DCH0CONbits.CHEN = 1;                       // Turn DMA channel ON, initiate a transfer
-        //DMACONbits.ON = 1;
         
         IFS0bits.AD1IF = 0;                         // Reset ADC interrutpion flag
         //IEC0bits.AD1IE = 0;                         // Disable ADC interrutpions
         return ;
-
-        //IEC1bits.DMA0IE = 1;
-        //DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
     }
     
     mic_1_average = val1 / SOUND_AVERAGE_VALUE_COUNT + mic_1_average - mic_1_average / SOUND_AVERAGE_VALUE_COUNT;
     mic_2_average = val2 / SOUND_AVERAGE_VALUE_COUNT + mic_2_average - mic_2_average / SOUND_AVERAGE_VALUE_COUNT;
     mic_3_average = val3 / SOUND_AVERAGE_VALUE_COUNT + mic_3_average - mic_3_average / SOUND_AVERAGE_VALUE_COUNT;
 
-    /*if (!average_started && (val0 > -25 || val0 < -100))
-    {
-        IFS0bits.AD1IF = 0;
-        return;
-    }
-
-    if (!average_started)
-    {
-        average = val0 * 100;
-        average_started = 1;
-    }
-
-    if (!print && event_enabled && (val0 * 100 > average + threshold || val0 * 100 < average - threshold))
-    {
-        //print = 1;
-        //DCH1ECONbits.SIRQEN = 1;
-
-        put_str_ln("Event");
-        log_key_val("value", val0);
-        log_key_val("average", average / 100);
-
-        IFS0bits.AD1IF = 0;
-        IEC0bits.AD1IE = 0;
-
-        DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
-
-
-        /*AD1CON1bits.ON = 0;
-
-        DCH0CONbits.CHEN = 1;                       // Turn channel ON, initiate a transfer
-
-        AD1CSSLbits.CSSL2 = 1;          // ADC Input scan selection bits, AN2 for input scan
-        AD1CSSLbits.CSSL3 = 1;          // ADC Input scan selection bits, AN3 for input scan
-        AD1CSSLbits.CSSL4 = 1;          // ADC Input scan selection bits, AN4 for input scan
-
-        AD1CON2bits.SMPI = 2;
-
-        AD1CON1bits.ON = 1;
-        
-        //DCH0ECONbits.CFORCE = 1;                    // A DMA transfer is forced to begin
-        //DCH0ECONbits.SIRQEN = 1;                    // Start channel cell transfer if an interrupt matching CHAIRQ occurs
-
-        //AD1CON1bits.ON = 0;
-        //AD1CSSLbits.CSSL2 = 1;          // ADC Input scan selection bits, AN2 for input scan
-        //AD1CSSLbits.CSSL3 = 1;          // ADC Input scan selection bits, AN3 for input scan
-        //AD1CSSLbits.CSSL4 = 0;          // ADC Input scan selection bits, AN4 for input scan
-        //AD1CON1bits.ON = 1;
-
-        //disable ADC interrupts
-        //IFS0bits.AD1IF = 0;
-        //IEC0bits.AD1IE = 0;
-    }*/
-
-    /*if (print)
-    {
-        print++;
-        log_key_val("dest 0 value", val0);
-        if (print > 16)
-        {
-            print = 0;
-            put_str_ln("Done");
-        }
-    }*/
-
     // update of the average
     // (calculation is wrong as we remove a proportional part as the first element,
     // but the approximation is ok as long as we don't have too crazy values)
-    // average = val0 * 100 / average_count + average - average / average_count;
-
-    
-    //log_key_val("value", ADC1BUF0);
 
     IFS0bits.AD1IF = 0;                         // Reset ADC interrutpion flag
 }
@@ -335,7 +243,6 @@ void    init_ADC(void)
     // 2. Select the analog inputs to the ADC multiplexers
     // Negative input select bit for Sample A Multiplexer Setting
     AD1CHSbits.CH0NA = 0;           // Channel 0 negative input is VREFL
-    //AD1CHSbits.CH0SA = 0x5;         // Channel 0 positive input is AN5
 
     // 3. Select the format of the ADC result
     // Data output format bits

@@ -25,19 +25,19 @@
 # define ACTION_TABLE_MAX_LENGTH        32
 # define EMERGENCY_STOP_BACKWARD_DELAY  500
 # define NEW_RECORD_DELAY               2000
-# define SIXTY_DEGREES_TURN_DELAY       300            //25 * TICK_DELAY_FACTOR
+# define SIXTY_DEGREES_TURN_DELAY       300             //25 * TICK_DELAY_FACTOR
 # define TICK_DELAY_FACTOR              12              // SIXTY_DEGREES_TURN_DELAY / 25
 # define SIDE_SWIM_DELAY                600
 
 # define MOVEMENT_ACTIVATED             1
 
-# define SOUND_AVERAGE_VALUE_COUNT      64
+# define SOUND_AVERAGE_VALUE_COUNT      128
 # define SOUND_THRESHOLD                75
 # define MIC_ADC_TICKS_DISTANCE         25
 
-# define SOUND_THRESHOLD_1              75
-# define SOUND_THRESHOLD_2              90
-# define SOUND_THRESHOLD_3              100
+# define SOUND_THRESHOLD_1              100
+# define SOUND_THRESHOLD_2              115
+# define SOUND_THRESHOLD_3              130
 # define SOUND_THRESHOLD_4              150
 # define SOUND_THRESHOLD_5              200
 

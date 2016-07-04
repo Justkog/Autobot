@@ -1,8 +1,6 @@
 
 #include "autobot.h"
 
-//#include <plib.h>
-
 /*
  *
  */
@@ -72,7 +70,7 @@ s32     Get_Buffer_Avg(u8 buffer_id)
     else if (buffer_id == 1)
         return (mic_2_avg);
     else if (buffer_id == 2)
-        return (mic_3_avg);
+        return (mic_1_avg);
 }
 
 /*
@@ -269,7 +267,6 @@ void    Analyse_And_Move()
             Add_Motor_Instruction(Motor_Control_Forward, 50);
             Add_Motor_Instruction(Motor_Control_Forward, 50);
             Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
-            Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
@@ -300,9 +297,9 @@ void    Analyse_And_Move()
             Reset_Mic_Procedure();
             Add_Motor_Instruction(Motor_Control_Backward, 50);
             if (next_mic == 2)
-                Add_Motor_Instruction(Motor_Control_Turn_Left, turn_delay);
-            else
                 Add_Motor_Instruction(Motor_Control_Turn_Right, turn_delay);
+            else
+                Add_Motor_Instruction(Motor_Control_Turn_Left, turn_delay);
             /*Add_Motor_Instruction(Motor_Control_Forward, 50);
             Add_Motor_Instruction(Motor_Control_Forward, 50);
             Add_Motor_Instruction(Motor_Control_Forward, 50);
