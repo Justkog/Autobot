@@ -1,5 +1,5 @@
 # Autobot
-42 Project
+42 Team Project
 
 This repo regroups code and design documents created to build a robot with 3 microphones constantly listening to the environment. 
 On detection of a sound, the robot performs a triangulation to locate the source and then goes towards it. 
