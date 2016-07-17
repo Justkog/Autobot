@@ -318,11 +318,11 @@ void    set_Motor_1_Speed(void)
     if (speed < 0)
     {
         OC3RS = (100 + speed) * motor_1_handicap[handicap] * MOTOR_PWM_PERIOD / 100000;
-        OC4RS = MOTOR_PWM_PERIOD * motor_1_handicap[handicap] / 1000;
+        OC4RS = MOTOR_PWM_PERIOD;
     }
     else if (speed > 0)
     {
-        OC3RS = MOTOR_PWM_PERIOD * motor_1_handicap[handicap] / 1000;
+        OC3RS = MOTOR_PWM_PERIOD;
         OC4RS = (100 - speed) * motor_1_handicap[handicap] * MOTOR_PWM_PERIOD / 100000;
     }
     else
@@ -348,11 +348,11 @@ void    set_Motor_2_Speed(void)
     if (speed < 0)
     {
         OC2RS = (100 + speed) * motor_2_handicap[handicap] * MOTOR_PWM_PERIOD / 100000;
-        OC1RS = MOTOR_PWM_PERIOD * motor_2_handicap[handicap] / 1000;
+        OC1RS = MOTOR_PWM_PERIOD;
     }
     else if (speed > 0)
     {
-        OC2RS = MOTOR_PWM_PERIOD * motor_2_handicap[handicap] / 1000;
+        OC2RS = MOTOR_PWM_PERIOD;
         OC1RS = (100 - speed) * motor_2_handicap[handicap] * MOTOR_PWM_PERIOD / 100000;
     }
     else

@@ -200,8 +200,8 @@ void    Analyse_And_Move()
             motor_timer_init();
             Reset_Motor_Instructions();
             Reset_Mic_Procedure();
-            Add_Motor_Instruction(Motor_Control_Forward, 100);
-            Add_Motor_Instruction(Motor_Control_Forward, 500);
+            Add_Motor_Instruction(Motor_Control_Forward, 300);
+            Add_Motor_Instruction(Motor_Control_Forward, 1000);
             Add_Motor_Instruction(Motor_Control_Forward, 3000);
             Add_Motor_Instruction(Motor_Control_Stop, 50);
             Add_Motor_Instruction(Motor_Control_Stop, NEW_RECORD_DELAY);
@@ -232,6 +232,7 @@ void    Analyse_And_Move()
             Add_Motor_Instruction(Motor_Control_Turn_Left, turn_delay);
             Add_Motor_Instruction(Motor_Control_Forward, 50);
             Add_Motor_Instruction(Motor_Control_Forward, 50);
+            Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
@@ -266,6 +267,7 @@ void    Analyse_And_Move()
             Add_Motor_Instruction(Motor_Control_Turn_Right, turn_delay);
             Add_Motor_Instruction(Motor_Control_Forward, 50);
             Add_Motor_Instruction(Motor_Control_Forward, 50);
+            Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Right, SIDE_SWIM_DELAY);
             Add_Motor_Instruction(Motor_Control_Turn_Left, SIDE_SWIM_DELAY);
